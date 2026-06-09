@@ -1,0 +1,22 @@
+mixin header-both(data = {}, options = {})
+	-
+		const navigate = [
+			{
+				name: 'Бренды',
+			}, {
+				name: 'Мебель для дома',
+			}, {
+				name: 'Одежда',
+			}, {
+				name: 'Электроника',
+			}, {
+				name: 'Сантехника',
+			}, {
+				name: 'Косметика',
+			}, {
+				name: 'Акции',
+			}
+		]
+
+	.header-both.container&attributes(attributes)
+		+header-nav(navigate)(class="header-both__nav")

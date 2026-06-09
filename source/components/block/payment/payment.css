@@ -1,0 +1,9 @@
+.payment {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+
+	.payment__item {
+		display: flex;
+	}
+}

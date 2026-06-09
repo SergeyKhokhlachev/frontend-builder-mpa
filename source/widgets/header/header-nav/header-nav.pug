@@ -1,0 +1,22 @@
+mixin header-nav(data = [], options = {})
+	nav.header-nav&attributes(attributes)
+		ul
+			each item in data
+				-
+					item = {
+						name: item.name || 'О компании',
+						list: item.list || [],
+					}
+		
+				if (item.list.length)
+					li
+						a(class="header-nav__link" href="#" aria-label=item.name)
+							span= item.name
+							+icon('chevron-down')
+						ul.header-nav__dropdown
+							each name in item.list
+								li
+									a(href="#" aria-label=name)= name
+				else
+					li
+						a(class="header-nav__link" href="#" aria-label=item.name)= item.name

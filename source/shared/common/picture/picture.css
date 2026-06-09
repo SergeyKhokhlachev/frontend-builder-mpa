@@ -1,0 +1,12 @@
+picture.lazy {
+	img {
+		opacity: 0;
+		transition: opacity var(--transition-alternate);
+	}
+
+	&.loaded {
+		img {
+			opacity: 1;
+		}
+	}
+}

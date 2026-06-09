@@ -1,0 +1,34 @@
+mixin pagination(options = {})
+	-
+		options = {
+			mode: options.mode || 'upload' // upload || simple
+		}
+
+	.pagination&attributes(attributes)
+
+		if (options.mode === 'upload')
+			button(
+				class="button button--primary pagination__button"
+				type="button"
+				aria-label="Показать ещё"
+			) Показать ещё 14 из 96
+
+		nav.pagination__nav
+
+			a(class="pagination__arrow" href="#" aria-label="Перейти на предыдущую страницу") В начало
+
+			a(class="pagination__link pagination__link--extreme" href="#" aria-label="Перейти на страницу 1") 1
+
+			span.pagination__separator ...
+
+			a(class="pagination__link pagination__link--excess" href="#" aria-label="Перейти на страницу 11") 11
+			a(class="pagination__link" href="#" aria-label="Перейти на страницу 12") 12
+			a(class="pagination__link active" href="#" aria-label="Перейти на страницу 13") 13
+			a(class="pagination__link" href="#" aria-label="Перейти на страницу 14") 14
+			a(class="pagination__link pagination__link--excess" href="#" aria-label="Перейти на страницу 15") 15
+
+			span.pagination__separator ...
+
+			a(class="pagination__link pagination__link--extreme" href="#" aria-label="Перейти на страницу 356") 356
+
+			a(class="pagination__arrow" href="#" aria-label="Перейти на следующую страницу") Дальше

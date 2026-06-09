@@ -1,0 +1,10 @@
+mixin location(data = {}, options = {})
+	.location&attributes(attributes)
+		button(
+			class="location__button"
+			type="button"
+			data-modal="modal-location"
+			aria-label="Чебоксары"
+		)
+			+icon('location')
+			span(class="location__value") Чебоксары

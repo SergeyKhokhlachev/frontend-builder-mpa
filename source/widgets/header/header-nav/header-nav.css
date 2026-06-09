@@ -1,0 +1,27 @@
+.header-nav {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 32px;
+	}
+
+	li {
+		position: relative;
+	}
+
+	.header-nav__link {
+		display: flex;
+		gap: 5px;
+		align-items: center;
+		height: 42px;
+
+		.icon {
+			width: 12px;
+			height: 12px;
+		}
+	}
+
+	.header-nav__dropdown {
+		display: none;
+	}
+}

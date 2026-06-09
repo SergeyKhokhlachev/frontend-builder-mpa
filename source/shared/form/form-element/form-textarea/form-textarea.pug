@@ -1,0 +1,30 @@
+mixin form-textarea(data = {}, options= {})
+	-
+		data = {
+			id: data.id || data.name || false,
+			name: data.name || false,
+			value: data.value || '',
+			label: data.label || false,
+			message: data.message || false,
+			describe: data.describe || false,
+			placeholder: data.placeholder || false,
+			autocomplete: data.autocomplete || 'off',
+			required: data.required || false,
+			readonly: data.readonly || false,
+			disabled: data.disabled || false,
+			look: data.look || false,
+			rule: data.rule || false,
+		}
+
+	+form-element(data)
+		textarea(
+			id= data.id
+			class="form-textarea"
+			name= data.name
+			placeholder= data.placeholder
+			autocomplete= data.autocomplete
+			required= data.required
+			data-message= data.message
+			data-look= data.look
+			data-rule= data.rule
+		)= data.value

@@ -1,0 +1,16 @@
+extends ../../layouts/main/main
+
+block data
+	-
+		const breadcrumbs = {
+			'Главная': '/pages/',
+			'Адреса магазинов': '',
+		}
+
+block main
+	.template-page
+		.container
+			+breadcrumbs(breadcrumbs)
+			.js-shops
+
+block modal

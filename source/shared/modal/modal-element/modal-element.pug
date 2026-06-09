@@ -1,0 +1,8 @@
+mixin modal-window(data = '', options = {})
+	div(id=data class="modal-window hidden js-modal")&attributes(attributes)
+		button(class="modal-window__close js-modal-close" type="button" aria-label="close")
+			+icon('close')
+		.modal-window__body
+			.modal-window__scroll.js-modal__scroll
+				.modal-window__content.js-modal__content
+					block

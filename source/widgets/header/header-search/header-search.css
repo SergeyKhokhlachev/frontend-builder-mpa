@@ -1,0 +1,29 @@
+.header-search {
+	position: relative;
+
+	.header-search__field {
+		width: 100%;
+		min-height: 42px;
+		padding: 6px 16px;
+		border: 1px solid var(--color-line-primary);;
+		border-radius: 8px;
+		transition: border-color var(--transition-secondary);
+
+		&:focus {
+			border-color: var(--color-line-secondary);
+		}
+	}
+
+	.header-search__button {
+		position: absolute;
+		top: 50%;
+		right: 16px;
+		display: flex;
+		transform: translateY(-50%);
+
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
+	}
+}

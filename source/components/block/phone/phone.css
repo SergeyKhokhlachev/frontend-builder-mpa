@@ -1,0 +1,14 @@
+.phone {
+	display: flex;
+	gap: 12px;
+
+	.phone__link {
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 1.25;
+	}
+
+	.phone__button {
+		font-size: 12px;
+	}
+}

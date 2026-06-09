@@ -1,0 +1,28 @@
+mixin card-category(data = {}, options = {})
+	-
+		data = {
+			image: data.image || '',
+			path: data.path || '',
+			name: data.name || '',
+			quantity: data.quantity || '',
+			list: data.list || [],
+		}
+
+	div(class="card-category")&attributes(attributes)
+		a(class="card-category__preview" href="#" aria-label=data.name)
+			span.card-category__quantity= data.quantity
+			+picture(data.image, {
+				format: 'png',
+				path: data.path,
+				lazy: true,
+				alt: '',
+			})
+		.card-category__content
+			a(class="card-category__name" href="#" aria-label=data.name)= data.name
+			ul.card-category__list
+				each item in data.list
+					li.card-category__item
+						a(class="link" href="#")= item
+			a(class="card-category__more link" href="#")
+				| Смотреть все
+				+icon('chevron-right')

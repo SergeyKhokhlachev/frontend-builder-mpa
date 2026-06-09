@@ -1,0 +1,9 @@
+.sticky {
+	&.active {
+		position: fixed;
+	}
+
+	&.stop {
+		position: relative;
+	}
+}

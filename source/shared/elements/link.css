@@ -1,0 +1,26 @@
+.link {
+	display: inline-flex;
+	align-items: center;
+	color: var(--color-primary);
+	line-height: 1.25;
+	transition: color var(--transition-primary);
+
+	&.link--alternate {
+		color: var(--color-text-alternate);
+	}
+
+	&.link--dashed {
+		span {
+			display: inline-block;
+			border-bottom: 1px dashed;
+		}
+	}
+
+	@mixin hover {
+		color: var(--color-primary-hover);
+	}
+
+	@mixin active {
+		color: var(--color-primary-active);
+	}
+}

@@ -1,0 +1,13 @@
+.header-top {
+	background-color: var(--color-background-alternate);
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	@mixin media $desktop, max {
+		display: none;
+	}
+}

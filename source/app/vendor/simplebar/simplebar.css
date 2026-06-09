@@ -1,0 +1,51 @@
+/* stylelint-disable selector-max-compound-selectors */
+.page {
+	[data-simplebar] {
+		padding-right: 10px;
+	}
+	
+	.simplebar-scrollbar {
+		cursor: pointer;
+	
+		&::before {
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			width: 2px;
+			border-radius: 2px;
+			background-color: var(--color-text-alternate);
+			opacity: 1;
+			transform: translateX(-50%);
+		}
+	
+		&.simplebar-visible::before {
+			opacity: 1;
+		}
+	}
+	
+	.simplebar-track {
+		&.simplebar-vertical {
+			width: 2px;
+	
+			&::before {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 50%;
+				width: 2px;
+				border-radius: 2px;
+				background-color: var(--color-line-primary);
+				content: '';
+				transform: translateX(-50%)
+			}
+		}
+	
+		&.simplebar-hover {
+			.simplebar-scrollbar::before {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+

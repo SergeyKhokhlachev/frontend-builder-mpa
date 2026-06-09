@@ -1,0 +1,26 @@
+mixin picture(name = '', options = {})
+	-
+		options = {
+			alt: options.alt || '',
+			path: options.path || '',
+			format: options.format || 'jpg',
+			lazy: options.lazy || false,
+			responsive: options.responsive || {},
+		}
+
+	picture(class={'lazy js-lazy': options.lazy})&attributes(attributes)
+		each res in options.responsive
+			-
+				res = {
+					name: res.name || `${name}--${res.media}`,
+					format: res.format || options.format,
+					media: breakpoint[res.media],
+				}
+
+			if (process == 'production')
+				source(srcset=`../images/${res.name}.webp` media=`(min-width: ${res.media}px)` type="image/webp")
+			source(srcset=`/assets/images/${options.path}${res.name}.${res.format}` media=`(min-width: ${res.media}px)`)
+
+		if (process == 'production')
+			source(srcset=`../images/${name}.webp` type="image/webp")
+		img(src=`/assets/images/${options.path}${name}.${options.format}` loading="lazy" alt=options.alt)

@@ -1,0 +1,10 @@
+mixin phone(data = {}, options = {})
+	.phone&attributes(attributes)
+		a(class="phone__link" href="tel:+74950707070" aria-label="+7 (495) 070-70-70") +7 (495) 070-70-70
+		button(
+			class="phone__button link link--dashed"
+			type="button"
+			data-modal="modal-callback"
+			aria-label="Заказать звонок"
+		)
+			span Заказать звонок

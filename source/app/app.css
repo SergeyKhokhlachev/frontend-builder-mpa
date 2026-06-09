@@ -1,0 +1,44 @@
+/* NOTE: import VARIABLES */
+@import url('./config/variables.css');
+
+/* NOTE: import CONFIG style */
+@import url('./config/fonts.css');
+@import url('./config/normalize.css');
+@import url('./config/common.css');
+
+/* NOTE: import CUSTOM VENDOR style */
+@import url('./vendor/nouislider/nouislider.css');
+@import url('./vendor/simplebar/simplebar.css');
+@import url('./vendor/swiper/swiper.css');
+
+/* NOTE: import CORE COMPONENTS style */
+
+/* === */
+@import url('@/shared/content/content.css');
+
+/* === */
+@import url('@/shared/elements/link.css');
+@import url('@/shared/elements/button.css');
+@import url('@/shared/elements/button-sq.css');
+@import url('@/shared/elements/title.css');
+
+/* === */
+@import url('@/shared/common/icon/icon.css');
+@import url('@/shared/common/picture/picture.css');
+@import url('@/shared/common/breadcrumbs/breadcrumbs.css');
+@import url('@/shared/common/collapse/collapse.css');
+@import url('@/shared/common/dropdown/dropdown.css');
+@import url('@/shared/common/pagination/pagination.css');
+@import url('@/shared/common/popover/popover.css');
+@import url('@/shared/common/sticky/sticky.css');
+@import url('@/shared/common/tabs/tabs.css');
+@import url('@/shared/common/video/video.css');
+
+/* === */
+@import url('@/shared/form/form.css');
+
+/* === */
+@import url('@/shared/notify/notify.css');
+
+/* === */
+@import url('@/shared/modal/modal.css');

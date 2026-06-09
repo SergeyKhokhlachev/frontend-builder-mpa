@@ -1,0 +1,25 @@
+.form-textarea {
+	width: 100%;
+	min-height: 100px;
+	padding: 10px 16px;
+	border: 1px solid var(--color-line-primary);
+	border-radius: 5px;
+	font-size: 16px;
+	transition: border-color var(--transition-primary);
+
+	&::placeholder {
+		color: var(--color-text-alternate);
+	}
+
+	&:focus {
+		border-color: var(--color-line-secondary);
+	}
+}
+
+.form-element {
+	&.error {
+		.form-textarea {
+			border-color: var(--color-danger);
+		}
+	}
+}

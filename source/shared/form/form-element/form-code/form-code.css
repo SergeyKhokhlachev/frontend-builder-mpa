@@ -1,0 +1,10 @@
+.form-code {
+	.form-code__vue {
+		display: flex;
+		gap: 16px;
+
+		.form-input {
+			text-align: center;
+		}
+	}
+}

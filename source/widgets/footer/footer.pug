@@ -1,0 +1,34 @@
+include ./footer-nav/footer-nav
+include ../../components/block/payment/payment
+include ../../components/block/phone/phone
+
+include ../../api/data/footer/footer-nav
+include ../../api/data/payment/payment
+
+mixin footer(data = [], options = {})
+	.footer&attributes(attributes)
+		.footer__main.container
+			.footer__box
+				each navigate in footerNav
+					+footer-nav(navigate)
+			.footer__info
+				+phone()
+				.footer__text Есть вопросы? Мы с радостью на них ответим.<br>Горячая линия работает пн-пт с 9:00-18:00
+		.footer__hr
+		.footer__both.container
+			ul.footer__list
+				li
+					a(class="link link--alternate" href="#" aria-label="Политика конфиденциальности") Политика конфиденциальности
+				li
+					a(class="link link--alternate" href="#" aria-label="Cookies") Cookies
+				li
+					a(class="link link--alternate" href="#" aria-label="Карта сайта") Карта сайта
+
+			+payment(payment)
+
+		.footer__hr
+		.footer__copy.container
+			.footer__text
+				| 2025 © Интернет-магазин
+			.footer__text
+				| Создание сайта — 

@@ -1,0 +1,81 @@
+.swiper-carousel {
+	position: relative;
+	padding-bottom: 15px;
+
+	@mixin media $mobile {
+		padding-bottom: 5px;
+	}
+
+	@mixin media $desktop {
+		padding-bottom: 0;
+	}
+
+	.swiper-scrollbar {
+		&.swiper-scrollbar-horizontal {
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+
+		@mixin media $desktop {
+			display: none;
+		}
+	}
+
+	.swiper-prev,
+	.swiper-next {
+		position: absolute;
+		z-index: 2;
+		top: -46px;
+		display: none;
+
+		@mixin media $desktop {
+			display: flex;
+
+			&.swiper-button-lock {
+				display: none;
+			}
+		}
+	}
+
+	.swiper-prev {
+		right: 38px;
+	}
+
+	.swiper-next {
+		right: 0;
+	}
+
+	.swiper-carousel__swiper {
+		margin-right: -8px;
+		margin-left: -8px;
+
+		@mixin media $mobile {
+			margin-right: -15px;
+			margin-left: -15px;
+		}
+	}
+
+	.swiper-carousel__wrapper {
+		padding: 10px 0;
+
+		@mixin media $mobile {
+			padding: 20px 0;
+		}
+	}
+
+	.swiper-carousel__slide {
+		width: 296px;
+		height: auto;
+		padding: 0 8px;
+
+		@mixin media $mobile {
+			width: 430px;
+			padding: 0 15px;
+		}
+
+		@mixin media $laptop {
+			width: calc(100% / 3);
+		}
+	}
+}

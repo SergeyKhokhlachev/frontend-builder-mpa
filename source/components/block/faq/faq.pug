@@ -1,0 +1,31 @@
+mixin faq(data = [], options = {})
+	-
+		options = {
+			type: options.type || 'collapse' // collapse || accordion
+		}
+
+	.faq.js-demo-faq&attributes(attributes)
+		div(
+			class="faq__list js-collapse"
+			data-collapse="collapse"
+		)
+			each item in data
+				-
+					item = {
+						name: item.name || '',
+						content: item.content || '',
+					}
+
+				.faq__element.js-collapse__element
+					button(
+						class="faq__header js-collapse__button"
+						type="button"
+						aria-label=item.name
+					)
+						span= item.name
+						+icon('chevron-down')(class="collapse__icon")
+					div(class="faq__body js-collapse__content")
+						.faq__content !{item.content}
+
+		button(class="faq__button button button--accent" type="button" aria-label="Показать еще")
+			span Показать еще

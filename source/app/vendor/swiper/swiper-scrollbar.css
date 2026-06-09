@@ -1,0 +1,15 @@
+.page {
+	.swiper-scrollbar {
+		&.swiper-scrollbar-horizontal {
+			z-index: 0;
+			bottom: 0;
+			height: 1px;
+			background-color: var(--color-line-primary);
+	
+			.swiper-scrollbar-drag {
+				height: 1px;
+				background-color: var(--color-text-primary);
+			}
+		}
+	}
+}

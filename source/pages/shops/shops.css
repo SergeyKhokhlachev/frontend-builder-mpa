@@ -1,0 +1,5 @@
+/* NOTE: import LAYOUT style */
+@import url('@/layouts/main/main.css');
+
+/* NOTE: import COMPONENTS style */
+@import url('@/components/block/shops/shops.css');

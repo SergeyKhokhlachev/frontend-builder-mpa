@@ -1,0 +1,18 @@
+mixin payment(data = [], options= {})
+	ul.payment&attributes(attributes)
+		each item in data
+			-
+				item = {
+					image: item.image || '',
+					title: item.title || '',
+					width: item.width || '',
+					height: item.height || '',
+				}
+
+			li.payment__item
+				img(
+					src=`/assets/images/${item.image}.svg`
+					width=item.width
+					height=item.height
+					alt=item.title
+				)

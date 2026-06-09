@@ -1,0 +1,64 @@
+extends ../../layouts/main/main
+
+include ../../components/block/faq/faq
+include ../../components/block/promo/promo
+include ../../components/block/bannerline/bannerline
+include ../../components/card/card-action/card-action
+include ../../components/card/card-review/card-review
+
+include ../../components/swiper/swiper-banner/swiper-banner
+include ../../components/swiper/swiper-carousel/swiper-carousel
+
+block data
+	include ../../api/data/faq/faq
+	include ../../api/data/banner/banner
+	include ../../api/data/bannerline/bannerline
+	include ../../api/data/action/action-array
+	include ../../api/data/review/review-array
+
+block main
+	.template-page
+		+swiper-banner(banner)
+		+bannerline(bannerline)
+
+		section.section.section--medium
+			.container
+				h2.title-section Выгодные предложения
+				.grid.grid--quarter
+					each item in actionArray
+						.grid__col
+							+card-action(item)
+
+		section.section.section--largest
+			.container
+				.tabs.js-tabs
+					.tabs__head
+						button(class="tabs__button active js-tabs__button" type="button" data-tab="tab-1" aria-label="Описание") Описание
+						button(class="tabs__button js-tabs__button" type="button" data-tab="tab-2" aria-label="Хакартеристики") Хакартеристики
+						button(class="tabs__button js-tabs__button" type="button" data-tab="tab-3" aria-label="Отзывы") Отзывы
+					.tabs__body.js-tabs__wrapper
+						div(class="tabs__content active js-tabs__content" data-tab="tab-1") Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quis omnis asperiores aliquam, incidunt sapiente impedit, nihil eveniet, atque repellendus harum consequuntur quod consequatur vero. Libero adipisci non amet. Molestiae.
+						div(class="tabs__content js-tabs__content" data-tab="tab-2") Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore id qui minima debitis voluptate velit delectus in cupiditate, cumque veniam cum, error unde non esse distinctio ipsum, quas maxime animi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum cum labore libero voluptatum consequatur, hic ratione fuga nulla distinctio quam! Accusantium sequi eius, doloribus obcaecati reiciendis repellendus. Distinctio, assumenda laudantium.
+						div(class="tabs__content js-tabs__content" data-tab="tab-3") Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore id qui minima debitis voluptate velit delectus in cupiditate, cumque veniam cum, error unde non esse distinctio ipsum, quas maxime animi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum cum labore libero voluptatum consequatur, hic ratione fuga nulla distinctio quam! Accusantium sequi eius, doloribus obcaecati reiciendis repellendus. Distinctio, assumenda laudantium. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore id qui minima debitis voluptate velit delectus in cupiditate, cumque veniam cum, error unde non esse distinctio ipsum, quas maxime animi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum cum labore libero voluptatum consequatur, hic ratione fuga nulla distinctio quam! Accusantium sequi eius, doloribus obcaecati reiciendis repellendus. Distinctio, assumenda laudantium.
+
+		section.section.section--medium.section--secondary
+			.container
+				h2.title-section Последние отзывы
+				+swiper-carousel({
+					init: 'js-swiper-reviews',
+				})
+					each item in reviewArray
+						.swiper-carousel__slide.swiper-slide
+							+card-review(item)
+
+		section.section.section--medium
+			.container
+				h2.title-section Ответы на частые вопросы
+				+faq(faqArray)
+
+		+promo()
+
+		section.section.section--medium
+			.container.js-shops
+
+block modal

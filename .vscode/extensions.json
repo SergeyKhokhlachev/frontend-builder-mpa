@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"stylelint.vscode-stylelint",
+		"octref.vetur",
+		"vue.volar",
+		"vue.vscode-typescript-vue-plugin",
+		"vunguyentuan.vscode-postcss",
+		"vunguyentuan.vscode-css-variables"
+	]
+}

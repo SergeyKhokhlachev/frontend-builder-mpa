@@ -1,0 +1,25 @@
+<svg width="35" height="6" viewBox="0 0 35 6" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<circle id='first' cx="3.5" cy="3" r="3">
+<animate
+   attributeName="opacity"
+   values="1;0.25;1"
+   dur="1s"
+   repeatCount="indefinite" />
+</circle>
+<circle cx="15.5" cy="3" r="3">
+<animate
+   attributeName="opacity"
+   values="1;0.25;1"
+   dur="1s"
+   begin="0.25s;first.end+0.25s"
+   repeatCount="indefinite" />
+</circle>
+<circle cx="27.5" cy="3" r="3">
+<animate
+   attributeName="opacity"
+   values="1;0.25;1"
+   dur="1s"
+   begin=".5s;first.end+.5s"
+   repeatCount="indefinite" />
+</circle>
+</svg>

@@ -1,0 +1,5 @@
+mixin header-search(data = {}, options = {})
+	form.header-search&attributes(attributes)
+		input(id="header-search" class="header-search__field" type="text" aria-label="Поиск")
+		button(class="header-search__button" type="button" aria-label="Поиск")
+			+icon('search')

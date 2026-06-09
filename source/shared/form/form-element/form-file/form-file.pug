@@ -1,0 +1,47 @@
+mixin form-file(data = {}, options= {})
+	-
+		data = {
+			id: data.id || data.name || false,
+			name: data.name || false,
+			value: data.value || false,
+			label: data.label || false,
+			message: data.message || false,
+			describe: data.describe || false,
+			required: data.required || false,
+			readonly: data.readonly || false,
+			disabled: data.disabled || false,
+			look: data.look || false,
+			multiple: data.multiple || false,
+			accept: data.accept || '.png,.jpg,.jpeg,.gif,.bmp',
+			size: data.size || '5242880',
+			length: data.length || '5',
+			title: data.title || 'Выберите фото',
+			text: data.text || 'Или переместите в эту область. JPG, GIF, JPEG, PNG, BMP до 5 Мб.',
+		}
+
+	+form-element(data)
+		.form-file.js-form-file
+			input(
+				id= data.id
+				class="form-input"
+				type="file"
+				name= data.name
+				required= data.required
+				data-message= data.message
+				data-look= data.look
+				accept= data.accept
+				multiple= data.multiple
+				data-size= data.size
+				data-length= data.length
+				data-type="form-file"
+			)
+			.form-file__box
+				.form-file__preview
+					label(for=data.id class="form-file__button")
+						+icon('photo')
+				.form-file__vue.js-form-file__vue
+				.form-file__content
+					label(for=data.id class="form-file__link link link--dashed")
+						span= data.title
+					.form-file__text= data.text
+				

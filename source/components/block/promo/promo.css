@@ -1,0 +1,15 @@
+.promo {
+	.promo__banner-link {
+		display: block;
+
+		picture {
+			display: block;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+}

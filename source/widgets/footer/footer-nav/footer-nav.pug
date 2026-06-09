@@ -1,0 +1,22 @@
+mixin footer-nav(data = {}, options = {})
+	-
+		data = {
+			title: data.title || '',
+			list: data.list || []
+		}
+
+	nav(class="footer-nav js-collapse" data-collapse="collapse")&attributes(attributes)
+		.footer-nav__element.js-collapse__element
+			div(class="footer-nav__title js-collapse__button" role="button" aria-label=data.title)
+				span= data.title
+				+icon('chevron-down')
+			ul(class="footer-nav__list js-collapse__content")
+				each item in data.list
+					-
+						item = {
+							name: item.name || '',
+							href: item.href || '#'
+						}
+			
+					li.footer-nav__item
+						a(class="footer-nav__link link link--alternate" href=item.href)= item.name

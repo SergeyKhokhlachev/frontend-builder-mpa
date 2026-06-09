@@ -1,0 +1,26 @@
+@import url('../../card/card-banner/card-banner.css');
+
+.bannerline {
+	@mixin media $tablet {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.bannerline__item {
+		@mixin media $tablet {
+			width: 50%;
+
+			&.bannerline__item--largest {
+				width: 100%;
+			}
+		}
+
+		@mixin media $desktop {
+			width: 29%;
+
+			&.bannerline__item--largest {
+				width: 42%;
+			}
+		}
+	}
+}

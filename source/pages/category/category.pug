@@ -1,0 +1,39 @@
+extends ../../layouts/main/main
+
+include ../../components/card/card-category/card-category
+include ../../components/card/card-action/card-action
+
+include ../../components/swiper/swiper-carousel/swiper-carousel
+
+block data
+	include ../../api/data/category/category-array
+	include ../../api/data/action/action-array
+
+	-
+		const breadcrumbs = {
+			'Главная': '/pages/',
+			'Каталог': '',
+		}
+
+block main
+	.template-page
+		.container
+			+breadcrumbs(breadcrumbs)
+			h1.title-page Каталог
+			.grid.grid--third
+				each item in categoryArray
+					.grid__col
+						+card-category(item)
+
+		section.section.section--largest
+			.container
+				h2.title-section Ранее вы смотрели
+				+swiper-carousel({
+					init: 'js-swiper-actions',
+				})
+					each item in actionArray
+						.swiper-carousel__slide.swiper-slide
+							+card-action(item)
+
+
+block modal

@@ -1,0 +1,19 @@
+include ../../card/card-banner/card-banner
+
+mixin bannerline(data = [])
+	.bannerline&attributes(attributes)
+		each item in data
+			-
+				item = {
+					image: item.image || '',
+					path: item.path || '',
+					name: item.name || '',
+					category: item.category || '',
+					mode: item.mode || 'medium', // medium || largest
+				}
+
+			div(
+				class="bannerline__item"
+				class=`bannerline__item--${item.mode}`
+			)
+				+card-banner(item)

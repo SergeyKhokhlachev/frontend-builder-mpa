@@ -1,0 +1,11 @@
+mixin form-uikit-code()
+	form(class="js-form-uikit-code" novalidate)
+		+form-code({
+			id:'native-code',
+			name: 'code',
+			label: 'SMS Code',
+			required: true,
+			message: 'code'
+		})
+		button(class="button button--primary" type="submit") Submit
+

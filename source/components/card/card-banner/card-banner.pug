@@ -1,0 +1,27 @@
+mixin card-banner(data = {})
+	-
+		data = {
+			image: data.image || '',
+			path: data.path || '',
+			name: data.name || '',
+			category: data.category || '',
+		}
+
+	a(class="card-banner" href="#" aria-label=data.category + ": " + data.name)&attributes(attributes)
+		.card-banner__preview
+			+picture(data.image, {
+				format: 'jpg',
+				path: data.path,
+				lazy: true,
+				alt: '',
+				responsive: [
+					{
+						media: 'desktop'
+					}, {
+						media: 'tablet'
+					}
+				]
+			})
+		.card-banner__content
+			span.card-banner__category= data.category
+			h4.card-banner__name= data.name
