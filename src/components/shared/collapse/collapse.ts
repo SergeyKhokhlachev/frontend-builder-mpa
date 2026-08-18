@@ -2,11 +2,11 @@ import { classInstance } from '@/common/helpers';
 import type { CollapseMode, CollapseOptions, CollapseOpenDetail, CollapseCloseDetail } from './collapse.types';
 
 /**
- * @desc UI Компонент Collapse / Accordion
+ * UI Компонент Collapse / Accordion
  * @category 2 Common
  * @example
  * document.querySelectorAll('.js-collapse').forEach((element) => {new Collapse(element)});
- * @constructor
+ *
  * @param {HTMLElement} selector - HTMLElement контейнера
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.mode="collapse"] - тип отображения collapse || accordion
@@ -35,7 +35,7 @@ export default class Collapse {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 * Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$container, { collapse: this });
@@ -53,7 +53,7 @@ export default class Collapse {
 	}
 
 	/**
-	 * @desc Удалить обработчики событий
+	 *  Удалить обработчики событий
 	 */
 	public destroy() {
 		classInstance.del(this.$container, 'collapse');
@@ -70,7 +70,7 @@ export default class Collapse {
 	}
 
 	/**
-	 * @desc Переопределить обработчики событий
+	 *  Переопределить обработчики событий
 	 * @example
 	 * const myСollapse = app.classInstance.get(document.querySelector('.js-collapse'));
 	 * myСollapse.collapse.reinit();
@@ -81,7 +81,7 @@ export default class Collapse {
 	}
 
 	/**
-	 * @desc Переключить состояние компонента
+	 *  Переключить состояние компонента
 	 * @param {HTMLElement} $element - HTMLElement компонента
 	 * @param {boolean} key - true - открыть dropdown, false - закрыть dropdown
 	 * @example
@@ -97,7 +97,7 @@ export default class Collapse {
 	}
 
 	/**
-	 * @desc Открыть элемент компонента
+	 *  Открыть элемент компонента
 	 * @param {HTMLElement} $element - HTMLElement компонента
 	 */
 	public open($element: HTMLElement) {
@@ -115,7 +115,7 @@ export default class Collapse {
 	}
 
 	/**
-	 * @desc Закрыть элемент компонента
+	 *  Закрыть элемент компонента
 	 * @param {HTMLElement} $element - HTMLElement компонента
 	 */
 	public close($element: HTMLElement) {
@@ -151,7 +151,7 @@ export default class Collapse {
 	private dispatchOpen($element: HTMLElement) {
 		$element.dispatchEvent(
 			/**
-			 * @desc событие открытия элемента компонента.
+			 *  событие открытия элемента компонента.
 			 * @category 2 Common
 			 * @event Collapse#сollapseOpen
 			 * @property {Object} detail.collapse - контекст экземпляра класса
@@ -169,7 +169,7 @@ export default class Collapse {
 	private dispatchClose($element: HTMLElement) {
 		$element.dispatchEvent(
 			/**
-			 * @desc событие закрытия элемента компонента.
+			 *  событие закрытия элемента компонента.
 			 * @category 2 Common
 			 * @event Collapse#сollapseСlose
 			 * @property {Object} detail.collapse - контекст экземпляра класса

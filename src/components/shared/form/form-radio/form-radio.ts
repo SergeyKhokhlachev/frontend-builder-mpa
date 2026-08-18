@@ -3,11 +3,11 @@ import { getValidateBox } from '@/components/shared/form/composition/helpers';
 import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
- * @desc UI Компонент FormRadio
+ *  UI Компонент FormRadio
  * @category 3 Form
  * @example
  * new FormRadio(document.querySelector('fieldset.js-form-radio'));
- * @constructor
+ *
  * @param {HTMLElement} $selector - HTMLElement кнотейнер группы fieldset
  */
 
@@ -25,7 +25,7 @@ export default class FormRadio {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$element, { formElement: this });
@@ -36,7 +36,7 @@ export default class FormRadio {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy() {
 		classInstance.del(this.$element, 'formElement');
@@ -45,7 +45,7 @@ export default class FormRadio {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * const myElement = app.classInstance.get(document.querySelector('fieldset.js-form-radio'));
 	 * myElement.formElement.reinit();
@@ -56,7 +56,7 @@ export default class FormRadio {
 	}
 
 	/**
-	 * @desc Метод валидации элемента
+	 *  Метод валидации элемента
 	 * @param {Boolean} [draw=true] - если указать false - представление не будет обновляться при валидации.
 	 * @param {Boolean} [empty=false] - если указать true - пустое поле не будет выводить ошибку, но останеться не валидным.
 	 * @returns {Boolean} результат валидации

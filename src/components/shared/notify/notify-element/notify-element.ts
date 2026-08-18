@@ -2,9 +2,9 @@ import type { NotifyElementOptions, NotifyType } from '../notify.types';
 import { classInstance } from '@/common/helpers';
 
 /**
- * @desc UI Компонент NotifyElement
+ *  UI Компонент NotifyElement
  * @category 5 Notify
- * @constructor
+ *
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.type] - определяет стили уведомления error | warning | success
  * @param {Number} [options.delay] - время видимости уведомления в ms, если не указано - уведомление не будет скрыто автоматически
@@ -48,7 +48,7 @@ export default class NotifyElement {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$element, { notify: this });
@@ -56,7 +56,7 @@ export default class NotifyElement {
 	}
 
 	/**
-	 * @desc Удалить обработчики событий
+	 *  Удалить обработчики событий
 	 */
 	public destroy() {
 		classInstance.del(this.$element, 'notify');
@@ -72,7 +72,7 @@ export default class NotifyElement {
 	}
 
 	/**
-	 * @desc Открыть уведомление
+	 *  Открыть уведомление
 	 */
 	public open() {
 		this.$container.prepend(this.$element);
@@ -89,7 +89,7 @@ export default class NotifyElement {
 	}
 
 	/**
-	 * @desc Закрыть уведомление
+	 *  Закрыть уведомление
 	 * @example
 	 * const myNotify = app.classInstance.get(document.querySelector('#my-notify'));
 	 * myNotify.notify.close();

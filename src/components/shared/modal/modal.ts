@@ -3,11 +3,11 @@ import { classInstance, enableScroll, disableScroll } from '@/common/helpers';
 import ModalElement from './modal-element/modal-element';
 
 /**
- * @desc UI Компонент Modal
+ *  UI Компонент Modal
  * @category 4 Modal
  * @example
  * Modal.getInstance();
- * @constructor
+ *
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.selectorModal=".js-modal"] - селектор модального окна
  * @param {String} [options.selectorOpen=".js-modal-open"] - селектор элемента откывающего окно
@@ -44,7 +44,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Альтернативный статический метод для безопасного получения инстанса
+	 *  Альтернативный статический метод для безопасного получения инстанса
 	 */
 	public static getInstance(options?: ModalOptions): Modal {
 		if (!Modal._instance) {
@@ -56,7 +56,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		if (window.app) window.app.modal = this;
@@ -89,7 +89,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Удалить обработчики событий
+	 *  Удалить обработчики событий
 	 */
 	public destroy() {
 		if (window.app?.modal) delete window.app.modal;
@@ -103,7 +103,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * app.modal.reinit();
 	 */
@@ -113,7 +113,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Открыть модальное окно
+	 *  Открыть модальное окно
 	 * @param {String} modalId - id модального окна
 	 * @example
 	 * app.modal.open('#modal-base');
@@ -136,7 +136,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Закрыть модальное окно
+	 *  Закрыть модальное окно
 	 * @example
 	 * app.modal.close();
 	 */
@@ -154,7 +154,7 @@ export default class Modal {
 	}
 
 	/**
-	 * @desc Задать контент модального окна
+	 *  Задать контент модального окна
 	 * @param {String} modalId - id модального окна
 	 * @param {String} content - контент модального окна
 	 * @example

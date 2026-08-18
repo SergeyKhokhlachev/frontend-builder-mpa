@@ -2,15 +2,15 @@
 	"name": "builder-mpa",
 	"description": "builder MPA: Vite - ES module - TypeScript - Pug - PostCSS - Vue 3",
 	"private": true,
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "vue-tsc && vite build",
-		"build:empty": "vue-tsc && vite build --emptyOutDir",
 		"preview": "vite preview",
 		"eslint": "eslint --ext .js,.ts,.vue --fix src",
-		"stylelint": "stylelint --ext .css --fix src"
+		"stylelint": "stylelint --ext .css --fix src",
+		"docs": "typedoc"
 	},
 	"browserslist": {
 		"production": [
@@ -52,7 +52,10 @@
 		"stylelint-order": "^8.1.1",
 		"stylelint-prettier": "^5.0.3",
 		"svgo": "^4.0.2",
-		"typescript": "~6.0.2",
+		"typedoc": "^0.28.20",
+		"typedoc-plugin-missing-exports": "^4.1.4",
+		"typedoc-plugin-vue": "^1.5.1",
+		"typescript": "^6.0.3",
 		"vite": "^8.0.12",
 		"vite-plugin-eslint": "^1.8.1",
 		"vite-plugin-pug": "^0.4.1",
@@ -62,7 +65,6 @@
 	},
 	"dependencies": {
 		"@barba/core": "^2.10.3",
-		"gsap": "^3.15.0",
 		"swiper": "^14.1.0",
 		"throttle-debounce-ts": "^1.1.1",
 		"vue": "^3.5.40",

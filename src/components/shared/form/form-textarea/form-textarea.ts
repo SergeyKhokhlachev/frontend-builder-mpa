@@ -4,11 +4,11 @@ import { getValidateInput } from '@/components/shared/form/composition/helpers';
 import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
- * @desc UI Компонент FormTextarea
+ *  UI Компонент FormTextarea
  * @category 3 Form
  * @example
  * new FormTextarea(document.querySelector('textarea[required]'));
- * @constructor
+ *
  * @param {HTMLElement} $selector - HTMLTextAreaElement формы
  */
 
@@ -28,7 +28,7 @@ export default class FormTextarea extends FormElement {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$element, { formElement: this });
@@ -41,7 +41,7 @@ export default class FormTextarea extends FormElement {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy() {
 		classInstance.del(this.$element, 'formElement');
@@ -52,7 +52,7 @@ export default class FormTextarea extends FormElement {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * const myElement = app.classInstance.get(document.querySelector('textarea[required]'));
 	 * myElement.formElement.reinit();
@@ -63,7 +63,7 @@ export default class FormTextarea extends FormElement {
 	}
 
 	/**
-	 * @desc Метод валидации элемента
+	 *  Метод валидации элемента
 	 * @param {Boolean} [draw=true] - если указать false - представление не будет обновляться при валидации.
 	 * @param {Boolean} [empty=false] - если указать true - пустое поле не будет выводить ошибку, но останеться не валидным.
 	 * @returns {Boolean} результат валидации

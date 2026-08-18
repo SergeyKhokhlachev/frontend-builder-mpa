@@ -11,11 +11,11 @@ import { dispatchFormChange } from '@/components/shared/form/composition/events'
 import type { FormComponent, ElementValidateEvent } from '@/components/shared/form/form.types';
 
 /**
- * @desc UI Компонент Form
+ *  UI Компонент Form
  * @category 3 Form
  * @example
  * document.querySelectorAll('.js-form').forEach((element) => {new Form(element)});
- * @constructor
+ *
  * @param {HTMLFormElement} selector - HTMLFormElement
  */
 
@@ -44,7 +44,7 @@ export default class Form {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	init() {
 		classInstance.set(this.$form, { form: this });
@@ -58,7 +58,7 @@ export default class Form {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy() {
 		classInstance.del(this.$form, 'form');
@@ -72,7 +72,7 @@ export default class Form {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * const myForm = app.classInstance.get(document.querySelector('.js-form'));
 	 * myForm.form.reinit();
@@ -83,7 +83,7 @@ export default class Form {
 	}
 
 	/**
-	 * @desc Проверить валидность формы
+	 *  Проверить валидность формы
 	 * @param {Boolean} [draw=true] - если указать false - представление не будет обновляться при валидации.
 	 * @returns {Boolean} результат валидации
 	 * @example

@@ -5,7 +5,6 @@
 - `npm i` - установить зависимости
 - `npm run dev` - запустить режим разработки
 - `npm run build` - создать build для продакшена
-- `npm run build:empty` - создать build для продакшена c очисткой директории билда
 - `npm run preview` - предпросмотр build для продакшена
 
 ## Additional commands
@@ -25,9 +24,9 @@
 
 > TypeScript - Pug - PostCSS
 
-> Vue 3 - Pinia
+> Vue 3
 
-> JS Docs
+> TypeDoc
 
 ### VS Code Advisable Plugins
 

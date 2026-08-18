@@ -2,11 +2,11 @@ import { classInstance, clickOutside } from '@/common/helpers';
 import type { DropdownMode, DropdownOptions, DropdownOpenDetail, DropdownCloseDetail } from './dropdown.types';
 
 /**
- * @desc UI Компонент Dropdown
+ *  UI Компонент Dropdown
  * @category 2 Common
  * @example
  * document.querySelectorAll('.js-dropdown').forEach((element) => {new Dropdown(element)});
- * @constructor
+ *
  * @param {HTMLElement} selector - HTMLElement контейнера
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.mode="mouseenter"] - тип действия mouseenter || click
@@ -32,7 +32,7 @@ export default class Dropdown {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$container, { dropdown: this });
@@ -60,7 +60,7 @@ export default class Dropdown {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy() {
 		classInstance.del(this.$container, 'dropdown');
@@ -82,7 +82,7 @@ export default class Dropdown {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * const myDropdown = app.classInstance.get(document.querySelector('.js-dropdown'));
 	 * myDropdown.dropdown.reinit();
@@ -93,7 +93,7 @@ export default class Dropdown {
 	}
 
 	/**
-	 * @desc Преключить состояние компонента
+	 *  Преключить состояние компонента
 	 * @param {boolean} key - true - открыть dropdown, false - закрыть dropdown
 	 * @example
 	 * const myDropdown = app.classInstance.get(document.querySelector('.js-dropdown'));
@@ -108,7 +108,7 @@ export default class Dropdown {
 	}
 
 	/**
-	 * @desc Открыть компонент
+	 *  Открыть компонент
 	 * @example
 	 * const myDropdown = app.classInstance.get(document.querySelector('.js-dropdown'));
 	 * myDropdown.dropdown.open();
@@ -122,7 +122,7 @@ export default class Dropdown {
 	}
 
 	/**
-	 * @desc Закрыть компонент
+	 *  Закрыть компонент
 	 * @example
 	 * const myDropdown = app.classInstance.get(document.querySelector('.js-dropdown'));
 	 * myDropdown.dropdown.close();
@@ -172,7 +172,7 @@ export default class Dropdown {
 	private dispatchOpen($element: HTMLElement) {
 		$element.dispatchEvent(
 			/**
-			 * @desc событие открытия элемента компонента.
+			 *  событие открытия элемента компонента.
 			 * @category 2 Common
 			 * @event Dropdown#dropdownOpen
 			 * @property {Object} detail.dropdown - контекст экземпляра класса
@@ -192,7 +192,7 @@ export default class Dropdown {
 	private dispatchClose($element: HTMLElement) {
 		$element.dispatchEvent(
 			/**
-			 * @desc событие закрытия элемента компонента.
+			 *  событие закрытия элемента компонента.
 			 * @category 2 Common
 			 * @event Dropdown#dropdownСlose
 			 * @property {Object} detail.dropdown - контекст экземпляра класса

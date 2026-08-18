@@ -2,11 +2,11 @@ import type { NotifyElementOptions } from './notify.types';
 import NotifyElement from './notify-element/notify-element';
 
 /**
- * @desc UI Компонент Notify
+ *  UI Компонент Notify
  * @category 5 Notify
  * @example
  * Notify.getInstance();
- * @constructor
+ *
  * @param {String} [selector=".js-notifyl"] - селектор контейнера, для вывода уведомлений
  */
 
@@ -23,7 +23,7 @@ export default class Notify {
 	}
 
 	/**
-	 * @desc Альтернативный статический метод для безопасного получения инстанса
+	 *  Альтернативный статический метод для безопасного получения инстанса
 	 */
 	public static getInstance(selector: string): Notify {
 		if (!Notify._instance) {
@@ -35,7 +35,7 @@ export default class Notify {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		if (window.app) window.app.notify = this;
@@ -44,7 +44,7 @@ export default class Notify {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy() {
 		if (window.app?.notify) delete window.app.notify;
@@ -53,7 +53,7 @@ export default class Notify {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * app.notify.reinit();
 	 */
@@ -63,7 +63,7 @@ export default class Notify {
 	}
 
 	/**
-	 * @desc Добавить уведомление
+	 *  Добавить уведомление
 	 * @param {Object} [options] - опции конфигурации
 	 * @param {String} [options.type] - определяет стили уведомления danger | warning | success, по умолчанию - default
 	 * @param {Number} [options.delay] - время видимости уведомления в ms, если не указано - уведомление не будет скрыто автоматически

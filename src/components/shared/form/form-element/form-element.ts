@@ -1,8 +1,8 @@
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
- * @desc UI Компонент FormElement
+ *  UI Компонент FormElement
  * @category 3 Form
- * @constructor
+ *
  * @param {HTMLElement} $selector - HTMLElement формы
  */
 

@@ -2,9 +2,9 @@ import { classInstance } from '@/common/helpers';
 import type { ModalElementOptions, ModalOpenDetail, ModalCloseDetail } from '../modal.types';
 
 /**
- * @desc UI Компонент Modal Element
+ *  UI Компонент Modal Element
  * @category 4 Modal
- * @constructor
+ *
  * @param {HTMLElement} selector - HTMLElement контейнера
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.selectorScroll=".js-modal__scroll"] - селектор скролла окна
@@ -31,21 +31,21 @@ export default class ModalElement {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$container, { modal: this });
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy() {
 		classInstance.del(this.$container, 'modal');
 	}
 
 	/**
-	 * @desc Открыть модальное окно
+	 *  Открыть модальное окно
 	 * @example
 	 * const myModal = app.classInstance.get(document.querySelector('.js-modal'));
 	 * myModal.modal.open();
@@ -57,7 +57,7 @@ export default class ModalElement {
 	}
 
 	/**
-	 * @desc Закрыть модальное окно
+	 *  Закрыть модальное окно
 	 * @example
 	 * const myModal = app.classInstance.get(document.querySelector('.js-modal'));
 	 * myModal.modal.close();
@@ -69,7 +69,7 @@ export default class ModalElement {
 	}
 
 	/**
-	 * @desc Задать контент модального окна
+	 *  Задать контент модального окна
 	 * @param {String} content - контент модального окна
 	 * @example
 	 * const myModal = app.classInstance.get(document.querySelector('.js-modal'));
@@ -82,7 +82,7 @@ export default class ModalElement {
 	private dispatchOpen() {
 		this.$container.dispatchEvent(
 			/**
-			 * @desc событие открытия модального окна.
+			 *  событие открытия модального окна.
 			 * @category 4 Modal
 			 * @event ModalElement#modalOpen
 			 * @property {Object} detail.modal - контекст экземпляра класса
@@ -100,7 +100,7 @@ export default class ModalElement {
 	private dispatchClose() {
 		this.$container.dispatchEvent(
 			/**
-			 * @desc событие закрытия модального окна.
+			 *  событие закрытия модального окна.
 			 * @category 4 Modal
 			 * @event ModalElement#modalСlose
 			 * @property {Object} detail.modal - контекст экземпляра класса

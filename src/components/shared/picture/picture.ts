@@ -1,9 +1,9 @@
 /**
- * @desc UI Компонент Picture
+ *  UI Компонент Picture
  * @category 2 Common
  * @example
  * document.querySelectorAll('picture.js-picture').forEach((element) => {new Picture(element)});
- * @constructor
+ *
  * @param {HTMLPictureElement} selector - HTMLPictureElement
  */
 
@@ -21,7 +21,7 @@ export default class Picture {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		if (!this.$image) return;

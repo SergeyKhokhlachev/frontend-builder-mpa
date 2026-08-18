@@ -1,0 +1,7 @@
+{
+	"entryPoints": ["src"],
+	"entryPointStrategy": "expand",
+	"out": "docs",
+	"plugin": ["typedoc-plugin-vue", "typedoc-plugin-missing-exports"],
+	"exclude": ["node_modules", "dist"]
+}

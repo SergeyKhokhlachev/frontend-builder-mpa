@@ -2,11 +2,11 @@ import { classInstance } from '@/common/helpers';
 import type { TabsMode, TabsOptions, TabsShownDetail } from './tabs.types';
 
 /**
- * @desc UI Компонент Tabs
+ *  UI Компонент Tabs
  * @category 2 Common
  * @example
  * document.querySelectorAll('.js-tabs').forEach((element) => {new Tabs(element)});
- * @constructor
+ *
  * @param {HTMLElement} selector - HTMLElement контейнера
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.mode="mouseenter"] - тип действия mouseenter || click
@@ -38,7 +38,7 @@ export default class Tabs {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$container, { tabs: this });
@@ -88,7 +88,7 @@ export default class Tabs {
 	}
 
 	/**
-	 * @desc Удалить обработчики событий
+	 *  Удалить обработчики событий
 	 */
 	public destroy() {
 		classInstance.del(this.$container, 'tabs');
@@ -114,7 +114,7 @@ export default class Tabs {
 	}
 
 	/**
-	 * @desc Переопределить обрабочики событий
+	 *  Переопределить обрабочики событий
 	 * @example
 	 * const myTabs = app.classInstance.get(document.querySelector('.js-tabs'));
 	 * myTabs.tabs.reinit();
@@ -125,7 +125,7 @@ export default class Tabs {
 	}
 
 	/**
-	 * @desc Открыть элемент компонента
+	 *  Открыть элемент компонента
 	 * @param {String} tabId - id элемента компонента
 	 */
 	public open(tabId: string) {
@@ -206,7 +206,7 @@ export default class Tabs {
 	private dispatchActive(element: HTMLElement) {
 		element.dispatchEvent(
 			/**
-			 * @desc событие открытия элемента компонента.
+			 *  событие открытия элемента компонента.
 			 * @category 2 Common
 			 * @event Tabs#tabShown
 			 * @property {Object} detail.tabs - контекст экземпляра класса

@@ -1,11 +1,11 @@
 import { classInstance } from '@/common/helpers';
 
 /**
- * @desc UI Компонент Sticky
+ *  UI Компонент Sticky
  * @category 2 Common
  * @example
  * document.querySelectorAll('.js-sticky').forEach((element) => {new Sticky(element)});
- * @constructor
+ *
  * @param {HTMLElement} selector - HTMLElement контейнера
  * @param {Object} [options] - опции конфигурации
  * @param {Number} [options.breakpoint=0] - media брейкпоинт, при ширине экрана меньше брейкпоинта - действие компонента блокируется
@@ -68,7 +68,7 @@ export default class Sticky {
 	}
 
 	/**
-	 * @desc Инициализировать компонент
+	 *  Инициализировать компонент
 	 */
 	public init() {
 		classInstance.set(this.$element, { sticky: this });
@@ -79,7 +79,7 @@ export default class Sticky {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий
+	 *  Удалить обрабочики событий
 	 */
 	public destroy() {
 		classInstance.del(this.$element, 'sticky');
@@ -90,7 +90,7 @@ export default class Sticky {
 	}
 
 	/**
-	 * @desc Переопределить обработчики событий
+	 *  Переопределить обработчики событий
 	 * @example
 	 * const mySticky = app.classInstance.get(document.querySelector('.js-sticky'));
 	 * mySticky.sticky.reinit();
@@ -101,7 +101,7 @@ export default class Sticky {
 	}
 
 	/**
-	 * @desc Активировать sticky
+	 *  Активировать sticky
 	 */
 	public enable() {
 		this.updateState();
@@ -115,7 +115,7 @@ export default class Sticky {
 	}
 
 	/**
-	 * @desc Заблокировать sticky
+	 *  Заблокировать sticky
 	 */
 	public disable() {
 		window.removeEventListener('scroll', this.scrollHandler);

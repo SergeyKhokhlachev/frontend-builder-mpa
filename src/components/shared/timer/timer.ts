@@ -1,7 +1,7 @@
 import type { TimerType, TimerResult, TimerResetDetail, TimerCompleteDetail } from '@/components/shared/timer/timer.types';
 
 /**
- * @desc UI Компонент Timer
+ *  UI Компонент Timer
  * @category 2 Common
  * @example
  * const timer = new app.Timer(document.querySelector('.js-timer'), {
@@ -13,7 +13,7 @@ import type { TimerType, TimerResult, TimerResetDetail, TimerCompleteDetail } fr
 			 ${data.seconds.value} ${data.seconds.name}`,
 	});
 	timer.start();
- * @constructor
+ *
  * @param {HTMLElement} selector - HTMLElement контейнера
  * @param {Object} [options] - опции конфигурации
  * @param {String} [options.count] - парметр времени для отсчета, строка даты (Date Time String Format) или кол-во секунд
@@ -47,14 +47,14 @@ export default class Timer {
 	}
 
 	/**
-	 * @desc Удалить обрабочики событий и сбросить состояние
+	 *  Удалить обрабочики событий и сбросить состояние
 	 */
 	public destroy(): void {
 		this.stop();
 	}
 
 	/**
-	 * @desc Установить время
+	 *  Установить время
 	 * @param {string} count - Строка даты (Date Time String Format) или кол-во секунд
 	 * @example
 	 * const myTimer = app.classInstance.get(document.querySelector('.js-timer'));
@@ -75,7 +75,7 @@ export default class Timer {
 	}
 
 	/**
-	 * @desc Запустить таймер
+	 *  Запустить таймер
 	 * @example
 	 * const myTimer = app.classInstance.get(document.querySelector('.js-timer'));
 	 * myTimer.timer.start();
@@ -86,7 +86,7 @@ export default class Timer {
 	}
 
 	/**
-	 * @desc Остановить таймер
+	 *  Остановить таймер
 	 * @example
 	 * const myTimer = app.classInstance.get(document.querySelector('.js-timer'));
 	 * myTimer.timer.stop();
@@ -99,7 +99,7 @@ export default class Timer {
 	}
 
 	/**
-	 * @desc Сбросить таймер
+	 *  Сбросить таймер
 	 * @example
 	 * const myTimer = app.classInstance.get(document.querySelector('.js-timer'));
 	 * myTimer.timer.reset();
@@ -169,7 +169,7 @@ export default class Timer {
 	private dispatchReset(): void {
 		this.$container.dispatchEvent(
 			/**
-			 * @desc событие сброса таймера.
+			 *  событие сброса таймера.
 			 * @category 2 Common
 			 * @event Timer#timerReset
 			 * @property {Object} detail.timer - контекст экземпляра класса
@@ -187,7 +187,7 @@ export default class Timer {
 	private dispatchComplete(): void {
 		this.$container.dispatchEvent(
 			/**
-			 * @desc событие завершения таймера.
+			 *  событие завершения таймера.
 			 * @category 2 Common
 			 * @event Timer#timerComplete
 			 * @property {Object} detail.timer - контекст экземпляра класса

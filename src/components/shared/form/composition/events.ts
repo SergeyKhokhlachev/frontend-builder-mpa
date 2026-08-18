@@ -3,7 +3,7 @@ import type { FormChangeDetail, ElementValidateDetail, ElementChangeDetail } fro
 export function dispatchFormChange(element: HTMLFormElement, valid: boolean) {
 	element.dispatchEvent(
 		/**
-		 * @desc Событие изменения значения элемента формы.
+		 *  Событие изменения значения элемента формы.
 		 * @category 3 Form
 		 * @event Form#formChange
 		 * @property {Object} detail.vaild - статус формы
@@ -23,7 +23,7 @@ export function dispatchFormChange(element: HTMLFormElement, valid: boolean) {
 export function dispatchElementValidate(element: HTMLElement, valid: boolean) {
 	element.dispatchEvent(
 		/**
-		 * @desc Событие валидации элемента формы.
+		 *  Событие валидации элемента формы.
 		 * @category 3 Form
 		 * @event Form#elementValidate
 		 * @property {Object} detail.valid - статус элемента формы
@@ -45,7 +45,7 @@ export function dispatchElementValidate(element: HTMLElement, valid: boolean) {
 export function dispatchElementChange(element: HTMLElement, value: string | boolean | File[]) {
 	element.dispatchEvent(
 		/**
-		 * @desc Событие изменения элемента формы.
+		 *  Событие изменения элемента формы.
 		 * @category 3 Form
 		 * @event Form#elementChange
 		 * @property {Object} detail.value - значение элемента формы

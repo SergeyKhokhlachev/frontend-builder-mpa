@@ -108,12 +108,7 @@ export default defineConfig({
 			}, {}),
 			output: {
 				entryFileNames: '[name]-[hash:8].js',
-				// chunkFileNames: 'chunk/chunk-[name]-[hash:8].js',
-				// manualChunks: (id) => {
-				// 	if (id.includes('node_modules')) {
-				// 		return 'vendor';
-				// 	}
-				// },
+				chunkFileNames: '[name]-[hash:8].js',
 				assetFileNames: (assetInfo) => {
 					let extType = assetInfo.name.split('.').at(1);
 					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType)) {
@@ -122,7 +117,6 @@ export default defineConfig({
 					if (/css|scss|styl|less/i.test(extType)) {
 						return '[name]-[hash:8].[ext]';
 					}
-					return `assets/[name]-[hash:8].[ext]`;
 				},
 			},
 		},
