@@ -1,0 +1,12 @@
+mixin category-preview(props = {})
+	-
+		props = {
+			image: props.image || '',
+			name: props.name || '',
+			quantity: props.quantity || '',
+		};
+
+	a.category-preview(href='/pages/catalog.html', aria-label='Перейти к категории товаров')&attributes(attributes)
+		span.category-preview__quantity= props.quantity
+		h3.category-preview__name= props.name
+		+picture(props.image, { format: 'png' })

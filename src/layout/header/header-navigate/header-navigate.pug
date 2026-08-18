@@ -1,0 +1,40 @@
+mixin header-navigate(data = {}, options = {})
+	-
+		data = {
+			about: data.about || [],
+			buyer: data.buyer || [],
+		}
+
+	nav.header-navigate&attributes(attributes)
+		.header-navigate__category.dropdown.js-dropdown
+			a.header-navigate__link.dropdown__button.js-dropdown__button(
+				href='#',
+				aria-haspopup='menu',
+				aria-expanded='false',
+				aria-controls='nav-company-dropdown'
+			)
+				| О компании
+				+icon('chevron-down').dropdown__icon
+			ul#nav-company-dropdown.header-navigate__dropdown.dropdown__content
+				each item in data.about
+					li.header-navigate__item
+						a(href='#')= item
+		.header-navigate__category.dropdown.js-dropdown
+			a.header-navigate__link.dropdown__button.js-dropdown__button(
+				href='#',
+				aria-haspopup='menu',
+				aria-expanded='false',
+				aria-controls='nav-buyers-dropdown'
+			)
+				| Покупателям
+				+icon('chevron-down').dropdown__icon
+			ul#nav-buyers-dropdown.header-navigate__dropdown.dropdown__content
+				each item in data.buyer
+					li.header-navigate__item
+						a(href='#')= item
+		.header-navigate__category
+			a.header-navigate__link(href='#') Доставка и оплата
+		.header-navigate__category
+			a.header-navigate__link(href='/pages/shops.html') Магазины
+		.header-navigate__category
+			a.header-navigate__link(href='#') Для бизнеса

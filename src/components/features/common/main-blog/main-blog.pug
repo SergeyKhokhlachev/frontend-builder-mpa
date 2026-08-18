@@ -1,0 +1,46 @@
+include /components/features/blog/blog-card/blog-card
+
+mixin main-blog(props = [])
+	-
+		props = [
+			{
+				image: 'main-banner-3',
+				category: 'Акции',
+				title: 'Скидки до 30% на все коллекции',
+				text: 'Осенняя распродажа началась! Теперь самые трендовые образы доступны со скидками до -30%. Вдохновляйтесь.',
+				date: {
+					value: '2026-10-06',
+					label: '06 октября 2026',
+				}
+			},
+			{
+				image: 'main-banner-1',
+				category: 'Советы покупателям',
+				title: 'Диван Гувер',
+				text: 'Осенняя распродажа началась! Теперь самые трендовые образы доступны со скидками до -30%. Вдохновляйтесь.',
+				date: {
+					value: '2027-01-22',
+					label: '22 января 2027',
+				}
+			},
+			{
+				image: 'main-banner-2',
+				category: 'Обзоры',
+				title: 'Беспроводные наушники OYEN MAX',
+				text: 'Представляем обзор беспроводных наушников OYEN MAX: преимущества, виды и критерии выбора. Узнайте, как выбрать лучшие наушники для вашего смартфона и наслаждайтесь свободой движения и стильным дизайном!',
+				date: {
+					value: '2027-02-12',
+					label: '12 февраля 2027',
+				}
+			}
+		];
+
+	.main-blog(role='region', aria-label='Последние статьи')&attributes(attributes)
+		.main-blog__col-md
+			+blog-card(props[0]).blog-card--big(role='listitem')
+		.main-blog__col-sm
+			+blog-card(props[1])(role='listitem')
+		.main-blog__col-sm
+			+blog-card(props[2]).blog-card--transparent(role='listitem')
+
+		a.main-blog__more.button.button--outline(href='#') Смотреть все записи

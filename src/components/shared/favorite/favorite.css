@@ -1,0 +1,67 @@
+.favorite {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-text-alternate);
+	transition: color var(--transition);
+
+	.favorite__icons {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+	}
+
+	.favorite__label {
+		font-size: 12px;
+		line-height: 24px;
+	}
+
+	.icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 16px;
+		height: 16px;
+		transform: translate(-50%, -50%);
+		transition: opacity var(--transition);
+	}
+
+	.icon-favorite-fill {
+		color: var(--color-primary);
+		opacity: 0;
+	}
+
+	&.active {
+		.icon-favorite {
+			opacity: 0;
+		}
+
+		.icon-favorite-fill {
+			opacity: 1;
+		}
+	}
+
+	@mixin media $laptop {
+		.favorite__icons {
+			width: 32px;
+			height: 32px;
+		}
+
+		.favorite__label {
+			font-size: 14px;
+			line-height: 32px;
+		}
+
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	@mixin hover {
+		color: var(--color-primary);
+	}
+}

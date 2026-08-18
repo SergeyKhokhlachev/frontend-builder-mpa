@@ -1,0 +1,12 @@
+picture.picture {
+	img {
+		opacity: 0;
+		transition: opacity var(--transition);
+	}
+
+	&.loaded {
+		img {
+			opacity: 1;
+		}
+	}
+}

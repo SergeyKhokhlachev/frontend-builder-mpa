@@ -1,86 +1,77 @@
-import glob from 'glob';
-import { resolve } from 'path';
+import glob from 'fast-glob';
+import { resolve, basename } from 'path';
 import { defineConfig } from 'vite';
 
-import inspect from 'vite-plugin-inspect';
+import { breakpoint } from './src/common/breakpoint';
+import { mixins } from './src/common/mixins';
 
 // lint plugins
-import eslint from 'vite-plugin-eslint';
-import stylelint from 'vite-plugin-stylelint';
-
-// markup plugins
-import vitePugTransform from 'vite-plugin-pug-transformer';
-
-// style plugins
-import postcssPresetEnv from 'postcss-preset-env';
-import postcssMixins from 'postcss-mixins';
-import postcssSimpleVars from 'postcss-simple-vars';
-import postcssSortMQ from 'postcss-sort-media-queries';
-import postcssDiscardDuplicates from 'postcss-discard-duplicates';
-
-// icons and image plugins
-import { imagetools } from 'vite-imagetools';
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
+import eslintPlugin from 'vite-plugin-eslint';
+import stylelintPlugin from 'vite-plugin-stylelint';
 
 // vue.js plugins
-import vue from '@vitejs/plugin-vue';
+import vuePlugin from '@vitejs/plugin-vue';
 
-// config
-import { vars } from './source/app/config/variables';
-import { mixins } from './source/app/config/mixins';
+// markup plugins
+import pugPlugin from 'vite-plugin-pug';
+
+// style plugins
+import postcssMixins from 'postcss-mixins';
+import postcssSortMQ from 'postcss-sort-media-queries';
+import postcssPresetEnv from 'postcss-preset-env';
+import postcssSimpleVars from 'postcss-simple-vars';
+import cssnano from 'cssnano';
+
+// icons and image plugins
+import spritemapPlugin from '@spiriit/vite-plugin-svg-spritemap';
+import imageOptimizerPlugin from './plugins/vite-image-optimizer';
 
 export default defineConfig({
-	base: './',
 	appType: 'mpa',
+	base: '/',
+	root: resolve(__dirname, 'src'),
 	publicDir: resolve(__dirname, './public'),
+	envDir: '../',
 	server: {
+		type: 'mpa',
 		port: 3000,
-		open: './pages/index.html',
+		open: '/',
 	},
 	resolve: {
 		alias: {
-			'@': resolve(__dirname, 'source'),
+			'@': resolve(__dirname, 'src'),
 		},
 	},
 	plugins: [
-		vitePugTransform({
-			pugOptions: {
+		pugPlugin(
+			{
 				pretty: true,
 				venbose: true,
+				basedir: resolve(__dirname, 'src'),
 			},
-			pugLocals: {
+			{
 				process: process.env.NODE_ENV,
-				breakpoint: vars.breakpoint,
+				breakpoint: breakpoint,
 			},
-		}),
-		VitePluginSvgSpritemap('./assets/icons/*.svg', {
+		),
+		vuePlugin(),
+		spritemapPlugin('./assets/icons/*.svg', {
 			prefix: 'icon-',
 			output: {
 				filename: '../sprite/spritemap.svg',
 			},
 		}),
-		ViteImageOptimizer({
-			test: /\.(jpe?g|png|gif|tiff|webp|avif)$/i,
-			includePublic: false,
-			png: {
-				quality: 80,
-			},
-			jpeg: {
-				quality: 80,
-			},
-			jpg: {
-				quality: 80,
-			},
-			webp: {
-				quality: 80,
-			},
+		imageOptimizerPlugin(),
+		eslintPlugin({
+			fix: false,
+			include: ['src/**/*.{js,ts,vue}'],
+			exclude: ['node_modules', 'dist', 'docs'],
 		}),
-		imagetools(),
-		vue(),
-		eslint(),
-		stylelint(),
-		inspect(),
+		stylelintPlugin({
+			fix: false,
+			include: ['src/**/*.{css,vue}'],
+			exclude: ['node_modules', 'dist', 'docs'],
+		}),
 	],
 	css: {
 		postcss: {
@@ -93,47 +84,45 @@ export default defineConfig({
 					},
 					insertBefore: {
 						'all-property': postcssSimpleVars({
-							variables: {
-								$mobile: vars.breakpoint.mobile,
-								$tablet: vars.breakpoint.tablet,
-								$laptop: vars.breakpoint.laptop,
-								$desktop: vars.breakpoint.desktop,
-								$largest: vars.breakpoint.largest,
-							},
+							variables: Object.fromEntries(Object.entries(breakpoint).map(([key, value]) => [`$${key}`, value])),
 						}),
 					},
 				}),
-				postcssMixins({
-					mixins,
-				}),
-				postcssSortMQ,
-				postcssDiscardDuplicates,
+				postcssMixins({ mixins }),
+				postcssSortMQ({ sort: 'mobile-first' }),
+				cssnano({ preset: 'default' }),
 			],
 		},
 	},
 	build: {
-		outDir: './build',
-		assetsDir: './assets',
+		target: 'es2023',
+		outDir: resolve(__dirname, 'dist'),
 		emptyOutDir: true,
-		assetsInlineLimit: 0,
 		sourcemap: true,
+		manifest: true,
 		modulePreload: false,
-		// manifest: true,
 		rollupOptions: {
-			input: glob.sync(resolve(__dirname, 'pages', '**/*.html')),
+			input: glob.sync('src/**/*.html').reduce((acc, file) => {
+				acc[basename(file, '.html')] = file;
+				return acc;
+			}, {}),
 			output: {
-				entryFileNames: 'script/entry-[name].js',
-				chunkFileNames: 'script/chunk/chunk-[name].js',
-				manualChunks: (id) => {
-					if (id.includes('node_modules')) {
-						return 'vendor';
-					}
-				},
+				entryFileNames: '[name]-[hash:8].js',
+				// chunkFileNames: 'chunk/chunk-[name]-[hash:8].js',
+				// manualChunks: (id) => {
+				// 	if (id.includes('node_modules')) {
+				// 		return 'vendor';
+				// 	}
+				// },
 				assetFileNames: (assetInfo) => {
 					let extType = assetInfo.name.split('.').at(1);
-					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType)) extType = 'images';
-					if (/css|scss|styl|less/i.test(extType)) extType = 'style';
-					return `${extType}/[name].[ext]`;
+					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType)) {
+						return 'images/[name].[ext]';
+					}
+					if (/css|scss|styl|less/i.test(extType)) {
+						return '[name]-[hash:8].[ext]';
+					}
+					return `assets/[name]-[hash:8].[ext]`;
 				},
 			},
 		},

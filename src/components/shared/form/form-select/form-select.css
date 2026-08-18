@@ -1,0 +1,141 @@
+.form-select__vue,
+.form-select__placeholder {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.form-select__placeholder {
+	color: var(--color-text-alternate);
+}
+
+.form-select__control {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 100%;
+	min-height: 48px;
+	padding: 0 48px 0 16px;
+	line-height: normal;
+	cursor: pointer;
+	background-color: var(--color-background-primary);
+	border: 1px solid var(--color-line-primary);
+	border-radius: var(--radius-small);
+	transition: border-color var(--transition);
+
+	.form-select__placeholder {
+		display: none;
+	}
+
+	&.placeholder {
+		.form-select__vue {
+			display: none;
+		}
+
+		.form-select__placeholder {
+			display: inline;
+		}
+	}
+}
+
+.form-select__icon {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	width: 16px;
+	height: 16px;
+	color: var(--color-text-secondary);
+	transform: translateY(-50%);
+	transition: transform var(--transition);
+}
+
+.form-select__dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 30;
+	visibility: hidden;
+	width: 100%;
+	max-height: 144px;
+	margin-top: 8px;
+	overflow: auto;
+	overscroll-behavior: contain;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+	background-color: var(--color-background-primary);
+	border-radius: var(--radius-small);
+	box-shadow: var(--shadow-medium);
+	opacity: 0;
+	transform: translateY(30px);
+	transition:
+		opacity var(--transition),
+		transform var(--transition),
+		visibility var(--transition);
+}
+
+.form-select__option {
+	padding: 8px 16px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: normal;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	transition: color var(--transition);
+
+	&.selected {
+		color: var(--color-text-primary);
+		pointer-events: none;
+		background-color: var(--color-background-secondary);
+	}
+
+	&.focused {
+		color: var(--color-text-primary);
+	}
+
+	@mixin hover {
+		color: var(--color-text-primary);
+	}
+}
+
+.form-select {
+	position: relative;
+	width: 100%;
+
+	&.active {
+		.form-select__control {
+			border-color: var(--color-line-secondary);
+		}
+
+		.form-select__dropdown {
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.form-select__icon {
+			transform: translateY(-50%) rotateX(180deg);
+		}
+	}
+}
+
+.form-element {
+	&.disabled {
+		pointer-events: none;
+
+		.form-select__control {
+			background-color: var(--color-background-secondary);
+			opacity: 0.5;
+		}
+	}
+
+	&:not(.focus) {
+		&.error {
+			.form-select {
+				.form-select__control {
+					border-color: var(--color-error);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+include /components/features/reviews/reviews-card/reviews-card
+
+mixin main-reviews(props = [])
+	-
+		props = props || [];
+
+	.main-reviews&attributes(attributes)
+		+swiper-carusel.js-swiper-reviews(role='region', aria-label='Карусель отзывов')
+			each review in props
+				.swiper-slide
+					+reviews-card(review)(role='listitem')

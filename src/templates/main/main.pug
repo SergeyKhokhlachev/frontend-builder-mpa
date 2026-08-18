@@ -1,0 +1,46 @@
+extends /layout/layout
+
+include /components/features/common/main-banner/main-banner
+include /components/features/common/main-category/main-category
+include /components/features/common/main-blog/main-blog
+include /components/features/common/main-promo/main-promo
+include /components/features/common/main-reviews/main-reviews
+include /components/features/common/main-partners/main-partners
+
+block data
+	include /api/data/partners
+	include /api/data/reviews
+
+block main
+	.page(data-barba='container', data-barba-namespace='main')
+		h1.visually-hidden Интернет-магазин мебели и электроники
+		section.section
+			h2.visually-hidden Главные предложения и акции
+			+main-banner
+		section.section.section--padding
+			.container
+				.section__head
+					h2.page-title Популярные категории
+					a.section__link(href='/pages/category.html')
+						span Все категории
+						+icon('chevron-right')
+				+main-category
+		section.section.section--padding.section--color
+			.container
+				h2.page-title Наш блог
+				+main-blog
+		section.section
+			h2.visually-hidden Специальное предложение месяца
+			+main-promo
+		section.section.section--padding.section--color
+			.container
+				h2.page-title Последние отзывы
+				+main-reviews(reviews)
+		section.section.section--padding
+			.container
+				h2.page-title Ответы на частые вопросы
+				.js-faq-vue
+		section.section.section--color
+			.container
+				h2.visually-hidden Наши партнеры
+				+main-partners(partners)

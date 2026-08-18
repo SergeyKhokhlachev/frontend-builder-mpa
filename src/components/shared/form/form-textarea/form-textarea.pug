@@ -1,0 +1,33 @@
+include /components/shared/form/form-element/form-element
+
+mixin form-textarea(props = {})
+	-
+		props = {
+			id: props.id,
+			name: props.name,
+			value: props.value || '',
+			type: props.type || 'text',
+			label: props.label || false,
+			describe: props.describe || false,
+			placeholder: props.placeholder || false,
+			autocomplete: props.autocomplete || 'off',
+			required: props.required || false,
+			disabled: props.disabled || false,
+		}
+
+	//- prettier-ignore
+	+form-element({
+		label: props.label,
+		describe: props.describe,
+		required: props.required,
+		disabled: props.disabled,
+	})
+		.form-element
+			textarea.form-textarea.js-form-textarea(
+				id= props.id
+				name= props.name
+				placeholder= props.placeholder
+				autocomplete= props.autocomplete
+				required= props.required
+				disabled=props.disabled,
+			)= props.value

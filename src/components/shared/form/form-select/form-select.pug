@@ -1,0 +1,47 @@
+mixin form-select(props = {})
+	-
+		props = {
+			id: props.id,
+			name: props.name,
+			value: props.value,
+			options: props.options || [],
+			label: props.label || false,
+			describe: props.describe || false,
+			placeholder: props.placeholder || false,
+			required: props.required || false,
+			disabled: props.disabled || false,
+			icon: props.icon || 'chevron-down',
+		}
+
+	//- prettier-ignore
+	+form-element({
+		label: props.label,
+		describe: props.describe,
+		required: props.required,
+		disabled: props.disabled,
+	})
+		.form-select
+			input.js-form-select(
+				id=props.id,
+				name=props.name,
+				value=props.value,
+				required=props.required,
+				type="hidden"
+			)
+			button.form-select__control.placeholder.js-form-select__control(
+				type="button",
+				disabled=props.disabled,
+			)
+				span.form-select__placeholder= props.placeholder
+				span.form-select__vue.js-form-select__result
+				+icon(props.icon).form-select__icon
+
+			ul.form-select__dropdown.js-form-select__dropdown(
+				role="listbox"
+				tabindex="-1"
+			)
+				each option, index in props.options
+					li.form-select__option.js-form-select__option(
+						role="option",
+						data-value=option.value,
+					)= option.label

@@ -1,0 +1,39 @@
+.header-navigate {
+	@mixin media $desktopS {
+		display: flex;
+		gap: 32px;
+		height: 100%;
+	}
+}
+
+.header-navigate__category {
+	display: flex;
+	align-items: center;
+
+	@mixin hover {
+		.header-navigate__link {
+			color: var(--color-primary);
+		}
+	}
+}
+
+.header-navigate__link {
+	display: inline-flex;
+	gap: 6px;
+	align-items: center;
+
+	i {
+		width: 12px;
+		height: 12px;
+	}
+}
+
+.header-navigate__dropdown {
+	left: -20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: 220px;
+	padding: 16px 20px;
+	font-size: 13px;
+}

@@ -1,0 +1,34 @@
+mixin form-radio(props = {})
+	-
+		props = {
+			id: props.id,
+			name: props.name,
+			value: props.value || '',
+			options: props.options || [],
+			legend: props.legend || false,
+			required: props.required || false,
+			disabled: props.disabled || false,
+		}
+
+	.form-radio.js-form-radio(class={ disabled: props.disabled })&attributes(attributes)
+		if props.legend
+			.form-radio__legend
+				| #{ props.legend }
+				if props.required
+					span.form-radio__required(aria-hidden='true') *
+
+		each option in props.options
+			.form-radio__element
+				.form-radio__control
+					input.form-radio__input(
+						id=option.id,
+						value=option.value,
+						checked=props.value === option.value,
+						type='radio',
+						name=props.name,
+						required=props.required,
+						disabled=props.disabled
+					)
+					.form-radio__vue
+				if option.label
+					label.form-radio__label.js-form-radio__label(for=option.id) !{ option.label }

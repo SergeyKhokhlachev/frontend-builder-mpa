@@ -1,0 +1,26 @@
+.marker {
+	display: inline-flex;
+	align-items: center;
+	min-height: 16px;
+	padding: 0 4px;
+	font-size: 9px;
+	line-height: 16px;
+	border-radius: var(--radius-small);
+
+	@mixin media $laptop {
+		min-height: 22px;
+		padding: 0 6px;
+		font-size: 11px;
+		line-height: 22px;
+	}
+}
+
+.markers {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+
+	@mixin media $laptop {
+		gap: 4px 6px;
+	}
+}

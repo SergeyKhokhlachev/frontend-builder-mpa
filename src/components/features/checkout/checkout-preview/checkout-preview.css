@@ -1,0 +1,48 @@
+@import '@/components/features/checkout/checkout-card-short/checkout-card-short';
+
+.checkout-preview {
+	padding: 16px;
+
+	@mixin media $tablet {
+		padding: 24px;
+	}
+}
+
+.checkout-preview__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--color-line-primary);
+}
+
+.checkout-preview__title {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.checkout-preview__body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-height: 270px;
+	padding: 10px 0;
+	padding-right: 12px;
+	margin-right: -12px;
+	overflow: auto;
+	overscroll-behavior: contain;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+
+	@mixin media $tablet {
+		max-height: 280px;
+	}
+}
+
+.checkout-preview__footer {
+	padding-top: 16px;
+
+	.button {
+		width: 100%;
+	}
+}

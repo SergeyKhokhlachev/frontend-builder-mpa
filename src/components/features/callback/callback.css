@@ -1,0 +1,15 @@
+.callback {
+	display: flex;
+	gap: 12px;
+}
+
+.callback__link {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.25;
+}
+
+.callback__button {
+	font-size: 12px;
+	line-height: 1.25;
+}

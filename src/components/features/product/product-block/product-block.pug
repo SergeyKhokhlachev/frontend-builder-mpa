@@ -1,0 +1,164 @@
+mixin product-block(props = {})
+	-
+		props = {
+			images: props.images || [],
+			name: props.name || '',
+			quantity: props.quantity || '',
+			priceNew: props.priceNew || '',
+			priceOld: props.priceOld || '',
+			markers: props.markers || [],
+			sizes: props.sizes || [],
+			colors: props.colors || [],
+			favorite: props.favorite || false,
+			available: props.available || true,
+		};
+
+	.product-block&attributes(attributes)
+		.product-block__header
+			.product-block__swiper
+				+swiper-thumbs-slot('main')
+					each image in props.images
+						.swiper-slide
+							+picture(image, { alt: props.name })
+				+swiper-thumbs-slot('thumbs')
+					each image in props.images
+						.swiper-slide
+							+picture(image, { alt: props.name })
+				+swiper-thumbs.js-swiper-thumbs
+
+			.product-block__params
+				.markers
+					each marker in props.markers
+						span.marker(style='color: ' + marker.color + '; background: ' + marker.background)= marker.value
+
+				h1.product-block__name= props.name
+				.product-block__available
+					if props.available
+						.product-card__status.available
+							| В наличии #{ props.quantity }
+					else
+						.product-card__status
+							| Нет в наличии
+
+				.product-block__box
+					.product-block__coast
+						span.product-block__price-new= props.priceNew + ' ₽'
+						span.product-block__price-old= props.priceOld + ' ₽'
+					button.favorite(
+						type='button',
+						role='checkbox',
+						aria-pressed=props.favorite,
+						aria-label='Добавить в избранное',
+						class={ active: props.favorite }
+					)
+						span.favorite__icons
+							+icon('favorite')
+							+icon('favorite-fill')
+						span.favorite__label В избранное
+
+				.product-block__block
+					.product-block__title Размеры одежды :
+					ul.product-block__sizes
+						each size, index in props.sizes
+							li
+								if index === 0
+									span.product-block__size.active= size
+								else
+									a.product-block__size(href='#', aria-label='Прейти к размеру')= size
+
+				.product-block__block
+					.product-block__title Цвет: <span>#{ props.colors[0].title }</span>
+					ul.product-block__colors
+						each color, index in props.colors
+							li
+								if index === 0
+									span.product-block__color.active(title=color.title)
+										span.product-block__vue(style='background: ' + color.color)
+								else
+									a.product-block__color(href='#', aria-label='Прейти к цвету', title=color.title)
+										span.product-block__vue(style='background: ' + color.color)
+
+				button.product-block__append.button.button--primary(type='button')
+					span В корзину
+
+		.product-block__content.tabs.js-product-block-tabs
+			.tabs__control(role='tablist', aria-label='UI Kit tabs click')
+				button#tab-btn-describe.tabs__button.js-tabs__button.active(
+					type='button',
+					role='tab',
+					aria-selected='true',
+					aria-controls='tab-panel-describe'
+				) Описание
+				button#tab-btn-property.tabs__button.js-tabs__button(
+					type='button',
+					role='tab',
+					aria-selected='false',
+					aria-controls='tab-panel-property',
+					tabindex='-1'
+				) Характеристики
+				button#tab-btn-reviews.tabs__button.js-tabs__button(
+					type='button',
+					role='tab',
+					aria-selected='false',
+					aria-controls='tab-panel-reviews',
+					tabindex='-1'
+				) Отзывы (21)
+				button#tab-btn-guarantee.tabs__button.js-tabs__button(
+					type='button',
+					role='tab',
+					aria-selected='false',
+					aria-controls='tab-panel-guarantee',
+					tabindex='-1'
+				) Гарантия и возврат
+				button#tab-btn-payment.tabs__button.js-tabs__button(
+					type='button',
+					role='tab',
+					aria-selected='false',
+					aria-controls='tab-panel-payment',
+					tabindex='-1'
+				) Способы оплаты
+			#tab-panel-describe.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-describe')
+				.product-block__describe
+					.product-block__aside
+						h2.product-block__head Описание
+					.product-block__main
+						p.
+							Стильная футболка с рукавами средней длины и круглым вырезом!
+							Эта универсальная вещь станет отличным дополнением вашего гардероба и подойдёт для любого случая.
+							Изготовлена из высококачественного материала, приятного к телу, она обеспечит комфорт в течение всего дня.
+							Благодаря классическому крою и универсальному цвету, эта футболка легко сочетается с любыми джинсами,
+							брюками или юбкой.
+
+			#tab-panel-property.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-property', hidden)
+				.product-block__describe
+					.product-block__aside
+						h2.product-block__head Характеристики
+					.product-block__main
+						p.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Provident quisquam ratione qui dignissimos reprehenderit voluptatibus incidunt impedit illum at
+							repellendus ullam optio possimus, commodi nemo autem delectus. Doloremque, ipsa quia!
+			#tab-panel-reviews.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-reviews', hidden)
+				.product-block__describe
+					.product-block__aside
+						h2.product-block__head Отзывы
+					.product-block__main
+						p.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Provident quisquam ratione qui dignissimos reprehenderit voluptatibus incidunt impedit illum at
+							repellendus ullam optio possimus, commodi nemo autem delectus. Doloremque, ipsa quia!
+			#tab-panel-guarantee.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-guarantee', hidden)
+				.product-block__describe
+					.product-block__aside
+						h2.product-block__head Гарантия и возврат
+					.product-block__main
+						p.
+							Приобретенный в интернет-магазине товар можно вернуть на склад интернет-магазина в течение 14 дней
+							с момента получения заказа (не считая дня покупки).
+
+			#tab-panel-payment.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-payment', hidden)
+				.product-block__describe
+					.product-block__aside
+						h2.product-block__head Способы оплаты
+					.product-block__main
+						p Картой на сайте и При получении картой или наличными.

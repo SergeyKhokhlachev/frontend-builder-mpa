@@ -1,0 +1,127 @@
+.header-catalog {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: calc(100vh - 122px);
+	padding-bottom: 40px;
+	background-color: var(--color-background-primary);
+
+	.container {
+		display: flex;
+		gap: 30px;
+		height: 100%;
+	}
+}
+
+.header-catalog__aside {
+	display: flex;
+	flex-shrink: 0;
+	flex-direction: column;
+	gap: 60px;
+	width: 324px;
+}
+
+.header-catalog__main {
+	width: 100%;
+	overflow: auto;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+}
+
+.header-catalog__scrollbox {
+	flex: 1;
+	overflow: auto;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+}
+
+.header-catalog__accent {
+	flex-shrink: 0;
+	background-color: var(--color-background-accent);
+	border-radius: var(--radius-small);
+}
+
+.header-catalog__category {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-height: 50px;
+	padding: 4px 16px;
+	font-size: 14px;
+	font-weight: 500;
+	transition: background-color var(--transition);
+
+	&.active {
+		background-color: var(--color-background-secondary);
+	}
+}
+
+.header-catalog__item {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	width: 100%;
+	min-height: 50px;
+	padding: 4px 16px;
+	font-size: 14px;
+	font-weight: 500;
+	border-bottom: 1px solid var(--color-background-primary);
+
+	i {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+.header-catalog__banners {
+	display: flex;
+	gap: 30px;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.header-catalog__banner {
+	width: calc(33.333%);
+
+	picture {
+		display: flex;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.header-catalog__box {
+	display: flex;
+	gap: 30px;
+	width: 100%;
+}
+
+.header-catalog__column {
+	width: calc(33.333%);
+}
+
+.header-catalog__group {
+	margin-bottom: 40px;
+
+	li {
+		margin-bottom: 4px;
+	}
+}
+
+.header-catalog__title {
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+
+.header-catalog__link {
+	font-size: 13px;
+	color: var(--color-text-secondary);
+}

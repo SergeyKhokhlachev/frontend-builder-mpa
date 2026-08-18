@@ -1,0 +1,18 @@
+mixin blog-card(props = {})
+	-
+		props = {
+			image: props.image || '',
+			category: props.category || '',
+			title: props.title || '',
+			text: props.text || '',
+			date: props.date || { value: '', label: ''},
+		};
+
+	article.blog-card&attributes(attributes)
+		a.blog-card__preview(href='#', aria-label='Перейти к полной записи')
+			+picture(props.image, { alt: props.title })
+		.blog-card__content
+			a.blog-card__category(href='#')= props.category
+			h3.blog-card__title= props.title
+			p.blog-card__text= props.text
+			time.blog-card__date(datetime=props.date.value)= props.date.label

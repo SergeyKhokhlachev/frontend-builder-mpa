@@ -1,0 +1,32 @@
+extends /layout/layout
+
+include /components/features/category/category-card/category-card
+include /components/features/product/product-viewed/product-viewed
+
+block data
+	include /api/data/categories
+	include /api/data/products
+
+	-
+		const breadcrumbs = {
+			'Главная': '/pages/main.html',
+			'Каталог': '',
+		}
+
+		const productsViewed = products.slice(0,6);
+
+block main
+	.page(data-barba='container', data-barba-namespace='category')
+		+breadcrumbs(breadcrumbs)
+		.category.container
+			h1.page-title Каталог
+			h2.visually-hidden Список категорий товаров
+			.category__row
+				each category in categories
+					.category__col
+						+category-card(category)
+
+		section.section.section--padding.section--color
+			.container
+				h2.page-title Ранее вы смотрели
+				+product-viewed(productsViewed)

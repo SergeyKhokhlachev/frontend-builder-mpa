@@ -1,0 +1,36 @@
+.form-textarea {
+	width: 100%;
+	min-height: 100px;
+	padding: 10px 16px;
+	font-size: 16px;
+	border: 1px solid var(--color-line-primary);
+	border-radius: 5px;
+	transition: border-color var(--transition);
+
+	&::placeholder {
+		color: var(--color-text-alternate);
+	}
+
+	&:focus {
+		border-color: var(--color-line-secondary);
+	}
+}
+
+.form-element {
+	&.disabled {
+		pointer-events: none;
+
+		.form-textarea {
+			background-color: var(--color-background-secondary);
+			opacity: 0.5;
+		}
+	}
+
+	&:not(.focus) {
+		&.error {
+			.form-textarea {
+				border-color: var(--color-error);
+			}
+		}
+	}
+}

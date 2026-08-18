@@ -1,0 +1,280 @@
+.product-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: var(--color-background-primary);
+	border: 1px solid var(--color-line-primary);
+	border-radius: var(--radius-small);
+	transition: box-shadow var(--transition);
+
+	.favorite {
+		position: absolute;
+		top: 3px;
+		right: 4px;
+		z-index: 2;
+	}
+
+	.markers {
+		position: absolute;
+		top: 6px;
+		left: 8px;
+		z-index: 2;
+	}
+
+	@mixin media $laptop {
+		padding: 24px;
+
+		.markers {
+			top: 8px;
+			left: 8px;
+		}
+	}
+}
+
+.product-card__preview {
+	position: relative;
+	aspect-ratio: 1;
+	background-color: var(--color-background-secondary);
+
+	.swiper-over {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.product-card__slide {
+	position: relative;
+	display: flex;
+	padding-top: 100%;
+
+	picture {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: flex;
+		width: 100%;
+		height: 100%;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+.product-card__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px;
+
+	@mixin media $laptop {
+		padding: 10px 0;
+	}
+}
+
+.product-card__box {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+
+	@mixin media $laptop {
+		gap: 10px;
+	}
+}
+
+.product-card__content {
+	height: 100%;
+	padding: 0 8px;
+
+	@mixin media $laptop {
+		padding: 0;
+	}
+}
+
+.product-card__footer {
+	padding: 0 8px 10px;
+	margin-top: 20px;
+
+	.button {
+		width: 100%;
+		min-height: 36px;
+		font-size: 12px;
+	}
+
+	@mixin media $laptop {
+		padding: 0;
+
+		.button {
+			min-height: 42px;
+			font-size: 14px;
+		}
+	}
+}
+
+.product-card__rating,
+.product-card__comments {
+	display: flex;
+	gap: 3px;
+	align-items: center;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1;
+
+	.icon {
+		width: 10px;
+		height: 10px;
+		color: var(--color-line-secondary);
+	}
+
+	@mixin media $laptop {
+		gap: 4px;
+		font-size: 12px;
+
+		.icon {
+			width: 12px;
+			height: 12px;
+		}
+	}
+}
+
+.product-card__status {
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1;
+
+	&.available {
+		color: var(--color-success);
+	}
+
+	@mixin media $laptop {
+		font-size: 12px;
+	}
+}
+
+.product-card__name {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.5;
+	-webkit-box-orient: vertical;
+
+	@mixin media $laptop {
+		font-size: 14px;
+	}
+}
+
+.product-card__coast {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin-top: 12px;
+
+	@mixin media $laptop {
+		gap: 10px;
+	}
+}
+
+.product-card__price-new {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+
+	@mixin media $laptop {
+		font-size: 16px;
+	}
+}
+
+.product-card__price-old {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 14px;
+	color: var(--color-text-disabled);
+	text-decoration-line: line-through;
+
+	@mixin media $laptop {
+		font-size: 14px;
+	}
+}
+
+.product-card__block {
+	margin-top: 10px;
+}
+
+.product-card__title {
+	margin-bottom: 4px;
+	font-size: 12px;
+	font-weight: 400;
+	color: var(--color-text-alternate);
+
+	@mixin media $laptop {
+		margin-bottom: 6px;
+		font-size: 14px;
+	}
+}
+
+.product-card__sizes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 6px;
+
+	@mixin media $laptop {
+		gap: 6px 8px;
+	}
+}
+
+.product-card__size {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--color-text-secondary);
+	transition: color var(--transition);
+
+	&.active {
+		color: var(--color-primary);
+	}
+
+	@mixin media $laptop {
+		font-size: 14px;
+	}
+}
+
+.product-card__colors {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 6px;
+
+	@mixin media $laptop {
+		gap: 6px 8px;
+	}
+}
+
+.product-card__color {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 3px;
+	outline: 0;
+	background-color: var(--color-background-secondary);
+	border: 1px solid var(--color-line-primary);
+	border-radius: var(--radius-small);
+	transition: border-color var(--transition);
+
+	&.active {
+		border-color: var(--color-primary);
+	}
+}
+
+.product-card__vue {
+	width: 16px;
+	height: 16px;
+	border-radius: var(--radius-small);
+}

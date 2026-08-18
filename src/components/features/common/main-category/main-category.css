@@ -1,0 +1,55 @@
+@import '@/components/features/category/category-preview/category-preview';
+
+.main-category {
+	.swiper {
+		margin-right: -8px;
+		margin-left: -8px;
+	}
+
+	.swiper-slide {
+		width: 282px;
+		height: auto;
+		padding: 0 8px;
+	}
+
+	.swiper-button {
+		background-color: var(--color-background-secondary);
+	}
+
+	@mixin media $tablet {
+		.swiper {
+			margin-right: -16px;
+			margin-left: -16px;
+		}
+
+		.swiper-slide {
+			width: 432px;
+			padding: 0 16px;
+		}
+	}
+
+	@mixin media $desktopS {
+		.swiper {
+			margin: 0;
+			overflow: initial;
+		}
+
+		.swiper-wrapper {
+			flex-wrap: wrap;
+			gap: 32px;
+		}
+
+		.swiper-control {
+			display: none;
+		}
+
+		.swiper-slide {
+			width: calc(25% - (32px * 3 / 4));
+			padding: 0;
+
+			&.swiper-slide--large {
+				width: calc(50% - (32px * 1 / 2));
+			}
+		}
+	}
+}

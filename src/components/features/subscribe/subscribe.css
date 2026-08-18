@@ -1,0 +1,107 @@
+.subscribe {
+	padding-top: 30px;
+	padding-bottom: 35px;
+	border-top: 1px solid var(--color-line-primary);
+
+	@mixin media $tablet {
+		padding-top: 40px;
+		padding-bottom: 35px;
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+		}
+	}
+
+	@mixin media $desktopS {
+		padding-top: 50px;
+		padding-bottom: 50px;
+
+		.container {
+			flex-wrap: nowrap;
+		}
+	}
+}
+
+.subscribe__title {
+	margin-bottom: 16px;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.5;
+
+	@mixin media $tablet {
+		margin-bottom: 10px;
+		font-size: 20px;
+	}
+
+	@mixin media $desktopS {
+		flex: 1;
+		max-width: 338px;
+		margin-right: 50px;
+		margin-bottom: 0;
+	}
+}
+
+.subscribe__subtitle {
+	font-size: 12px;
+	line-height: 1.6;
+	color: var(--color-text-secondary);
+
+	@mixin media $tablet {
+		font-size: 16px;
+	}
+
+	@mixin media $desktopS {
+		flex: 1;
+		max-width: 306px;
+	}
+}
+
+.subscribe__form {
+	position: relative;
+	margin-top: 20px;
+
+	@mixin media $tablet {
+		display: flex;
+		flex: 0 0 100%;
+		margin-top: 35px;
+
+		.form-element {
+			flex: 1;
+		}
+	}
+
+	@mixin media $desktopS {
+		flex: 1;
+		align-self: center;
+		margin-top: 0;
+		margin-left: 40px;
+	}
+
+	@mixin media $desktopM {
+		margin-left: 68px;
+	}
+}
+
+.subscribe__button {
+	width: 100%;
+	margin-top: 10px;
+
+	span {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+
+	.icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	@mixin media $tablet {
+		flex: 0 0 216px;
+		margin-top: 0;
+		margin-left: 30px;
+	}
+}

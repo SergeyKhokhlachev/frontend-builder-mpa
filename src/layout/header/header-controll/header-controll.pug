@@ -1,0 +1,32 @@
+mixin header-controll(data = {}, options = {})
+	.header-controll&attributes(attributes)
+		.header-control__item
+			button.header-control__button.js-modal-open(type='button', data-modal='#modal-login')
+				span.header-controll__icon
+					+icon('profile')
+				span.header-controll__name Войти
+		.header-control__item
+			a.header-control__button(href='#')
+				span.header-controll__icon
+					+icon('compare')
+				span.header-controll__name Сравнение
+		.header-control__item
+			a.header-control__button(href='#', aria-label='Избранное, 8 товаров')
+				span.header-controll__icon
+					+icon('favorite')
+					span.header-control__count 8
+				span.header-controll__name Избранное
+		.header-control__item.dropdown.js-dropdown(data-dropdown='click')
+			button.header-control__button.js-dropdown__button(
+				type='button',
+				aria-label='Корзина 3 товара',
+				aria-haspopup='listbox',
+				aria-expanded='false',
+				aria-controls='header-checkout'
+			)
+				span.header-controll__icon
+					+icon('cart')
+					span.header-control__count 3
+				span.header-controll__name Корзина
+			#header-checkout.header-control__dropdown.dropdown__content
+				.js-checkout-preview-vue

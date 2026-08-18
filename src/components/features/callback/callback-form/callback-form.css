@@ -1,0 +1,24 @@
+.order-call__button {
+	margin-top: 2px;
+
+	@mixin media $tablet {
+		margin-top: 4px;
+	}
+}
+
+.callback-form__button {
+	width: 100%;
+}
+
+.callback-form__describe {
+	margin-top: 20px;
+	font-size: 14px;
+	color: var(--color-text-secondary);
+	text-align: center;
+}
+
+.callback-form {
+	.form-element {
+		margin-bottom: 24px;
+	}
+}

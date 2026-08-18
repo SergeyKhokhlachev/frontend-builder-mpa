@@ -1,0 +1,26 @@
+mixin checkout-result
+	.checkout-result
+		h1.page-title Заказ сформирован
+
+		.checkout-result__block
+			.checkout-result__icon.checkout-result__icon--success
+				+icon('check')
+			p.checkout-result__title Ваш заказ <a class="link link--dashed" href="#"><span>№758786</span></a> подтвержден
+			p.checkout-result__text Вся информация о заказе поступит на указанную электронную почту example@domain.com и в личный кабинет.
+			a.button.button--secondary(href='#') В личный кабинет
+			p.checkout-result__descr.
+				Если вы не получили письмо с информацией о заказе, проверьте папку с нежелательными письмами (спам).
+				Если письма не оказалось и там, пожалуйста, обратитесь в техническую поддержку используя форму обратной связи,
+				или позвоните по телефону +7 (495) 070-70-70.
+
+	.checkout-result
+		h1.page-title Ошибка оплаты
+
+		.checkout-result__block
+			.checkout-result__icon.checkout-result__icon--error
+				+icon('close')
+			p.checkout-result__title К сожалению, не удалось оплатить заказ
+			p.checkout-result__text Пожалуйста, проверьте личные данные
+			.checkout-result__control
+				a.button.button--secondary(href='/pages/main.html') На главную
+				a.button.button--primary(href='/pages/checkout.html') Попробовать еще раз

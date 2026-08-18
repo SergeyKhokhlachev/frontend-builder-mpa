@@ -1,0 +1,16 @@
+.sticky {
+	--sticky-top: initial;
+	--sticky-width: initial;
+
+	&.active {
+		position: fixed;
+		top: var(--sticky-top);
+		width: var(--sticky-width);
+	}
+
+	&.stop {
+		position: relative;
+		top: var(--sticky-top);
+		width: var(--sticky-width);
+	}
+}

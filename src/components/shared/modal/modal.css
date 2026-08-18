@@ -1,0 +1,21 @@
+@import './modal-element/modal-element';
+
+.modal-layer {
+	position: fixed;
+	inset: 0;
+	z-index: 300;
+	visibility: hidden;
+	opacity: 0;
+	transition:
+		opacity var(--transition),
+		visibility var(--transition);
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	@mixin media $tablet {
+		background-color: rgb(0 0 0 / 30%);
+	}
+}

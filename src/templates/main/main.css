@@ -1,0 +1,8 @@
+/* NOTE: import COMPONENTS style */
+@import '@/components/features/common/main-banner/main-banner';
+@import '@/components/features/common/main-category/main-category';
+@import '@/components/features/common/main-blog/main-blog';
+@import '@/components/features/common/main-promo/main-promo';
+@import '@/components/features/common/main-reviews/main-reviews';
+@import '@/components/features/common/main-faq/main-faq';
+@import '@/components/features/common/main-partners/main-partners';

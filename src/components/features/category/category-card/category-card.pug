@@ -1,0 +1,23 @@
+mixin category-card(props = {})
+	-
+		props = {
+			image: props.image || '',
+			name: props.name || '',
+			quantity: props.quantity || '',
+			list: props.list || [],
+		};
+
+	article.category-card(aria-label=props.name)&attributes(attributes)
+		a.category-card__preview(href='/pages/catalog.html', aria-label='Перейти к категории товаров')
+			span.category-card__quantity(aria-label='Количество товаров')= props.quantity
+			+picture(props.image, { format: 'png', alt: props.name })
+		.category-card__content
+			h3.category-card__name= props.name
+			ul.category-card__list
+				each item in props.list
+					li.category-card__item
+						a(href='/pages/catalog.html')= item
+				li.category-card__item
+					a.link.link--icon(href='/pages/catalog.html')
+						span Смотреть все
+						+icon('icon icon-chevron-right')

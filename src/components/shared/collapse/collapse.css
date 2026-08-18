@@ -1,0 +1,37 @@
+.collapse__button {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.collapse__icon {
+	flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	transition: transform var(--transition);
+}
+
+.collapse__content {
+	visibility: hidden;
+	overflow: hidden;
+	transition: visibility var(--transition);
+}
+
+.collapse__element {
+	display: grid;
+	grid-template-rows: min-content 0fr;
+	transition: grid-template-rows var(--transition);
+
+	&.active {
+		grid-template-rows: min-content 1fr;
+
+		.collapse__icon {
+			transform: rotateX(180deg);
+		}
+
+		.collapse__content {
+			visibility: visible;
+		}
+	}
+}

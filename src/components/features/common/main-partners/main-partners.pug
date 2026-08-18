@@ -1,0 +1,9 @@
+mixin main-partners(props = [])
+	-
+		props = props || []
+
+	ul.main-partners&attributes(attributes)
+		each partner in props
+			li.main-partners__item
+				a(href='#')
+					+picture(partner.image, { format: 'svg', alt: partner.name })

@@ -1,0 +1,38 @@
+.breadcrumbs {
+	margin: 20px 0 30px;
+
+	.breadcrumbs__scroll {
+		margin-bottom: -16px;
+		overflow: hidden;
+	}
+
+	.breadcrumbs__list {
+		display: flex;
+		padding-bottom: 16px;
+		margin-bottom: -16px;
+		overflow: auto hidden;
+		overscroll-behavior: contain;
+		scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+		scrollbar-width: thin;
+		background-color: var(--color-background-primary);
+	}
+
+	.breadcrumbs__item {
+		display: flex;
+		align-items: center;
+		margin-right: 8px;
+		font-size: 14px;
+		color: var(--color-text-alternate);
+		white-space: nowrap;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		& .icon {
+			width: 12px;
+			height: 12px;
+			margin-left: 8px;
+		}
+	}
+}

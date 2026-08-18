@@ -1,0 +1,24 @@
+mixin subscribe(props = {})
+	-
+		const email = {
+			id: 'subscribe-email',
+			name: 'email',
+			value: '',
+			type: 'email',
+			placeholder: 'Введите Email',
+			autocomplete: 'email',
+			required: true,
+		}
+
+	section.subscribe.js-subscribe&attributes(attributes)
+		.container
+			h2.subscribe__title Не пропустите специальные предложения и акции
+			p.subscribe__subtitle Подпишитесь на нашу рассылку и получите промокод на скидку 10%
+
+			form.subscribe__form.js-subscribe__form(novalidate)
+				+form-input(email)
+
+				button.button.button--outline.subscribe__button.js-subscribe__button(type='submit', disabled='true')
+					span
+						| Подписаться
+						+icon('send')

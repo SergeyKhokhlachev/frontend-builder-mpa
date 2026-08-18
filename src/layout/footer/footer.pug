@@ -1,0 +1,66 @@
+mixin footer(data = {}, options = {})
+	-
+		data = {
+			menu: data.menu || [],
+			social: data.social || [],
+			payments: data.payments || [],
+		}
+
+	footer.footer.js-footer&attributes(attributes)
+		.footer__top
+			.container
+				.footer__primary
+					nav.footer-nav.collapse.js-collapse(aria-label='Основные разделы сайта')
+						each element in data.menu
+							.footer-nav__box.collapse__element.js-collapse__element
+								h3.footer-nav__title.collapse__button.js-collapse__button(
+									role='button',
+									aria-expanded='false',
+									aria-controls=element.id
+								)
+									| #{ element.category }
+									+icon('chevron-down').footer-nav__icon.collapse__icon
+								ul.footer-nav__list.collapse__content(id=element.id)
+									each item in element.items
+										li
+											a(href='#')= item
+					.footer-info
+						+callback.footer__callback
+						p.footer-info__text Есть вопросы? Мы с радостью на них ответим.<br>Горячая линия работает пн-пт с 9:00-18:00
+						address.footer-info__address
+							span
+								+icon('location')
+								| Чебоксары, ул. Лермонтова 21, 3 этаж, офис 4
+							br
+							span
+								+icon('sms')
+								a(href='mailto:email@email.ru') email@email.ru
+				.footer__secondary
+					nav(aria-label='Социальные сети')
+						ul.footer__social-list
+							each item in data.social
+								li
+									a(href='#', target='_blank', aria-label=item.name)
+										img(src=`/images/${item.icon}.svg`, alt=item.name, width='22', height='22')
+					.footer__legal
+						p ООО “Готовые компоненты”
+						p ИНН: 7770005551
+						p ОГРН: 1000000000777
+		.footer__bottom
+			.container
+				nav(aria-label='Правовые ссылки')
+					ul.footer__list
+						li
+							a(href='#') Политика конфиденциальности
+						li
+							a(href='#') Cookies
+						li
+							a(href='#') Карта сайта
+				ul.footer__payment
+					each item in data.payments
+						li
+							img(src=`/images/${item.icon}.svg`, alt=item.name, width=item.width, height=item.height)
+		.footer__copyright
+			.container
+				span 2026 © Интернет-магазин
+				span Создание сайта — <a target='_blank' rel="noopener noreferrer" href='#'>KISLORODS</a>

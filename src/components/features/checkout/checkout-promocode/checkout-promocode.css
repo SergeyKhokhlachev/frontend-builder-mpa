@@ -1,0 +1,129 @@
+.checkout-promocode {
+	margin-bottom: 20px;
+}
+
+.checkout-promocode__field {
+	display: flex;
+	gap: 15px;
+	background-color: var(--color-background-secondary);
+	border-radius: var(--radius-small);
+}
+
+.checkout-promocode__input {
+	width: 100%;
+	height: 50px;
+	padding: 0 16px;
+	font-size: 14px;
+	background-color: transparent;
+	border: 0;
+}
+
+.checkout-promocode__apply {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	min-width: 50px;
+	transition: color var(--transition);
+
+	.icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	&:disabled {
+		color: var(--color-text-disabled);
+		pointer-events: none;
+	}
+
+	&.loading {
+		color: var(--color-text-disabled);
+		pointer-events: none;
+	}
+
+	@mixin hover {
+		color: var(--color-primary-hover);
+	}
+
+	@mixin active {
+		color: var(--color-primary-active);
+	}
+}
+
+.checkout-promocode__list {
+	max-height: 120px;
+	overflow: auto;
+	overscroll-behavior: contain;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+}
+
+.checkout-promocode__result {
+	display: flex;
+	gap: 15px;
+	justify-content: space-between;
+	margin-top: 8px;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 30px;
+	color: var(--color-text-secondary);
+	white-space: nowrap;
+	border-bottom: 1px solid var(--color-line-primary);
+
+	&.error {
+		color: var(--color-error);
+	}
+
+	&.success {
+		color: var(--color-success);
+	}
+
+	&.warning {
+		color: var(--color-warning);
+	}
+}
+
+.checkout-promocode__code {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+
+	span {
+		color: var(--color-text-secondary);
+	}
+
+	.icon {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+.checkout-promocode__status {
+	display: flex;
+	gap: 2px;
+	align-items: center;
+}
+
+.checkout-promocode__remove {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	color: var(--color-text-alternate);
+	transition: color var(--transition);
+
+	.icon {
+		width: 12px;
+		height: 12px;
+	}
+
+	@mixin hover {
+		color: var(--color-text-primary);
+	}
+
+	@mixin active {
+		color: var(--color-text-primary);
+	}
+}

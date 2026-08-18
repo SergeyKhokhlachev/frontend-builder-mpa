@@ -1,0 +1,149 @@
+.checkout-form {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.checkout-form__fieldset {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+
+	@mixin media $tablet {
+		padding: 24px;
+		border: 1px solid var(--color-line-primary);
+		border-radius: var(--radius-small);
+	}
+
+	@mixin media $desktopM {
+		padding: 32px;
+	}
+}
+
+.checkout-form__legend {
+	padding: 0 6px;
+	margin-bottom: 25px;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.2;
+	background-color: var(--color-background-primary);
+
+	@mixin media $tablet {
+		margin-bottom: 0;
+	}
+}
+
+.checkout-form__field {
+	width: 100%;
+
+	&.checkout-form__field--quarter {
+		width: calc(50% - (32px * 1) / 2);
+	}
+
+	@mixin media $tablet {
+		&.checkout-form__field--half {
+			width: calc(50% - (32px * 1) / 2);
+		}
+
+		&.checkout-form__field--quarter {
+			width: calc(25% - (32px * 3) / 4);
+		}
+	}
+}
+
+.checkout-radio {
+	.form-radio {
+		gap: 16px;
+	}
+
+	.form-radio__element {
+		position: relative;
+		width: 100%;
+	}
+
+	.form-radio__control {
+		position: absolute;
+		top: 50%;
+		left: 20px;
+		transform: translateY(-50%);
+	}
+
+	.form-radio__vue {
+		border: 1px solid var(--color-line-secondary);
+	}
+
+	.form-radio__label {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		min-height: 90px;
+		padding: 20px 24px 20px 60px;
+		cursor: pointer;
+		background-color: var(--color-background-alternate);
+		border: 1px solid var(--color-line-secondary);
+		border-radius: 3px;
+	}
+
+	@mixin media $tablet {
+		.form-radio__label {
+			flex-direction: row;
+			gap: 16px;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
+	@mixin media $desktopS {
+		.form-radio {
+			gap: 24px;
+		}
+
+		.form-radio__element {
+			width: calc(50% - 12px);
+		}
+	}
+}
+
+.checkout-radio__info {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.checkout-radio__title {
+	display: block;
+	font-weight: 500;
+	color: var(--color-text-primary);
+}
+
+.checkout-radio__text {
+	display: block;
+	font-size: 12px;
+	color: var(--color-text-secondary);
+}
+
+.checkout-radio__box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 4px;
+
+	@mixin media $tablet {
+		flex-direction: column-reverse;
+		align-items: flex-end;
+		margin-top: 0;
+	}
+}
+
+.checkout-radio__date {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--color-text-secondary);
+}
+
+.checkout-radio__price {
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--color-text-primary);
+}

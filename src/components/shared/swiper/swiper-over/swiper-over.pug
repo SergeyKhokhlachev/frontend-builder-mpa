@@ -1,0 +1,13 @@
+mixin swiper-over(props = {})
+	-
+		props = {
+			id: props.id || '',
+			class: props.class || '',
+		}
+
+	.swiper-over&attributes(attributes)
+		.swiper(id=props.id, class=props.class)
+			.swiper-wrapper
+				block
+
+		.swiper-pagination.js-swiper-pagination

@@ -1,0 +1,39 @@
+include ./header-controll/header-controll
+include ./header-navigate/header-navigate
+include ./header-catalog/header-catalog
+include ./header-menu/header-menu
+
+mixin header(data = {}, options = {})
+	-
+		data = {
+			about: data.about || [],
+			buyer: data.buyer || [],
+			social: data.social || [],
+			brands:data.brands || [],
+			catalog: data.catalog || [],
+		}
+
+	header.header.js-header&attributes(attributes)
+		.header__wrapper
+			.header__top
+				.container
+					+location({ dropdown: true })
+					+header-navigate(data)
+					+callback
+
+			.header__main
+				.container
+					button.header-hamburger.js-header-toggle(type='button', aria-expanded='false', aria-label='Открыть каталог')
+						span.header-hamburger__box
+							+icon('menu').header-hamburger__list
+							+icon('close').header-hamburger__close
+						span.header-hamburger__text Каталог
+					a.header-logo(href='/', aria-label='Главная страница')
+						img.header-logo__icon(src='/images/logo-icon.svg', alt='logo', width='34', height='34')
+						img.header-logo__text(src='/images/logo-text.svg', alt='Компоненты', width='148', height='34')
+					.header__search
+						+search
+					+header-controll
+
+			+header-menu(data)
+			+header-catalog(data)

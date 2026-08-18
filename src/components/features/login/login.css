@@ -1,0 +1,106 @@
+.login__title {
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 37px;
+	text-align: center;
+}
+
+.login__text {
+	font-size: 16px;
+	color: var(--color-text-alternate);
+}
+
+.login__describe {
+	padding: 20px 0 48px;
+	text-align: center;
+
+	&.login__describe--code {
+		padding: 6px 0 12px;
+	}
+}
+
+.login__control {
+	justify-content: center;
+}
+
+.login__tab {
+	&.active {
+		border-bottom-color: #2968e3;
+	}
+}
+
+.login__box {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.login__button {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.login__forgot {
+	font-size: 14px;
+}
+
+.login__confirm {
+	margin-bottom: 8px;
+
+	.form-checkbox__label {
+		font-size: 12px;
+	}
+}
+
+.login__image {
+	display: flex;
+	margin: 0 auto;
+}
+
+.login__close {
+	display: flex;
+	margin: 24px auto 0;
+}
+
+.login__authorization {
+	min-height: 404px;
+}
+
+.login {
+	max-width: 404px;
+	margin: 0 auto;
+
+	.form-element {
+		margin-bottom: 24px;
+	}
+
+	.tabs__button {
+		font-size: 14px;
+	}
+
+	.login__code {
+		@mixin media $tablet {
+			.form-code__vue .form-input {
+				width: 58px;
+				min-height: 58px;
+			}
+		}
+	}
+}
+
+.login-timer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 42px;
+	margin-top: 20px;
+	margin-bottom: 22px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.login-timer__count {
+	display: inline-flex;
+	min-width: 42px;
+}

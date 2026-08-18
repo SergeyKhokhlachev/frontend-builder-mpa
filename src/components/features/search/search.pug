@@ -1,0 +1,25 @@
+mixin search(props = {})
+	form.search.js-search(action='/search/', role='search')&attributes(attributes)
+		.search__layer.js-search__layer(aria-hidden='true')
+		.search__box
+			.search__control.js-search__control
+				input#search-input.search__field.js-search__field(
+					name='search',
+					type='text',
+					value='',
+					autocomplete='off',
+					role='combobox',
+					aria-label='Поиск по сайту',
+					aria-expanded='false',
+					aria-controls='search-results-list',
+					aria-autocomplete='list'
+				)
+				button.search__apply.js-search__apply(type='submit', disabled='true', aria-label='Найти')
+					span(aria-hidden='true') Найти
+					+icon('search')
+				button.search__clear.js-search__clear(type='button', aria-label='Очистить поле поиска')
+					+icon('close')
+			button.search__close.js-search__close(type='button', aria-label='Закрыть поиск')
+				+icon('close')
+		.search__dropdown
+			#search-results-list.search-result.js-search__result(role='listbox', aria-label='Результаты поиска')

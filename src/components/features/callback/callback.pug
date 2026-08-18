@@ -1,0 +1,11 @@
+mixin callback(props = {})
+	-
+		props = {
+			phone: props.phone || '+7 (495) 975-91-27',
+			text: props.text || 'Заказать звонок'
+		}
+
+	.callback&attributes(attributes)
+		a.callback__link(href=`tel:${props.phone}`)= props.phone
+		button.callback__button.link.link--dashed.js-modal-open(type='button', data-modal='#modal-callback')
+			span= props.text

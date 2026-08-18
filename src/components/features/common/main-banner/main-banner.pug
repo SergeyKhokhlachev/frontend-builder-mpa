@@ -1,0 +1,57 @@
+mixin main-banner(props = {})
+	-
+		props = {
+			slides: [
+				{
+					image: 'swiper-banner-1',
+					name: 'Диван Гувер',
+					category: 'Мебель для дома',
+					text: 'Благодаря множеству преимуществ, этот диван станет вашим незаменимым помощником в создании уютной атмосферы в доме',
+				},
+				{
+					image: 'swiper-banner-2',
+					name: 'Наушники OYEN MAX',
+					category: 'ЭЛЕКТРОНИКА',
+					text: 'Беспроводные наушники для тех, кто ценит свободу движения и качественный звук!',
+				}
+			],
+			cards: [
+				{
+					image: 'main-banner-1',
+					name: 'Мебель для всей семьи',
+					category: 'МЕБЕЛЬ ДЛЯ ДОМА',
+				},
+				{
+					image: 'main-banner-2',
+					name: 'Доставка до двери за 30 минут',
+					category: 'Услуги',
+				},
+				{
+					image: 'main-banner-3',
+					name: 'Скидки 30% на все коллекции',
+					category: 'Акции',
+				}
+			]
+		}
+
+	.main-banner&attributes(attributes)
+		+swiper-banner.main-banner__swiper.js-swiper-banner
+			each slide in props.slides
+				.swiper-slide
+					.main-banner__slide
+						+picture(slide.image, { alt: slide.name }).main-banner__picture
+						.main-banner__box
+							.main-banner__content
+								span.main-banner__category= slide.category
+								h3.main-banner__name= slide.name
+								p.main-banner__text= slide.text
+								.main-banner__buttons
+									a.button.button--primary(href='/pages/catalog.html') Перейти в каталог
+									a.button.button--outline(href='/pages/base-content.html') Читать статью
+		.main-banner__list
+			each card, index in props.cards
+				a.main-banner-card(href='#', class={ 'main-banner-card--large': index === 2 }, aria-label='Перейти к полномой записи')
+					+picture(card.image, { alt: card.name }).main-banner-card__preview
+					.main-banner-card__content
+						span.main-banner-card__category= card.category
+						h3.main-banner-card__name= card.name

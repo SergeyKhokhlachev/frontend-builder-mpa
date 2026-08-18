@@ -1,0 +1,3 @@
+/* NOTE: import COMPONENTS style */
+@import '@/components/features/product/product-block/product-block';
+@import '@/components/features/product/product-viewed/product-viewed';

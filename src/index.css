@@ -1,0 +1,22 @@
+@import '@/layout/layout';
+@import '@/templates/index/index';
+
+/* NOTE: UI Kit */
+@import '@/templates/ui-kit/ui-kit';
+
+/* NOTE: Common */
+@import '@/templates/not-found/not-found';
+@import '@/templates/main/main';
+@import '@/templates/shops/shops';
+
+/*  NOTE: Product */
+@import '@/templates/category/category';
+@import '@/templates/catalog/catalog';
+@import '@/templates/product/product';
+
+/* NOTE:Checkout */
+@import '@/templates/checkout/checkout';
+
+/* NOTE: News / Actions */
+
+/* NOTE: Personal */

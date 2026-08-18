@@ -1,0 +1,30 @@
+.link {
+	color: var(--color-primary);
+	transition: color var(--transition);
+
+	@mixin hover {
+		color: var(--color-primary-hover);
+	}
+
+	@mixin active {
+		color: var(--color-primary-active);
+	}
+}
+
+.link--dashed {
+	span {
+		display: inline-block;
+		border-bottom: 1px dashed;
+	}
+}
+
+.link--icon {
+	display: inline-flex;
+	gap: 4px;
+	align-items: center;
+
+	.icon {
+		width: 16px;
+		height: 16px;
+	}
+}

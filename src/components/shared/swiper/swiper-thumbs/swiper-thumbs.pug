@@ -1,0 +1,28 @@
+- let swiperThumbsSlots = {};
+
+mixin swiper-thumbs-slot(name)
+	- swiperThumbsSlots[name] = block;
+
+mixin swiper-thumbs(props = {})
+	-
+		props = {
+			id: props.id || '',
+			class: props.class || '',
+		}
+
+	.swiper-thumbs&attributes(attributes)
+		.swiper.swiper-thumbs__main.js-swiper-thumbs__main(id=props.id, class=props.class)
+			.swiper-wrapper
+				if swiperThumbsSlots.main
+					- swiperThumbsSlots.main();
+			button.swiper-button.swiper-prev.js-swiper-prev(type='button', aria-label='Назад')
+				+icon('chevron-left')
+			button.swiper-button.swiper-next.js-swiper-next(type='button', aria-label='Вперед')
+				+icon('chevron-right')
+
+		.swiper.swiper-thumbs__preview.js-swiper-thumbs__preview
+			.swiper-wrapper
+				if swiperThumbsSlots.thumbs
+					- swiperThumbsSlots.thumbs();
+
+		- swiperThumbsSlots = {};

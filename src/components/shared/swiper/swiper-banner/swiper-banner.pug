@@ -1,0 +1,17 @@
+mixin swiper-banner(props = {})
+	-
+		props = {
+			id: props.id || '',
+			class: props.class || '',
+		}
+
+	.swiper-banner&attributes(attributes)
+		.swiper(id=props.id, class=props.class)
+			.swiper-wrapper
+				block
+
+		.swiper-pagination.js-swiper-pagination
+		button.swiper-button.swiper-prev.js-swiper-prev(type='button', aria-label='Назад')
+			+icon('chevron-left')
+		button.swiper-button.swiper-next.js-swiper-next(type='button', aria-label='Вперед')
+			+icon('chevron-right')

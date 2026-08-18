@@ -1,0 +1,34 @@
+mixin callback-form(props = {})
+	-
+		const FORM_SCHEMA = {
+			name: {
+				id: 'callback-name',
+				name: 'name',
+				value: '',
+				label: 'Имя',
+				placeholder: 'Введите Имя',
+				autocomplete: 'given-name',
+				required: true,
+			},
+			tel: {
+				id: 'callback-tel',
+				name: 'tel',
+				value: '',
+				type: 'tel',
+				label: 'Номер телефона',
+				placeholder: '+7(___) ___-__-__',
+				autocomplete: 'tel',
+				required: true,
+			},
+		}
+
+	form.callback-form.js-callback(novalidate)&attributes(attributes)
+		+form-input(FORM_SCHEMA.name)
+		+form-input(FORM_SCHEMA.tel)
+		button.button.button--primary.callback-form__button.js-callback__button(type='submit')
+			span Отправить заявку
+		.callback-form__describe
+			| Отправляя заявку, вы соглашаетесь с
+			|
+			a.link.link--dashed(href='#', target='_blank', rel='nofollow')
+				span обработкой персональных данных

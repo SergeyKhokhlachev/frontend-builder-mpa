@@ -1,0 +1,25 @@
+extends /layout/layout
+
+include /components/features/product/product-viewed/product-viewed
+
+block data
+	include /api/data/products
+	-
+		const breadcrumbs = {
+			'Главная': '/pages/main.html',
+			'Адреса магазинов': '',
+		}
+
+		const productsViewed = products.slice(0,6);
+
+block main
+	.page(data-barba='container', data-barba-namespace='shops')
+		+breadcrumbs(breadcrumbs)
+		.container
+			h1.page-title Адреса магазинов
+			.js-shops-vue
+
+		section.section.section--padding.section--color
+			.container
+				h2.page-title Ранее вы смотрели
+				+product-viewed(productsViewed)

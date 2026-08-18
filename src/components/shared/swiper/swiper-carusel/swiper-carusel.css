@@ -1,0 +1,72 @@
+.swiper-carusel {
+	position: relative;
+	margin-top: -16px;
+
+	.swiper-wrapper {
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+
+	.swiper-control {
+		display: none;
+
+		@mixin media $tablet {
+			position: absolute;
+			top: -44px;
+			right: 0;
+			display: flex;
+			gap: 4px;
+			justify-content: center;
+		}
+	}
+
+	.swiper-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 34px;
+		height: 34px;
+		padding: 0 8px;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 1;
+		color: var(--color-text-secondary);
+		background-color: var(--color-background-primary);
+		border-radius: var(--radius-small);
+		transition: background-color var(--transition);
+
+		&.swiper-button-disabled {
+			pointer-events: none;
+			opacity: 0.5;
+		}
+
+		@mixin media $tablet {
+			.icon {
+				width: 18px;
+				height: 18px;
+			}
+		}
+
+		@mixin hover {
+			background-color: var(--color-line-primary);
+		}
+
+		@mixin active {
+			background-color: var(--color-background-secondary);
+		}
+	}
+
+	.swiper-scrollbar {
+		&.swiper-scrollbar-horizontal {
+			bottom: 0;
+			z-index: 0;
+			height: 1px;
+			background-color: var(--color-line-secondary);
+
+			.swiper-scrollbar-drag {
+				height: 1px;
+				background-color: var(--color-text-primary);
+			}
+		}
+	}
+}

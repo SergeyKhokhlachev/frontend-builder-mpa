@@ -1,0 +1,88 @@
+.form-element__field {
+	position: relative;
+	display: flex;
+}
+
+.form-element__label {
+	display: inline-block;
+	margin-bottom: 4px;
+	font-size: 14px;
+	color: var(--color-text-secondary);
+}
+
+.form-element__required {
+	margin-left: 4px;
+	color: var(--color-error);
+}
+
+.form-element__message {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display: none;
+	margin-top: 2px;
+	font-size: 11px;
+	color: var(--color-error);
+}
+
+.form-element__describe {
+	margin-top: 4px;
+	color: var(--color-line-secondary);
+}
+
+.form-element__icon {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	display: flex;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	transform: translateY(-50%);
+
+	.icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	.form-element__icon-show,
+	.form-element__icon-hide {
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: var(--color-text-secondary);
+		transition: opacity var(--transition);
+	}
+
+	.form-element__icon-show {
+		opacity: 0;
+	}
+
+	&.shown {
+		.form-element__icon-hide {
+			opacity: 0;
+		}
+
+		.form-element__icon-show {
+			opacity: 1;
+		}
+	}
+}
+
+.form-element {
+	position: relative;
+
+	&.disabled {
+		.form-element__icon {
+			opacity: 0.3;
+		}
+	}
+
+	&:not(.focus) {
+		&.error {
+			.form-element__message {
+				display: block;
+			}
+		}
+	}
+}

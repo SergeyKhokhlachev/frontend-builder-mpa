@@ -1,0 +1,24 @@
+mixin reviews-card(props = {})
+	-
+		props = {
+			avatar: props.avatar || '',
+			background: props.background || '',
+			name: props.name || '',
+			title: props.title || '',
+			text: props.text || '',
+			date: props.date || { value: '', label: ''},
+		};
+
+	article.reviews-card&attributes(attributes)
+		header.reviews-card__header
+			.reviews-card__avatar(style={ background: props.background }, aria-label='Аватар пользователя')= props.avatar
+			.reviews-card__info
+				time.reviews-card__date(datetime=props.date.value)= props.date.label
+				span.reviews-card__name= props.name
+		.reviews-card__body
+			.reviews-card__content
+				h3.reviews-card__title= props.title
+				p.reviews-card__text= props.text
+			a.link(href='#', aria-label='Перейти к полному отзыву')
+				| Перейти к отзыву
+				+icon('chevron-right')

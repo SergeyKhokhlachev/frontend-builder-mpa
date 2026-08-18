@@ -1,0 +1,45 @@
+.not-found {
+	padding-top: 40px;
+	padding-bottom: 80px;
+	text-align: center;
+
+	.button {
+		min-width: 215px;
+		margin-top: 30px;
+	}
+
+	@mixin media $desktopS {
+		padding-top: 80px;
+		padding-bottom: 120px;
+	}
+}
+
+.not-found__error {
+	margin-bottom: 10px;
+	font-size: 96px;
+	font-weight: 700;
+	line-height: normal;
+	color: var(--color-text-disabled);
+
+	@mixin media $desktopS {
+		font-size: 156px;
+	}
+}
+
+.not-found__title {
+	margin-bottom: 10px;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: normal;
+
+	@mixin media $desktopS {
+		font-size: 32px;
+	}
+}
+
+.not-found__text {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 150%;
+	color: var(--color-text-alternate);
+}

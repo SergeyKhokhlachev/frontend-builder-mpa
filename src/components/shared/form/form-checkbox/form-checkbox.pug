@@ -1,0 +1,26 @@
+mixin form-checkbox(props = {})
+	-
+		props = {
+			id: props.id || props.name || false,
+			name: props.name || false,
+			value: props.value || '',
+			checked: props.ckedked || false,
+			required: props.required || false,
+			disabled: props.disabled || false,
+		}
+
+	.form-checkbox.js-form-element(class={ disabled: props.disabled })&attributes(attributes)
+		.form-checkbox__control
+			input.form-checkbox__input.js-form-checkbox(
+				id=props.id,
+				value=props.value,
+				checked=props.ckedked,
+				type='checkbox',
+				name=props.name,
+				required=props.required,
+				disabled=props.disabled
+			)
+			.form-checkbox__vue
+				+icon('check')
+		label.form-checkbox__label(for=props.id)
+			block

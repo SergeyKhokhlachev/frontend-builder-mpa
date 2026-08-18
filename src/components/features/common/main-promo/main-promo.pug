@@ -1,0 +1,9 @@
+mixin main-promo(props = {})
+	-
+		props = {
+			image: 'promo',
+			name: 'Guliver, новинка месяца от Vita. От 143 990 ₽'
+		}
+
+	a.main-promo(href='#')&attributes(attributes)
+		+picture(props.image, { alt: props.name, responsive: [{ media: 'tablet' }] })

@@ -1,0 +1,43 @@
+include /components/shared/form/form-element/form-element
+
+mixin form-code(props = {})
+	-
+		props = {
+			id: props.id,
+			name: props.name,
+			value: props.value || '',
+			label: props.label || false,
+			length: props.length || 6,
+			describe: props.describe || false,
+			required: props.required || false,
+			disabled: props.disabled || false,
+		}
+
+	//- prettier-ignore
+	+form-element({
+		label: props.label,
+		describe: props.describe,
+		required: props.required,
+		disabled: props.disabled,
+	})
+		.form-code
+			input.js-form-code(
+				id=props.id,
+				type='hidden',
+				name=props.name,
+				value=props.value,
+				required=props.required
+				tabindex='-1'
+			)
+			.form-code__vue.js-form-code__group(role="group")
+				- var n = 0;
+				while n < props.length
+					input.form-input.js-form-code__element(
+						type='tel',
+						inputmode="numeric",
+						maxlength='1',
+						autocomplete="one-time-code",
+						required=props.required,
+						disabled=props.disabled,
+					)
+					- n++

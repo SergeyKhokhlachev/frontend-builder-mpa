@@ -1,0 +1,267 @@
+.footer {
+	position: relative;
+	z-index: 200;
+	font-size: 12px;
+	border-top: 1px solid var(--color-line-primary);
+}
+
+.footer__top {
+	padding-bottom: 30px;
+
+	@mixin media $tablet {
+		padding: 40px 0 24px;
+	}
+}
+
+.footer__bottom {
+	padding: 20px 0 30px;
+	border-top: 1px solid var(--color-line-primary);
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	@mixin media $tablet {
+		padding: 20px 0;
+
+		.container {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+}
+
+.footer__primary {
+	@mixin media $desktopS {
+		display: flex;
+		flex-direction: row;
+		gap: 100px;
+		justify-content: space-between;
+		margin-bottom: 60px;
+	}
+
+	@mixin media $desktopM {
+		gap: 140px;
+	}
+}
+
+.footer__secondary {
+	@mixin media $tablet {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	@mixin media $desktopS {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.footer__list {
+	color: var(--color-text-alternate);
+	text-align: center;
+
+	li {
+		padding: 7px 0;
+	}
+
+	@mixin media $tablet {
+		display: flex;
+		gap: 30px;
+		text-align: left;
+
+		li {
+			padding: 0;
+		}
+	}
+}
+
+.footer__copyright {
+	padding: 20px 0 30px;
+	color: var(--color-text-alternate);
+	border-top: 1px solid var(--color-line-primary);
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		align-items: center;
+	}
+
+	@mixin media $tablet {
+		padding: 30px 0 46px;
+
+		.container {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+}
+
+.footer__social-list {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 34px;
+		height: 34px;
+		padding: 6px;
+		background-color: var(--color-background-secondary);
+		border-radius: 8px;
+		transition: background-color var(--transition);
+
+		@mixin hover {
+			background-color: var(--color-background-accent);
+		}
+
+		@mixin active {
+			background-color: var(--color-background-alternate);
+		}
+	}
+}
+
+.footer__legal {
+	display: none;
+
+	@mixin media $tablet {
+		display: flex;
+		gap: 16px;
+		justify-content: center;
+		margin-bottom: 24px;
+		color: var(--color-text-alternate);
+	}
+
+	@mixin media $desktopS {
+		margin-bottom: 0;
+	}
+}
+
+.footer__payment {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	justify-content: center;
+
+	li {
+		line-height: 1;
+	}
+}
+
+/*  footer-nav */
+.footer-nav {
+	width: 100%;
+	color: var(--color-text-primary);
+
+	@mixin media $tablet {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 30px;
+	}
+}
+
+.footer-nav__title {
+	padding: 16px;
+	font-size: inherit;
+	text-transform: uppercase;
+
+	@mixin media $tablet {
+		padding: 0;
+		margin-bottom: 20px;
+		pointer-events: none;
+	}
+}
+
+.footer-nav__icon {
+	@mixin media $tablet {
+		display: none;
+	}
+}
+
+.footer-nav__list {
+	padding: 0 16px;
+	color: var(--color-text-secondary);
+
+	li {
+		padding: 6px 0;
+
+		&:last-child {
+			padding-bottom: 16px;
+		}
+	}
+
+	@mixin media $tablet {
+		padding: 0;
+	}
+}
+
+.footer-nav__box {
+	margin: 0 -16px;
+	border-bottom: 1px solid var(--color-line-primary);
+
+	@mixin media $tablet {
+		grid-template-rows: min-content 1fr;
+		margin: 0;
+		border-bottom: none;
+	}
+}
+
+/*  footer-info */
+.footer-info {
+	display: flex;
+	flex-shrink: 0;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+	padding: 30px 0;
+
+	.callback__link {
+		font-size: 16px;
+	}
+
+	.callback__button {
+		font-size: 12px;
+	}
+
+	@mixin media $tablet {
+		.callback__link {
+			font-size: 20px;
+		}
+
+		.callback__button {
+			font-size: 14px;
+		}
+	}
+
+	@mixin media $desktopS {
+		padding: 0;
+	}
+}
+
+.footer-info__text,
+.footer-info__address {
+	color: var(--color-text-alternate);
+	text-align: center;
+
+	i {
+		width: 12px;
+		height: 12px;
+	}
+
+	span {
+		display: inline-flex;
+		gap: 6px;
+		align-items: center;
+	}
+
+	@mixin media $desktopS {
+		text-align: left;
+	}
+}

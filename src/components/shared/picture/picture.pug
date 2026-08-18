@@ -1,0 +1,47 @@
+mixin picture(name = '', props = {})
+	-
+		props = {
+			alt: props.alt || '',
+			format: props.format || 'jpg',
+			width: props.width || false,
+			height: props.height || false,
+			lazy: props.lazy || true,
+			loading: props.loading || 'lazy', // auto | lazy | eager
+			responsive: props.responsive || {},
+			webp: props.webp || true,
+		}
+
+	picture(class={ 'picture js-picture': props.lazy })&attributes(attributes)
+		each res in props.responsive
+			-
+				res = {
+					name: res.name || `${name}--${res.media}`,
+					format: res.format || props.format,
+					media: breakpoint[res.media],
+				}
+
+			if process == 'production'
+				if props.webp
+					source(srcset=`../images/${res.name}.webp`, media=`(min-width: ${res.media}px)`, type='image/webp')
+				source(srcset=`../images/${res.name}.${res.format}`, media=`(min-width: ${res.media}px)`)
+			else
+				source(srcset=`/assets/images/${res.name}.${res.format}`, media=`(min-width: ${res.media}px)`)
+
+		if process == 'production'
+			if props.webp
+				source(srcset=`../images/${name}.webp`, type='image/webp')
+			img(
+				src=`../images/${name}.${props.format}`,
+				alt=props.alt,
+				loading=props.loading,
+				width=props.width,
+				height=props.height
+			)
+		else
+			img(
+				src=`/assets/images/${name}.${props.format}`,
+				alt=props.alt,
+				loading=props.loading,
+				width=props.width,
+				height=props.height
+			)

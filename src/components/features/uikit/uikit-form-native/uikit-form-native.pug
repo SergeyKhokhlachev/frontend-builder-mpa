@@ -1,0 +1,125 @@
+mixin form-uikit-native
+	form.ui-kit__form(novalidate)&attributes(attributes)
+		-
+			const FORM_SCHEMA = {
+				name: {
+					id: 'ui-native-name',
+					name: 'name',
+					value: '',
+					label: 'Имя',
+					placeholder: 'Введите Имя',
+					autocomplete: 'given-name',
+					required: true,
+				},
+				email: {
+					id: 'ui-native-email',
+					name: 'email',
+					value: 'email@gmail.com',
+					type: 'email',
+					label: 'Email',
+					placeholder: 'Введите Email',
+					autocomplete: 'email',
+					required: true,
+				},
+				tel: {
+					id: 'ui-native-tel',
+					name: 'tel',
+					value: '+7 (232) 321-31-23',
+					type: 'tel',
+					label: 'Телефон',
+					placeholder: '+7(___) ___-__-__',
+					autocomplete: 'tel',
+					required: true,
+				},
+				password: {
+					id: 'ui-native-password',
+					name: 'password',
+					value: '',
+					type: 'password',
+					label: 'Пароль',
+					placeholder: 'Введите Пароль',
+					autocomplete: 'new-password',
+					required: true,
+				},
+				select: {
+					id: 'ui-native-select',
+					name: 'select',
+					value: '',
+					label: 'Способ доставки',
+					placeholder: 'Выберите из списка...',
+					options: [
+						{ id: 'ui-native-select-courier', value: 'courier', label: 'Курьер' },
+						{ id: 'ui-native-select-post', value: 'post', label: 'Почта' },
+						{ id: 'ui-native-select-pickup', value: 'pickup', label: 'Самовывоз' },
+						{ id: 'ui-native-select-express', value: 'express', label: 'Экспресс' },
+						{ id: 'ui-native-select-ems', value: 'ems', label: 'EMS' },
+					],
+					required: true,
+				},
+				file: {
+					id: 'ui-native-file',
+					name: 'file',
+					value: '',
+					label: 'Фото',
+					multiple: true,
+					required: true,
+				},
+				textarea: {
+					id: 'ui-native-textarea',
+					name: 'textarea',
+					value: '',
+					label: 'Текст',
+					placeholder: 'Введите текст',
+					required: false,
+				},
+				code: {
+					id: 'ui-native-code',
+					name: 'code',
+					value: '',
+					label: 'SMS код',
+					required: true,
+				},
+				radio: {
+					id: 'ui-native-radio',
+					name: 'radio',
+					value: 'courier',
+					legend: 'Выберите способ доставки',
+					options: [
+						{ id: 'ui-native-radio-courier', value: 'courier', label: 'Курьер' },
+						{ id: 'ui-native-radio-post', value: 'post', label: 'Почта' },
+						{ id: 'ui-native-radio-pickup', value: 'pickup', label: 'Самовывоз' },
+					],
+					required: false,
+				},
+				checkbox: {
+					id: 'ui-native-checkbox',
+					name: 'checkbox',
+					value: 'confirm',
+					checked: false,
+					required: true,
+				},
+			}
+
+		.ui-kit__form-element
+			+form-input(FORM_SCHEMA.name)
+		.ui-kit__form-element
+			+form-input(FORM_SCHEMA.email)
+		.ui-kit__form-element
+			+form-input(FORM_SCHEMA.tel)
+		.ui-kit__form-element
+			+form-input(FORM_SCHEMA.password)
+		.ui-kit__form-element
+			+form-select(FORM_SCHEMA.select)
+		.ui-kit__form-element
+			+form-file(FORM_SCHEMA.file)
+		.ui-kit__form-element
+			+form-textarea(FORM_SCHEMA.textarea)
+		.ui-kit__form-element
+			+form-code(FORM_SCHEMA.code)
+		.ui-kit__form-element
+			+form-radio(FORM_SCHEMA.radio)
+		.ui-kit__form-element
+			+form-checkbox(FORM_SCHEMA.checkbox)
+				| Согласен с условиями <a href="#" class="link">политики конфиденциальности</a>
+		button.button.button--primary(type='submit', disabled='true')
+			span Отправить

@@ -1,0 +1,26 @@
+extends /layout/layout
+
+include /components/features/product/product-block/product-block
+include /components/features/product/product-viewed/product-viewed
+
+block data
+	include /api/data/products
+	-
+		const breadcrumbs = {
+			'Главная': '/pages/main.html',
+			'Каталог': '/pages/category.html',
+			'Одежда': '/pages/catalog.html',
+			'Куртка треккинговая North Face': '',
+		}
+
+		const productsViewed = products.slice(0,6);
+
+block main
+	.page(data-barba='container', data-barba-namespace='product')
+		+breadcrumbs(breadcrumbs)
+		.product.container
+			+product-block(products[0])
+		section.section.section--padding.section--color
+			.container
+				h2.page-title Ранее вы смотрели
+				+product-viewed(productsViewed)

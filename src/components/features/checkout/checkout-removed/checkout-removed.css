@@ -1,0 +1,65 @@
+.checkout-removed {
+	display: flex;
+	gap: 24px;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.checkout-removed__name {
+	width: 100%;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--color-text-alternate);
+
+	a {
+		color: var(--color-text-primary);
+	}
+
+	@mixin media $tablet {
+		font-size: 14px;
+	}
+}
+
+.checkout-removed__button {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	color: var(--color-text-alternate);
+	transition: color var(--transition);
+
+	.icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	@mixin hover {
+		color: var(--color-primary-hover);
+	}
+
+	@mixin active {
+		color: var(--color-primary-active);
+	}
+
+	@mixin media $tablet {
+		width: 32px;
+		height: 32px;
+
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	@mixin media $laptop {
+		top: 18px;
+		right: 18px;
+	}
+
+	@mixin media $desktopM {
+		top: 32px;
+		right: 32px;
+	}
+}

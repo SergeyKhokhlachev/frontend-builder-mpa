@@ -1,0 +1,201 @@
+.form-file__box {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+}
+
+.form-file__preview {
+	position: absolute;
+	top: 0;
+	left: 0;
+	flex-shrink: 0;
+	width: 80px;
+	height: 80px;
+}
+
+.form-file__ext {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	padding: 10px;
+	background-color: var(--color-background-alternate);
+	border: 1px dashed var(--color-line-secondary);
+	border-radius: var(--radius-small);
+
+	.icon {
+		width: 36px;
+		height: 36px;
+		margin-bottom: 4px;
+		color: var(--color-text-alternate);
+	}
+
+	span {
+		font-size: 14px;
+		color: var(--color-text-alternate);
+	}
+}
+
+.form-file__content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	min-height: 80px;
+	margin-left: 96px;
+}
+
+.form-file__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	color: var(--color-text-alternate);
+	cursor: pointer;
+	background-color: var(--color-background-alternate);
+	border: 1px dashed var(--color-line-secondary);
+	border-radius: var(--radius-small);
+
+	.icon {
+		width: 44px;
+		height: 44px;
+	}
+}
+
+.form-file__link {
+	margin-bottom: 4px;
+	cursor: pointer;
+}
+
+.form-file__text {
+	font-size: 12px;
+	color: var(--color-text-alternate);
+}
+
+.form-file__vue {
+	display: none;
+	gap: 16px;
+	overflow: auto;
+	scrollbar-gutter: stable;
+	overscroll-behavior: contain;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+}
+
+.form-file__item {
+	position: relative;
+	flex-shrink: 0;
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	border-radius: var(--radius-small);
+
+	img,
+	video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.form-file__remove {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	z-index: 2;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	color: var(--color-text-light);
+	background-color: var(--color-text-primary);
+	border-radius: 50%;
+	transition:
+		color var(--transition),
+		background-color var(--transition);
+
+	.icon {
+		width: 12px;
+		height: 12px;
+	}
+
+	@mixin hover {
+		color: var(--color-text-primary);
+		background-color: var(--color-text-light);
+	}
+}
+
+.form-file {
+	width: 100%;
+	padding: 12px;
+	background-color: var(--color-background-secondary);
+	border: 1px dashed var(--color-line-secondary);
+	transition: background-color var(--transition);
+
+	.form-input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		padding: 0;
+		border: none;
+		opacity: 0;
+	}
+
+	&.active {
+		.form-file__vue {
+			display: flex;
+		}
+
+		.form-input ~ .form-file__box {
+			.form-file__preview {
+				display: none;
+			}
+
+			.form-file__vue {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+
+		.form-input[multiple] ~ .form-file__box {
+			.form-file__preview {
+				display: block;
+			}
+
+			.form-file__content {
+				display: none;
+			}
+
+			.form-file__vue {
+				position: static;
+				margin-left: 92px;
+			}
+
+			.form-file__remove {
+				display: flex;
+			}
+		}
+	}
+}
+
+.form-element {
+	&.disabled {
+		pointer-events: none;
+
+		.form-file {
+			background-color: var(--color-background-secondary);
+			opacity: 0.5;
+		}
+	}
+
+	&.error {
+		.form-file {
+			border-color: var(--color-error);
+		}
+	}
+}

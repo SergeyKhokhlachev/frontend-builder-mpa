@@ -1,0 +1,61 @@
+/* stylelint-disable custom-property-pattern */
+:root {
+	/* color primary */
+	--color-primary: #2564e4;
+	--color-primary-hover: #447be7;
+	--color-primary-active: #1f4eab;
+	--color-primary-disabled: #94b4f1;
+
+	/* color secondary */
+	--color-secondary: #eff3f5;
+	--color-secondary-hover: #dff0ff;
+	--color-secondary-active: #d6e8f8;
+	--color-secondary-disabled: #f4f4f4;
+
+	/* color accent */
+	--color-accent: #ff842b;
+	--color-accent-hover: #ff9446;
+	--color-accent-active: #e07426;
+	--color-accent-disabled: #ffd2b0;
+
+	/* color status */
+	--color-error: #f04848;
+	--color-warning: #ff842b;
+	--color-success: #23ac00;
+
+	/* color text */
+	--color-text-primary: #1b2125;
+	--color-text-secondary: #5c5d65;
+	--color-text-alternate: #838891;
+	--color-text-disabled: #bfc2d1;
+	--color-text-light: #fff;
+
+	/* color line */
+	--color-line-primary: #dde3e8;
+	--color-line-secondary: #c8d1da;
+	--color-line-alternate: #ece2c8;
+
+	/* color background */
+	--color-background-primary: #fff;
+	--color-background-secondary: #f4f4f4;
+	--color-background-alternate: #eff3f5;
+	--color-background-accent: #dff0ff;
+
+	/* shadow */
+	--shadow-small: 0 2px 4px rgb(0 35 11 / 20%);
+	--shadow-medium: 0 0 20px 0 rgb(27 33 37 / 15%);
+	--shadow-large: 0 0 36px 0 rgb(27 33 37 / 15%);
+
+	/* radius */
+	--radius-small: 4px;
+	--radius-large: 18px;
+
+	/* size */
+	--size-padding-small: 16px;
+	--size-padding-medium: 32px;
+	--size-padding-large: 48px;
+	--size-container-medium: 1520px;
+
+	/* transition */
+	--transition: 0.3s ease-in-out;
+}

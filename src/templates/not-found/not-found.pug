@@ -1,0 +1,11 @@
+extends /layout/layout
+
+block data
+
+block main
+	.page(data-barba='container', data-barba-namespace='not-found')
+		.not-found.container
+			.not-found__error 404
+			.not-found__title Страница не найдена
+			.not-found__text Неправильно набран адрес или такой страницы не существует
+			a.button.button--primary(href='/') На главную

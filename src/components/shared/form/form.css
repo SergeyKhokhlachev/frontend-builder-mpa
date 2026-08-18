@@ -1,0 +1,8 @@
+@import '@/components/shared/form/form-element/form-element';
+@import '@/components/shared/form/form-input/form-input';
+@import '@/components/shared/form/form-textarea/form-textarea';
+@import '@/components/shared/form/form-checkbox/form-checkbox';
+@import '@/components/shared/form/form-radio/form-radio';
+@import '@/components/shared/form/form-select/form-select';
+@import '@/components/shared/form/form-file/form-file';
+@import '@/components/shared/form/form-code/form-code';

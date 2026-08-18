@@ -1,0 +1,374 @@
+extends /layout/layout
+
+include /components/features/uikit/uikit-form-native/uikit-form-native
+
+block data
+	include /api/data/ui-kit/color-array
+	include /api/data/ui-kit/icon-array
+
+block main
+	.page(data-barba='container', data-barba-namespace='ui-kit')
+		.ui-kit.container
+			section.ui-kit__section
+				h2.ui-kit__title COLOR
+				.ui-kit__content
+					each category in colorArray
+						.ui-kit__title-sub= category.title
+						.ui-kit__list
+							each item in category.list
+								.ui-kit__color(style=`background-color: var(--${item})`, data-icon='icon')
+									span= item
+
+			section.ui-kit__section
+				h2.ui-kit__title ICON
+				.ui-kit__content
+					.ui-kit__list
+						each icon in iconArray
+							.ui-kit__icon
+								+icon(icon)
+								span= icon
+
+			section.ui-kit__section
+				.ui-kit__title ELEMENTS
+				.ui-kit__content
+					.ui-kit__title-sub links
+					.ui-kit__list
+						.ui-kit__item
+							a.link(href='#', aria-label='link')
+								span link
+						.ui-kit__item
+							a.link.link--dashed(href='#', aria-label='link--dashed')
+								span link--dashed
+					.ui-kit__title-sub buttons
+					.ui-kit__list
+						.ui-kit__item
+							button.button.button--primary(type='button', aria-label='button primary')
+								span button primary
+						.ui-kit__item
+							button.button.button--secondary(type='button', aria-label='button secondary')
+								span button secondary
+						.ui-kit__item
+							button.button.button--accent(type='button', aria-label='button accent')
+								span button accent
+						.ui-kit__item
+							button.button.button--outline(type='button', aria-label='button outline')
+								span button outline
+					.ui-kit__list
+						.ui-kit__item
+							button.button.button--primary.loading(type='button', aria-label='button primary')
+								span button primary
+						.ui-kit__item
+							button.button.button--secondary.loading(type='button', aria-label='button secondary')
+								span button secondary
+						.ui-kit__item
+							button.button.button--accent.loading(type='button', aria-label='button accent')
+								span button accent
+						.ui-kit__item
+							button.button.button--outline.loading(type='button', aria-label='button outline')
+								span button outline
+					.ui-kit__list
+						.ui-kit__item
+							button.button.button--primary(type='button', aria-label='button primary', disabled)
+								span button primary
+						.ui-kit__item
+							button.button.button--secondary(type='button', aria-label='button secondary', disabled)
+								span button secondary
+						.ui-kit__item
+							button.button.button--accent(type='button', aria-label='button accent', disabled)
+								span button accent
+						.ui-kit__item
+							button.button.button--outline(type='button', aria-label='button outline', disabled)
+								span button outline
+
+			section.ui-kit__section
+				h2.ui-kit__title UI COMPONENTS
+				.ui-kit__content
+					h3.ui-kit__title-sub collapse
+					.ui-kit__block
+						.collapse.js-collapse
+							.ui-kit__element.collapse__element.js-collapse__element
+								button.ui-kit__item.button.button--primary.collapse__button.js-collapse__button(
+									type='button',
+									aria-expanded='false',
+									aria-controls='ui-collapse-1'
+								)
+									span Collapse 1
+									+icon('chevron-down').collapse__icon
+								#ui-collapse-1.collapse__content
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							.ui-kit__element.collapse__element.js-collapse__element
+								button.ui-kit__item.button.button--primary.collapse__button.js-collapse__button(
+									type='button',
+									aria-expanded='false',
+									aria-controls='ui-collapse-2'
+								)
+									span Collapse 2
+									+icon('chevron-down').collapse__icon
+								#ui-collapse-2.collapse__content
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							.ui-kit__element.collapse__element.js-collapse__element
+								button.ui-kit__item.button.button--primary.collapse__button.js-collapse__button(
+									type='button',
+									aria-expanded='false',
+									aria-controls='ui-collapse-3'
+								)
+									span Collapse 3
+									+icon('chevron-down').collapse__icon
+								#ui-collapse-3.collapse__content
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+					.ui-kit__block
+						.collapse.js-collapse(data-collapse='accordion')
+							.ui-kit__element.collapse__element.js-collapse__element
+								button.ui-kit__item.button.button--accent.collapse__button.js-collapse__button(
+									type='button',
+									aria-expanded='false',
+									aria-controls='ui-accordion-1'
+								)
+									span Accordion 1
+									+icon('chevron-down').collapse__icon
+								#ui-accordion-1.collapse__content
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							.ui-kit__element.collapse__element.js-collapse__element
+								button.ui-kit__item.button.button--accent.collapse__button.js-collapse__button(
+									type='button',
+									aria-expanded='false',
+									aria-controls='ui-accordion-2'
+								)
+									span Accordion 2
+									+icon('chevron-down').collapse__icon
+								#ui-accordion-2.collapse__content
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							.ui-kit__element.collapse__element.js-collapse__element
+								button.ui-kit__item.button.button--accent.collapse__button.js-collapse__button(
+									type='button',
+									aria-expanded='false',
+									aria-controls='ui-accordion-3'
+								)
+									span Accordion 3
+									+icon('chevron-down').collapse__icon
+								#ui-accordion-3.collapse__content
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+					h3.ui-kit__title-sub dropdown
+					.ui-kit__block
+						.ui-kit__list
+							.ui-kit__element.dropdown.js-dropdown
+								button.button.button--primary.dropdown__button.js-dropdown__button(
+									type='button',
+									aria-haspopup='menu',
+									aria-expanded='false',
+									aria-controls='ui-dropdown-1'
+								)
+									| Dropdown hover
+									+icon('chevron-down').dropdown__icon
+								#ui-dropdown-1.dropdown__content
+									ul
+										li
+											a(href='#', area-label='Cooperation') Cooperation
+										li
+											a(href='#', area-label='Certificates') Certificates
+										li
+											a(href='#', area-label='Partners') Partners
+
+							.ui-kit__element.dropdown.js-dropdown(data-dropdown='click')
+								button.button.button--primary.dropdown__button.js-dropdown__button(
+									type='button',
+									aria-haspopup='menu',
+									aria-expanded='false',
+									aria-controls='ui-dropdown-2'
+								)
+									| Dropdown click
+									+icon('chevron-down').dropdown__icon
+								#ui-dropdown-2.dropdown__content
+									ul
+										li
+											a(href='#', area-label='Cooperation') Cooperation
+										li
+											a(href='#', area-label='Certificates') Certificates
+										li
+											a(href='#', area-label='Partners') Partners
+
+					h3.ui-kit__title-sub popover / tooltip
+					.ui-kit__block
+
+					h3.ui-kit__title-sub tabs
+					.ui-kit__block
+						.tabs.js-tabs
+							.tabs__control(role='tablist', aria-label='UI Kit tabs click')
+								button#ui-tab-btn-click-1.tabs__button.js-tabs__button.active(
+									type='button',
+									role='tab',
+									aria-selected='true',
+									aria-controls='ui-tab-panel-click-1'
+								) Tab Click 1
+								button#ui-tab-btn-click-2.tabs__button.js-tabs__button(
+									type='button',
+									role='tab',
+									aria-selected='false',
+									aria-controls='ui-tab-panel-click-2',
+									tabindex='-1'
+								) Tab Click 2
+								button#ui-tab-btn-click-3.tabs__button.js-tabs__button(
+									type='button',
+									role='tab',
+									aria-selected='false',
+									aria-controls='ui-tab-panel-click-3',
+									tabindex='-1'
+								) Tab Click 3
+							#ui-tab-panel-click-1.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='ui-tab-btn-click-1')
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							#ui-tab-panel-click-2.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='ui-tab-btn-click-2', hidden)
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							#ui-tab-panel-click-3.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='ui-tab-btn-click-3', hidden)
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+					.ui-kit__block
+						.tabs.js-tabs(data-tabs='mouseenter')
+							.tabs__control(role='tablist', aria-label='UI Kit tabs hover')
+								button#ui-tab-btn-hover-1.tabs__button.js-tabs__button.active(
+									type='button',
+									role='tab',
+									aria-selected='true',
+									aria-controls='ui-tab-panel-hover-1'
+								) Tab Hover 1
+								button#ui-tab-btn-hover-2.tabs__button.js-tabs__button(
+									type='button',
+									role='tab',
+									aria-selected='false',
+									aria-controls='ui-tab-panel-hover-2',
+									tabindex='-1'
+								) Tab Hover 2
+								button#ui-tab-btn-hover-3.tabs__button.js-tabs__button(
+									type='button',
+									role='tab',
+									aria-selected='false',
+									aria-controls='ui-tab-panel-hover-3',
+									tabindex='-1'
+								) Tab Hover 3
+							#ui-tab-panel-hover-1.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='ui-tab-btn-hover-1')
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							#ui-tab-panel-hover-2.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='ui-tab-btn-hover-2', hidden)
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+							#ui-tab-panel-hover-3.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='ui-tab-btn-hover-3', hidden)
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+			section.ui-kit__section
+				.ui-kit__title FORMS
+				.ui-kit__content
+					.ui-kit__row
+						.ui-kit__col
+							h3.ui-kit__title-sub FORM VUE
+							.js-uikit-form-vue
+						.ui-kit__col
+							h3.ui-kit__title-sub FORM NATIVE
+							+form-uikit-native.js-uikit-form-native
+
+			section.ui-kit__section
+				.ui-kit__title MODAL
+				.ui-kit__content
+					.ui-kit__list
+						.ui-kit__element
+							button.button.button--primary.js-modal-open(type='button', data-modal='#ui-modal-base') modal base
+						.ui-kit__element
+							button.button.button--primary.js-modal-open(type='button', data-modal='#ui-modal-scroll') modal scroll
+						.ui-kit__element
+							a.button.button--primary.js-modal-open(href='#ui-modal-href') modal href
+						.ui-kit__element
+							button.button.button--primary.js-modal-open(type='button', data-modal='#ui-madal-cascade') madal cascade
+
+			section.ui-kit__section
+				.ui-kit__title NOTIFY
+				.ui-kit__content
+					.ui-kit__list
+						.ui-kit__element
+							button.button.button--primary.js-ui-notify(type='button', data-notify='error') notify error
+						.ui-kit__element
+							button.button.button--primary.js-ui-notify(type='button', data-notify='warning') notify warning
+						.ui-kit__element
+							button.button.button--primary.js-ui-notify(type='button', data-notify='success') notify success
+						.ui-kit__element
+							button.button.button--primary.js-ui-notify(type='button', data-notify='default') notify default
+
+		+modal-window({ id: 'modal-render' }).modal-window--medium
+			.content
+
+		+modal-window({ id: 'ui-modal-base', title: 'Modal title' }).modal-window--small
+			.content
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+		+modal-window({ id: 'ui-modal-scroll', title: 'Modal title' }).modal-window--medium
+			.content
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+		+modal-window({ id: 'ui-modal-href', title: 'Modal title' }).modal-window--medium
+			.content
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+		+modal-window({ id: 'ui-madal-cascade', title: 'Modal title' }).modal-window--medium
+			.content.ui-kit__item
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			button.button.button--primary.js-modal-open(type='button', data-modal='#ui-modal-base') open modal

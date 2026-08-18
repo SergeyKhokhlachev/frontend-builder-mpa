@@ -1,0 +1,65 @@
+mixin header-catalog(data = {}, options = {})
+	-
+		data = {
+			catalog: data.catalog || [],
+		}
+
+	mixin chunkedList(list)
+		-
+			const chunks = [];
+			const size = Math.ceil(list.length / 3);
+			for (let i = 0; i < list.length; i += size) {
+				chunks.push(list.slice(i, i + size));
+			}
+
+		each chunk in chunks
+			.header-catalog__column
+				each group in chunk
+					.header-catalog__group
+						.header-catalog__title
+							a(href='#')= group.category
+						ul
+							each item in group.items
+								li
+									a.header-catalog__link(href='#')= item
+
+	nav.header-catalog.tabs.js-tabs(data-tabs='mouseenter')&attributes(attributes)
+		.container
+			.header-catalog__aside
+				.header-catalog__scrollbox(role='tablist', aria-label='Разделы меню')
+					each item, index in data.catalog
+						a.header-catalog__category.js-tabs__button(
+							href='#',
+							id=`header-tab-btn-${item.id}`,
+							class={ active: index === 0 },
+							role='tab',
+							aria-selected='true',
+							aria-controls=`header-tab-panel-${item.id}`,
+							tabindex='-1'
+						)= item.category
+				ul.header-catalog__accent
+					li
+						a.header-catalog__item(href='#')
+							span Распродажи
+					li
+						a.header-catalog__item(href='#')
+							span Акции
+
+			.header-catalog__main
+				.header-catalog__banners
+					.header-catalog__banner
+						+picture('menu-banner-1', { alt: 'Скидка до 12% на офисную мебель', width: '337', height: '109' })
+					.header-catalog__banner
+						+picture('menu-banner-2', { alt: 'Скидка до 30% на текстиль', width: '338', height: '109' })
+					.header-catalog__banner
+						+picture('menu-banner-3', { alt: 'Скидка до 20% на столики', width: '337', height: '109' })
+
+				each tab, index in data.catalog
+					.header-catalog__box.tabs__element.js-tabs__element(
+						id=`header-tab-panel-${tab.id}`,
+						class={ active: index === 0 },
+						data-tab=tab.category,
+						role='tabpanel',
+						aria-labelledby=`header-tab-btn-${tab.id}`
+					)
+						+chunkedList(tab.items)

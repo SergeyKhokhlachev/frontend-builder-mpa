@@ -1,0 +1,14 @@
+mixin breadcrumbs(props = {})
+	-
+		props = props || { '': '' };
+
+	nav.breadcrumbs(aria-label='Навигация по разделам')&attributes(attributes)
+		.container
+			ol.breadcrumbs__list
+				each href, name in props
+					li.breadcrumbs__item
+						if href
+							a(href=href)= name
+							+icon('chevron-right')
+						else
+							span(aria-current='page')= name

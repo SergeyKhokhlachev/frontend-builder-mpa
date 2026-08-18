@@ -1,0 +1,65 @@
+.main-faq__button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px 6px 10px 0;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: var(--color-text-alternate);
+	cursor: pointer;
+	border-bottom: 1px solid var(--color-line-primary);
+	transition:
+		color var(--transition),
+		border-color var(--transition);
+
+	.icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	@mixin media $tablet {
+		min-height: 70px;
+		padding: 10px 13px 10px 20px;
+		font-size: 16px;
+
+		.icon {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	@mixin hover {
+		color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+}
+
+.main-faq__content {
+	padding: 16px 0;
+	line-height: 1.5;
+
+	@mixin media $tablet {
+		padding: 20px;
+	}
+}
+
+.main-faq__more {
+	display: flex;
+	width: 264px;
+	margin: 24px auto 0;
+
+	@mixin media $tablet {
+		margin: 32px auto 0;
+	}
+}
+
+.main-faq__element {
+	&.active {
+		.main-faq__button {
+			color: var(--color-primary);
+			border-color: var(--color-primary);
+		}
+	}
+}

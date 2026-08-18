@@ -1,0 +1,11 @@
+extends /layout/layout
+
+block data
+
+block main
+	.page(data-barba='container', data-barba-namespace='checkout')
+		.container
+			a.page-back(href='/pages/catalog.html')
+				+icon('arrow-left')
+				span Вернуться к покупкам
+			.js-checkout-vue

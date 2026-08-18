@@ -1,0 +1,238 @@
+.shops {
+	margin-bottom: 40px;
+	border: 1px solid var(--color-line-primary);
+	border-radius: var(--radius-small);
+
+	@mixin media $tablet {
+		margin-bottom: 60px;
+	}
+
+	@mixin media $laptop {
+		display: flex;
+		flex-direction: row-reverse;
+		height: 600px;
+	}
+
+	@mixin media $desktopM {
+		margin-bottom: 70px;
+	}
+}
+
+.shops__map {
+	position: relative;
+	height: 480px;
+
+	.shops_ymap {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+	@mixin media $laptop {
+		flex: 1;
+		width: 50%;
+		height: initial;
+		max-height: initial;
+	}
+}
+
+.shops__list {
+	height: 420px;
+	overflow: auto;
+	overscroll-behavior: auto;
+	scrollbar-color: var(--color-line-secondary) var(--color-background-secondary);
+	scrollbar-width: thin;
+	background-color: var(--color-background-primary);
+
+	@mixin media $laptop {
+		flex-shrink: 0;
+		width: 368px;
+		height: initial;
+		max-height: initial;
+	}
+}
+
+/* shops-item */
+.shops-item {
+	padding: 20px;
+	font-size: 14px;
+	line-height: 1.5;
+	cursor: pointer;
+	border-bottom: 1px solid var(--color-line-primary);
+	transition: background-color var(--transition);
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	&.active {
+		cursor: default;
+		background-color: var(--color-background-secondary);
+	}
+
+	@mixin media $tablet {
+		padding-left: 30px;
+	}
+
+	@mixin hover {
+		background-color: var(--color-background-secondary);
+	}
+}
+
+.shops-item__content {
+	max-width: 320px;
+}
+
+.shops-item__name {
+	font-weight: 500;
+}
+
+.shops-item__address {
+	font-style: normal;
+	color: var(--color-text-alternate);
+}
+
+.shops-item__phone {
+	font-size: 12px;
+}
+
+/* shops-marker */
+.shops-marker {
+	display: flex;
+	width: 48px;
+	height: 48px;
+
+	img {
+		width: 100%;
+	}
+}
+
+/* shops-popup */
+.shops-popup {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	visibility: hidden;
+	width: 100%;
+	padding: 16px;
+	font-size: 14px;
+	background-color: var(--color-background-primary);
+	border-bottom: 1px solid var(--color-line-primary);
+	opacity: 0;
+	transform: translateY(10px);
+	transition:
+		opacity var(--transition),
+		visibility var(--transition),
+		transform var(--transition);
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@mixin media $tablet {
+		top: 16px;
+		right: 16px;
+		bottom: auto;
+		width: 280px;
+		padding: 24px;
+		border-bottom: none;
+		border-radius: var(--radius-small);
+		box-shadow: var(--shadow-medium);
+	}
+}
+
+.shops-popup__close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: color var(--transition);
+
+	.icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	@mixin hover {
+		color: var(--color-primary);
+	}
+
+	@mixin active {
+		color: var(--color-primary-active);
+	}
+}
+
+.shops-popup__name {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.shops-popup__address {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+	font-size: 11px;
+	font-style: normal;
+	color: var(--color-text-alternate);
+
+	@mixin media $tablet {
+		margin-bottom: 16px;
+		font-size: 12px;
+	}
+}
+
+.shops-popup__list {
+	font-size: 11px;
+	color: var(--color-text-primary);
+
+	@mixin media $tablet {
+		font-size: 12px;
+	}
+}
+
+.shops-popup__box {
+	margin-bottom: 8px;
+	font-size: 11px;
+	line-height: 1.5;
+	color: var(--color-text-alternate);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	@mixin media $tablet {
+		margin-bottom: 12px;
+		font-size: 12px;
+	}
+}
+
+.shops-popup__title {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	margin-bottom: 3px;
+	font-size: 11px;
+	line-height: 1;
+	color: var(--color-text-disabled);
+	text-transform: uppercase;
+
+	.icon {
+		width: 11px;
+		height: 11px;
+	}
+
+	@mixin media $tablet {
+		margin-bottom: 6px;
+		font-size: 13px;
+
+		.icon {
+			width: 13px;
+			height: 13px;
+		}
+	}
+}

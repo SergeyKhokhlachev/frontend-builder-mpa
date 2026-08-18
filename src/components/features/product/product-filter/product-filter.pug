@@ -1,0 +1,234 @@
+mixin product-filter(props = {})
+	-
+		const categories = [
+			{
+				name: 'Комбинезоны и полукомбинезоны',
+				quantity: '12',
+			},
+			{
+				name: 'Куртки мужские',
+				quantity: '116',
+			},
+			{
+				name: 'Толстовки и худи',
+				quantity: '06',
+			},
+			{
+				name: 'Брюки',
+				quantity: '14',
+			},
+			{
+				name: 'Футболки',
+				quantity: '47',
+				active: true,
+			},
+			{
+				name: 'Термобелье',
+				quantity: '19',
+			},
+			{
+				name: 'Головные уборы',
+				quantity: '163',
+			}
+		];
+
+		const FORM_SCHEMA = [
+			{
+				id: 'filter-brands',
+				name: 'Бренд',
+				items: [
+					{
+						id: 'checkbox-columbia',
+						name: 'columbia',
+						checked: false,
+						label: 'Columbia',
+						quantity: '26',
+					},
+					{
+						id: 'checkbox-mountainHardwear',
+						name: 'mountainHardwear',
+						checked: false,
+						label: 'Mountain Hardwear',
+						quantity: '12',
+					},
+					{
+						id: 'checkbox-salomon',
+						name: 'salomon',
+						checked: false,
+						label: 'Salomon',
+						quantity: '16',
+					},
+					{
+						id: 'checkbox-fjallraven',
+						name: 'fjallraven',
+						checked: false,
+						label: 'Fjallraven',
+						quantity: '32',
+					},
+					{
+						id: 'checkbox-adidas',
+						name: 'adidas',
+						checked: false,
+						label: 'Adidas',
+						quantity: '10',
+					},
+					{
+						id: 'checkbox-bershka',
+						name: 'bershka',
+						checked: false,
+						label: 'Bershka',
+						quantity: '24',
+					},
+					{
+						id: 'checkbox-camelot',
+						name: 'camelot',
+						checked: false,
+						label: 'Camelot',
+						quantity: '35',
+					},
+					{
+						id: 'checkbox-topMag',
+						name: 'topMag',
+						checked: false,
+						label: 'TopMag',
+						quantity: '07',
+					}
+				]
+			},
+			{
+				id: 'filter-fabric',
+				name: 'Тип ткани',
+				items: [
+					{
+						id: 'checkbox-textile',
+						name: 'textile',
+						checked: false,
+						label: 'Текстиль',
+						quantity: '46',
+					},
+					{
+						id: 'checkbox-knitwear',
+						name: 'knitwear',
+						checked: false,
+						label: 'Трикотаж',
+						quantity: '72',
+					},
+				]
+			},
+			{
+				id: 'filter-colors',
+				name: 'Цвет',
+				items: [
+					{
+						id: 'checkbox-black',
+						name: 'black',
+						checked: false,
+						label: 'Черный',
+						quantity: '12',
+						color: '#000000',
+					},
+					{
+						id: 'checkbox-blue',
+						name: 'blue',
+						checked: false,
+						label: 'Синий',
+						quantity: '18',
+						color: '#2968E3',
+					},
+					{
+						id: 'checkbox-beige',
+						name: 'beige',
+						checked: false,
+						label: 'Бежевый',
+						quantity: '07',
+						color: '#D9C29D',
+					},
+					{
+						id: 'checkbox-white',
+						name: 'white',
+						checked: false,
+						label: 'Белый',
+						quantity: '25',
+						color: '#ffffff',
+					},
+				]
+			}
+		]
+
+
+	form.product-filter.js-filter(novalidate)&attributes(attributes)
+		.product-filter__wrapper
+			header.product-filter__header
+				.product-filter__title Фильтр
+				button.product-filter__close.js-filter-close(type='button', aria-label='Закрыть фильтр')
+					+icon('close')
+			.product-filter__body.collapse.js-collapse
+				.product-filter__block
+					.product-filter__head.product-filter__chosen
+						span.product-filter__name Ваш выбор
+						button.product-filter__reset.link--dashed(type='button', aria-label='Сбросить все фильтры')
+							span Сбросить
+					.product-filter__items
+						.product-filter__item
+							span Columbia
+							button(type='button', aria-label='Удалить параметр фильтра')
+								+icon('close')
+						.product-filter__item
+							span Трикотаж
+							button(type='button', aria-label='Удалить параметр фильтра')
+								+icon('close')
+				.product-filter__block.collapse__element.active.js-collapse__element
+					.product-filter__head.collapse__button.js-collapse__button(aria-expanded='true', aria-controls='filter-categories')
+						span.product-filter__name Категории
+						+icon('chevron-down').collapse__icon
+					ul#filter-categories.product-filter__list.collapse__content
+						each category in categories
+							li
+								if category.active
+									span.product-filter__link.active
+										span= category.name
+										span.product-filter__quantity (#{ category.quantity })
+								else
+									a.product-filter__link(href='#')
+										span= category.name
+										span.product-filter__quantity (#{ category.quantity })
+
+				label.product-filter__block
+					.product-filter__head
+						span.product-filter__name Товары по акции
+						input.product-filter__swich(type='checkbox', name='action')
+						span.product-filter__vuew
+
+				label.product-filter__block
+					.product-filter__head
+						span.product-filter__name Товары по скидке
+						input.product-filter__swich(type='checkbox', name='sale')
+						span.product-filter__vuew
+
+				each group in FORM_SCHEMA
+					fieldset
+						.product-filter__block.collapse__element.js-collapse__element
+							legend.product-filter__head.collapse__button.js-collapse__button(
+								role='button',
+								aria-expanded='false',
+								aria-controls=group.id
+							)
+								span.product-filter__name= group.name
+								+icon('chevron-down').collapse__icon
+							.product-filter__group.collapse__content(id=group.id)
+								.product-filter__scroll
+									each item in group.items
+										+form-checkbox(item)
+											if item.color
+												span.product-filter__color(style='background: ' + item.color)
+											span= item.label
+											if item.quantity
+												span.product-filter__quantity (#{ item.quantity })
+
+			footer.product-filter__footer
+				.product-filter__result Найдено 130 товаров
+				.product-filter__buttons
+					button.button.button--primary(type='button')
+						span Применить
+					button.button.button--secondary(type='button')
+						span Сбросить

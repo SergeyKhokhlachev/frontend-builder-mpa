@@ -1,0 +1,17 @@
+mixin modal-window(props = {})
+	-
+		props = {
+			id: props.id || '',
+			title: props.title || '',
+			text: props.text || '',
+		}
+
+	.modal-window.hidden.js-modal(id=props.id, role='dialog', aria-modal='true')&attributes(attributes)
+		button.modal-window__close.js-modal-close(type='button', aria-label='Закрыть')
+			+icon('close')
+		.modal-window__content.js-modal__content
+			if props.title
+				h3.modal-window__title !{ props.title }
+			if props.text
+				.modal-window__text !{ props.text }
+			block

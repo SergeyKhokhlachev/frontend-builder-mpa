@@ -1,0 +1,147 @@
+@import '@/components/features/uikit/uikit-render/render';
+
+.ui-kit {
+	padding-top: 40px;
+	padding-bottom: 80px;
+}
+
+.ui-kit__section {
+	padding: 20px 0;
+}
+
+.ui-kit__content {
+	padding: 20px 0 10px;
+	border-top: 1px dashed var(--color-line-secondary);
+	border-bottom: 1px dashed var(--color-line-secondary);
+}
+
+.ui-kit__row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 32px;
+}
+
+.ui-kit__col {
+	width: 100%;
+
+	@mixin media $tablet {
+		width: calc(50% - (10px * 1) / 2);
+	}
+
+	@mixin media $laptop {
+		width: calc(33.33% - (32px * 2) / 3);
+	}
+}
+
+.ui-kit__title {
+	margin-bottom: 14px;
+	font-size: 26px;
+	font-weight: 600;
+	color: var(--color-text-secondary);
+	text-transform: uppercase;
+	opacity: 0.2;
+}
+
+.ui-kit__title-sub {
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--color-text-secondary);
+	text-transform: uppercase;
+	opacity: 0.2;
+}
+
+.ui-kit__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 16px;
+
+	@mixin media $tablet {
+		gap: 20px;
+	}
+}
+
+.ui-kit__block {
+	margin-bottom: 24px;
+}
+
+.ui-kit__element {
+	margin-bottom: 16px;
+}
+
+.ui-kit__item {
+	margin-bottom: 8px;
+}
+
+.ui-kit__color {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: calc(50% - (10px * 1) / 2);
+	min-height: 50px;
+	outline: 1px dashed var(--color-line-secondary);
+
+	span {
+		display: inline-block;
+		padding: 2px 5px;
+		font-size: 10px;
+		font-weight: 500;
+		color: var(--color-text-primary);
+		background-color: rgb(255 255 255 / 50%);
+		border-radius: 4px;
+	}
+
+	@mixin media $tablet {
+		width: calc(25% - (20px * 3) / 4);
+
+		span {
+			font-size: 12px;
+		}
+	}
+}
+
+.ui-kit__icon {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	align-items: center;
+	margin-bottom: 6px;
+	font-size: 8px;
+
+	.icon {
+		width: 60px;
+		height: 60px;
+		outline: 1px dashed var(--color-line-secondary);
+	}
+
+	@mixin media $tablet {
+		font-size: 10px;
+
+		.icon {
+			width: 72px;
+			height: 72px;
+		}
+	}
+}
+
+.ui-kit__tab {
+	display: flex;
+	padding-bottom: 4px;
+
+	&.active {
+		border-bottom: 1px solid var(--color-text-primary);
+	}
+}
+
+.ui-kit__form {
+	padding: 20px 0 40px;
+
+	.button {
+		margin-top: 8px;
+	}
+}
+
+.ui-kit__form-element {
+	margin-bottom: 24px;
+}

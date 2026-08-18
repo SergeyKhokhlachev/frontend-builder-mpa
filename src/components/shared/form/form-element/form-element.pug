@@ -1,0 +1,22 @@
+mixin form-element(props = {})
+	-
+		props = {
+			label: props.label || false,
+			describe: props.describe || false,
+			required: props.required || false,
+			disabled: props.disabled || false,
+		}
+
+	.form-element.js-form-element(class={ disabled: props.disabled })&attributes(attributes)
+		if props.label
+			label.form-element__label
+				span= props.label
+				if props.required
+					span.form-element__required(aria-hidden='true') *
+
+		block
+
+		if props.describe
+			.form-element__describe= props.describe
+
+		.form-element__message.js-form-element__message

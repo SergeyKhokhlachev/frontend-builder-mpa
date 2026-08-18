@@ -2,21 +2,26 @@
 
 ## Basic commands
 
--  `npm i` - установить зависимости
--  `npm run dev` - запустить режим разработки
--  `npm run build` - создать build для продакшена
--  `npm run build:empty` - создать build для продакшена c очисткой директории билда
--  `npm run preview` - предпросмотр build для продакшена
+- `npm i` - установить зависимости
+- `npm run dev` - запустить режим разработки
+- `npm run build` - создать build для продакшена
+- `npm run build:empty` - создать build для продакшена c очисткой директории билда
+- `npm run preview` - предпросмотр build для продакшена
 
 ## Additional commands
 
--  `npm run docs` - cгенерировать документацию для компонентов
--  `npm run eslint` - запустить линтер скриптов
--  `npm run stylelint` - запустить линтер стилей
+- `npm run docs` - cгенерировать документацию для компонентов
+- `npm run eslint` - запустить линтер скриптов
+- `npm run stylelint` - запустить линтер стилей
+
+## Getting started
+
+- установить зависимости `npm i`
+- запустить режим разработки `npm run dev`
 
 ## Specification
 
-> Vite 4 - Rollup - ES module
+> Vite - Rollup - ES module
 
 > TypeScript - Pug - PostCSS
 
@@ -28,15 +33,12 @@
 
 ---
 
--  [**EditorConfig**](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
--  [**Prettier**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
--  [**ESLint**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
--  [**Stylelint**](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
--  [**CSS Variable Autocomplete**](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables)
--  [**PostCSS Intellisense and Highlighting**](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-postcss)
--  [**Vetur**](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
--  [**Vue Language Features**](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
--  [**TypeScript Vue Plugin**](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
+- [**EditorConfig**](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [**Prettier**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [**ESLint**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [**Stylelint**](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+- [**PostCSS Intellisense and Highlighting**](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-postcss)
+- [**Vue (Official)**](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ### Structure
 
@@ -44,44 +46,47 @@
 
 ```
 root
-| - pages
+| - email
+| - plugins
 | - public
-| - assets
-| - source
+| - src
 ```
 
--  **pages** - html страницы, каждая страница автоматически добавляется в сборку как отдельная точка входа
--  **public** - статичные ресурсы, при сборке на продакшен все содержимое, с сохранением структуры папок, переноситься в директорию с билдом
--  **assets** - svg _иконки_ (при билде генерируется спрайт) и _картинки_ (при билде оптимизируются и генерируется дубликат в формате webp для jpg и png)
--  **source** - исходники проекта
+- **email** - шаблоны email рассылок
+- **plugins** - кастомные плагины vite
+- **public** - статичные ресурсы, при сборке на продакшен все содержимое, с сохранением структуры папок, переноситься в директорию с билдом
+- **src** - исходники проекта
 
 ---
 
 ```
-source
+src
 |- api
-|- app
+|- assets
+|- common
+|- components
+|- layout
 |- pages
-|- layouts
-|- shared
-|- entities
-|- features
-|- widgets
+|- templates
 ```
 
--  **api** - интерфейсы взаимодействия с внешними сервисами
--  **app** - файлы базовой конфигурации, сборка ядра проекта
--  **pages** - сборка компонентов, подключаемых на страницах
--  **layouts** - шаблоны страниц
--  **shared** - базовые элементы UI, не обладающие бизнес логикой
--  **entities** - компоненты реализующие часть логики фичи
--  **features** - компоненты реализующие логику отдельной фичи
--  **widgets** - составные компоненты, включающие в себя реализацию нескольких фич
+- **api** - интерфейсы взаимодействия с внешними сервисами
+- **assets** - svg _иконки_ (при билде генерируется спрайт) и _картинки_ (при билде оптимизируются и генерируется дубликат в формате webp для jpg и png)
+- **common** - файлы базовой конфигурации проекта
+- **components** - компоненты
+- **layout** - layout и его компоненты
+- **pages** - html страницы, точками входа для Vite
+- **templates** - сборка компонентов, для подключения к html странице
 
-### Development
+```
+src/components
+| - features
+| - shared
+| - vendor
+```
+
+- **features** - компоненты бизнес логики
+- **shared** - общие компоненты UI
+- **vendor** - переопределение стилей сторонних плагинов
 
 ---
-
--  [**Создание страницы**](#)
--  [**Создание компонента**](#)
--  [**Работа с иконками и картинками**](#)

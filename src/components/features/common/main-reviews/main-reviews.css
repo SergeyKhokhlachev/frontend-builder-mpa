@@ -1,0 +1,32 @@
+@import '@/components/features/reviews/reviews-card/reviews-card';
+
+.main-reviews {
+	.swiper {
+		margin-right: -8px;
+		margin-left: -8px;
+	}
+
+	.swiper-slide {
+		width: 296px;
+		height: auto;
+		padding: 0 8px;
+	}
+
+	@mixin media $tablet {
+		.swiper {
+			margin-right: -16px;
+			margin-left: -16px;
+		}
+
+		.swiper-slide {
+			width: 432px;
+			padding: 0 16px;
+		}
+	}
+
+	@mixin media $desktopS {
+		.swiper-slide {
+			width: calc(100% / 3);
+		}
+	}
+}

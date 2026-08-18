@@ -1,0 +1,44 @@
+mixin form-file(props = {})
+	-
+		props = {
+			id: props.id,
+			name: props.name,
+			label: props.label || false,
+			describe: props.describe || false,
+			title: props.title || 'Выберите фото',
+			text: props.text || 'или переместите в эту область.',
+			size: props.size || '5242880',
+			length: props.length || '5',
+			accept: props.accept || '.png,.jpg,.jpeg,.gif,.bmp',
+			multiple: props.multiple || false,
+			required: props.required || false,
+			disabled: props.disabled || false,
+		}
+
+	//- prettier-ignore
+	+form-element({
+		label: props.label,
+		describe: props.describe,
+		required: props.required,
+		disabled: props.disabled,
+	})
+		.form-file(tabindex="0", role="button", aria-label="Загрузить файлы")
+			input.form-input.js-form-file(
+				id=props.id,
+				type='file',
+				name=props.name,
+				required=props.required,
+				accept=props.accept,
+				multiple=props.multiple,
+				data-size=props.size,
+				data-length=props.length,
+			)
+			.form-file__box
+				.form-file__preview
+					label.form-file__button(for=props.id)
+						+icon('camera')
+				.form-file__vue.js-form-file__vue(role="list")
+				.form-file__content
+					label.form-file__link.link.link--dashed(for=props.id)
+						span= props.title
+					.form-file__text= props.text

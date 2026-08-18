@@ -1,0 +1,63 @@
+mixin product-card(props = {})
+	-
+		props = {
+			images: props.images || [],
+			name: props.name || '',
+			href: props.href || '#',
+			rating: props.rating || '',
+			comments: props.comments || '',
+			quantity: props.quantity || '',
+			priceNew: props.priceNew || '',
+			priceOld: props.priceOld || '',
+			markers: props.markers || [],
+			favorite: props.favorite || false,
+			available: props.available || true,
+		};
+
+	article.product-card&attributes(attributes)
+		button.favorite(
+			type='button',
+			role='checkbox',
+			aria-pressed=props.favorite,
+			aria-label='Добавить в избранное',
+			class={ active: props.favorite }
+		)
+			.favorite__icons
+				+icon('favorite')
+				+icon('favorite-fill')
+		.markers
+			each marker in props.markers
+				span.marker(style='color: ' + marker.color + '; background: ' + marker.background)= marker.value
+		a.product-card__preview(href=props.href, aria-label='Перейти на страницу товара')
+			+swiper-over.js-swiper-over
+				each image in props.images
+					.swiper-slide
+						.product-card__slide
+							+picture(image, { alt: props.name })
+
+		header.product-card__header
+			.product-card__box
+				.product-card__rating
+					+icon('star-active')
+					span= props.rating
+				.product-card__comments
+					+icon('comment')
+					span= props.comments
+			.product-card__box
+				if props.available
+					.product-card__status.available
+						| В наличии #{ props.quantity }
+				else
+					.product-card__status
+						| Нет в наличии
+
+		.product-card__content
+			h3.product-card__name
+				a(href=props.href)= props.name
+			.product-card__coast
+				span.product-card__price-new= props.priceNew + ' ₽'
+				span.product-card__price-old= props.priceOld + ' ₽'
+
+		footer.product-card__footer
+			button.button.button--primary(type='button')
+				span В корзину

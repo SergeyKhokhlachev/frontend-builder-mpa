@@ -1,0 +1,42 @@
+include /components/features/category/category-preview/category-preview
+
+mixin main-category(props = [])
+	-
+		props = [
+			{
+				image: 'category-preview-1',
+				name: 'Мебель для дома',
+				quantity: '18 товаров',
+			},
+			{
+				image: 'category-preview-2',
+				name: 'Одежда',
+				quantity: '163 товара',
+			},
+			{
+				image: 'category-preview-3',
+				name: 'Косметика',
+				quantity: '46 товаров',
+			},
+			{
+				image: 'category-preview-4',
+				name: 'Сантехника',
+				quantity: '7 товаров',
+			},
+			{
+				image: 'category-preview-5',
+				name: 'Обувь',
+				quantity: '131 товар',
+			},
+			{
+				image: 'category-preview-6',
+				name: 'Электроника',
+				quantity: '86 товаров',
+			},
+		]
+
+	.main-category&attributes(attributes)
+		+swiper-carusel.js-swiper-category(role='region', aria-label='Карусель категорий')
+			each category, index in props
+				.swiper-slide(class={ 'swiper-slide--large': index === 0 || index === 5 })
+					+category-preview(category)(role='listitem')

@@ -1,0 +1,60 @@
+.form-checkbox__control {
+	position: relative;
+}
+
+.form-checkbox__vue {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border: 1px solid var(--color-line-primary);
+	border-radius: 3px;
+	transition:
+		border-color var(--transition),
+		background-color var(--transition);
+
+	.icon {
+		width: 16px;
+		height: 16px;
+		color: var(--color-text-light);
+	}
+}
+
+.form-checkbox__input {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	cursor: pointer;
+
+	&:disabled {
+		pointer-events: none;
+	}
+
+	&:disabled ~ .form-checkbox__vue {
+		background-color: var(--color-background-secondary);
+		opacity: 0.5;
+	}
+
+	&:checked ~ .form-checkbox__vue {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+}
+
+.form-checkbox__label {
+	font-size: 14px;
+	color: var(--color-text-secondary);
+}
+
+.form-checkbox {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+
+	&.error {
+		.form-checkbox__input ~ .form-checkbox__vue {
+			border-color: var(--color-error);
+		}
+	}
+}

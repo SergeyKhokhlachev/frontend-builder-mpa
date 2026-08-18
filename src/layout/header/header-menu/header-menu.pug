@@ -1,0 +1,110 @@
+mixin header-menu(data = {}, options = {})
+	-
+		data = {
+			about: data.about || [],
+			social: data.social || [],
+			brands: data.brands || [],
+			catalog: data.catalog || [],
+		}
+
+	.header-menu&attributes(attributes)
+		.container
+			+search
+			button.header-menu__close.js-header-close(type='button', aria-label='Закрыть каталог')
+				+icon('close')
+			.header-menu__tabs.tabs.js-tabs
+				.header-menu__control.tabs__control(role='tablist', aria-label='Разделы меню')
+					button#header-tab-btn-catalog.header-menu__tab-btn.tabs__button.js-tabs__button.active(
+						type='button',
+						role='tab',
+						aria-selected='true',
+						aria-controls='header-tab-panel-catalog'
+					) Товары
+					button#header-tab-btn-company.header-menu__tab-btn.tabs__button.js-tabs__button(
+						type='button',
+						role='tab',
+						aria-selected='false',
+						aria-controls='header-tab-panel-company',
+						tabindex='-1'
+					) Компания
+					button#header-tab-btn-brands.header-menu__tab-btn.tabs__button.js-tabs__button(
+						type='button',
+						role='tab',
+						aria-selected='false',
+						aria-controls='header-tab-panel-brands',
+						tabindex='-1'
+					) Бренды
+				.header-menu__content
+					#header-tab-panel-catalog.header-menu__tab-con.tabs__element.js-tabs__element(
+						role='tabpanel',
+						aria-labelledby='header-tab-btn-catalog'
+					)
+						nav(aria-label='Каталог товаров')
+							ul.header-menu__list
+								each item in data.catalog
+									li
+										a.header-menu__link(href='#')= item.category
+
+					#header-tab-panel-company.header-menu__tab-con.tabs__element.js-tabs__element(
+						role='tabpanel',
+						aria-labelledby='header-tab-btn-company',
+						hidden
+					)
+						nav(aria-label='О компании')
+							ul.header-menu__list
+								each item in data.about
+									li
+										a.header-menu__link(href='#')= item
+
+					#header-tab-panel-brands.header-menu__tab-con.tabs__element.js-tabs__element(
+						role='tabpanel',
+						aria-labelledby='header-tab-btn-brands',
+						hidden
+					)
+						nav(aria-label='Популярные бренды')
+							ul.header-menu__list
+								each item in data.brands
+									li
+										a.header-menu__link(href='#')= item
+
+			nav.header-additional(aria-label='Дополнительно')
+				ul.header-additional__list
+					li
+						a.header-additional__link(href='#')
+							+icon('favorite')
+							span Избранное
+					li
+						a.header-additional__link(href='#')
+							+icon('delivery')
+							span Доставка и оплата
+					li
+						a.header-additional__link(href='/pages/shops.html')
+							+icon('shop')
+							span Адреса магазинов
+
+			.header-menu__location
+				+location
+
+			.header-menu__box
+				.header-menu__label Телефон
+				+callback
+
+			.header-menu__box
+				.header-menu__label Контактный email
+				a.header-menu__email.link(href='mailto:email@email.ru')
+					+icon('sms')
+					| email@email.ru
+
+			.header-menu__box
+				.header-menu__label Режим работы:
+				.header-menu__text Пн - Вс: 11.00 - 19.00
+
+			ul.header-social
+				each item in data.social
+					li
+						a.header-social__link(href='#', target='_blank', aria-label=item.name)
+							img(src=`/images/${item.icon}.svg`, alt=item.name, width='22', height='22')
+
+			.header-menu__copyright
+				p 2026 © Интернет-магазин
+				p Создание сайта — <a href="#" target="_blank" rel="noopener noreferrer">KISLOROD</a>

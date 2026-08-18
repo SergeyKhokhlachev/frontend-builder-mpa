@@ -1,0 +1,166 @@
+.button {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	padding: 8px 24px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: normal;
+	border-radius: var(--radius-small);
+	transition:
+		background-color var(--transition),
+		outline-color var(--transition),
+		color var(--transition);
+
+	span {
+		display: flex;
+		transition:
+			opacity var(--transition),
+			visibility var(--transition);
+	}
+
+	&::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		width: 100%;
+		height: 100%;
+		content: '';
+		opacity: 0;
+		mask-image: url('/images/loading.svg');
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: auto;
+		transition:
+			opacity var(--transition),
+			visibility var(--transition);
+	}
+
+	&.loading {
+		pointer-events: none;
+
+		span {
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		&::after {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	&[disabled] {
+		pointer-events: none;
+	}
+
+	&.button--primary {
+		color: var(--color-text-light);
+		background-color: var(--color-primary);
+
+		&::after {
+			background-color: var(--color-text-light);
+		}
+
+		&.loading {
+			background-color: var(--color-primary-active);
+		}
+
+		&[disabled] {
+			background-color: var(--color-primary-disabled);
+		}
+
+		@mixin hover {
+			background-color: var(--color-primary-hover);
+		}
+
+		@mixin active {
+			background-color: var(--color-primary-active);
+		}
+	}
+
+	&.button--secondary {
+		font-weight: 500;
+		color: var(--color-primary);
+		background-color: var(--color-secondary);
+		border: 1px solid var(--color-secondary);
+
+		&::after {
+			background-color: var(--color-primary);
+		}
+
+		&.loading {
+			background-color: var(--color-secondary-active);
+		}
+
+		&[disabled] {
+			opacity: 0.6;
+		}
+
+		@mixin hover {
+			background-color: var(--color-secondary-hover);
+		}
+
+		@mixin active {
+			background-color: var(--color-secondary-active);
+		}
+	}
+
+	&.button--accent {
+		color: var(--color-text-light);
+		background-color: var(--color-accent);
+
+		&::after {
+			background-color: var(--color-text-light);
+		}
+
+		&.loading {
+			background-color: var(--color-accent-active);
+		}
+
+		&[disabled] {
+			background-color: var(--color-accent-disabled);
+		}
+
+		@mixin hover {
+			background-color: var(--color-accent-hover);
+		}
+
+		@mixin active {
+			background-color: var(--color-accent-active);
+		}
+	}
+
+	&.button--outline {
+		color: var(--color-primary);
+		outline: 1px solid var(--color-primary);
+		background-color: var(--color-background-primary);
+
+		&::after {
+			background-color: var(--color-primary);
+		}
+
+		&.loading {
+			background-color: var(--color-background-alternate);
+		}
+
+		&[disabled] {
+			opacity: 0.4;
+		}
+
+		@mixin hover {
+			color: var(--color-primary-hover);
+			outline-color: var(--color-primary-hover);
+			background-color: var(--color-background-secondary);
+		}
+
+		@mixin active {
+			color: var(--color-primary-active);
+			outline-color: var(--color-primary-active);
+			background-color: var(--color-background-alternate);
+		}
+	}
+}

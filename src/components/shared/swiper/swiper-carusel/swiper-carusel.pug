@@ -1,0 +1,19 @@
+mixin swiper-carusel(props = {})
+	-
+		props = {
+			id: props.id || '',
+			class: props.class || '',
+		}
+
+	.swiper-carusel&attributes(attributes)
+		.swiper-control
+			button.swiper-button.swiper-prev.js-swiper-prev(type='button', aria-label='Назад')
+				+icon('chevron-left')
+			button.swiper-button.swiper-next.js-swiper-next(type='button', aria-label='Вперед')
+				+icon('chevron-right')
+
+		.swiper(id=props.id, class=props.class)
+			.swiper-wrapper
+				block
+
+		.swiper-scrollbar.js-swiper-scrollbar(role='scrollbar', aria-orientation='horizontal')

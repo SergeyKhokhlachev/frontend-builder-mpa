@@ -1,0 +1,58 @@
+extends /layout/layout
+
+block data
+	-
+		auth = true;
+
+		const data = [
+			{
+				name: 'UI',
+				pages: {
+					'UI Kit': 'ui-kit.html',
+					'Base content': 'base-content.html',
+				}
+			},
+			{
+				name: 'Common',
+				pages: {
+					'404': 'not-found.html',
+					'Главная': 'main.html',
+					'Магазины': 'shops.html',
+				},
+			},
+			{
+				name: 'Product',
+				pages: {
+					'Категории': 'category.html',
+					'Каталог': 'catalog.html',
+					'Страница товара': 'product.html',
+				},
+			},
+			{
+				name: 'Checkout',
+				pages: {
+					'Корзина/Оформление': 'checkout.html',
+					'Страница резильтатов': 'checkout-result.html',
+				},
+			},
+			{
+				name: 'News / Actions',
+				pages: {},
+			},
+			{
+				name: 'Personal',
+				pages: {},
+			}
+		];
+
+block main
+	.page(data-barba='container', data-barba-namespace='index')
+		.demo-page-list.container
+			.demo-page-list__title Список страниц
+			each block in data
+				.demo-page-list__block
+					.demo-page-list__name= block.name
+					ul
+						each href, name in block.pages
+							li
+								a(href=`pages/${href}`)= name
