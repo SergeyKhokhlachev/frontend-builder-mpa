@@ -5,10 +5,10 @@ mixin picture(name = '', props = {})
 			format: props.format || 'jpg',
 			width: props.width || false,
 			height: props.height || false,
-			lazy: props.lazy || true,
+			lazy: props.lazy ?? true,
 			loading: props.loading || 'lazy', // auto | lazy | eager
 			responsive: props.responsive || {},
-			webp: props.webp || true,
+			webp: props.webp ?? true,
 		}
 
 	picture(class={ 'picture js-picture': props.lazy })&attributes(attributes)

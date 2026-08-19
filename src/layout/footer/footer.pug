@@ -41,7 +41,7 @@ mixin footer(data = {}, options = {})
 							each item in data.social
 								li
 									a(href='#', target='_blank', aria-label=item.name)
-										img(src=`/images/${item.icon}.svg`, alt=item.name, width='22', height='22')
+										img(src=`/images/${item.icon}.svg`, alt=item.name, width='22', height='22', loading='lazy')
 					.footer__legal
 						p ООО “Готовые компоненты”
 						p ИНН: 7770005551
@@ -59,7 +59,7 @@ mixin footer(data = {}, options = {})
 				ul.footer__payment
 					each item in data.payments
 						li
-							img(src=`/images/${item.icon}.svg`, alt=item.name, width=item.width, height=item.height)
+							img(src=`/images/${item.icon}.svg`, alt=item.name, width=item.width, height=item.height, loading='lazy')
 		.footer__copyright
 			.container
 				span 2026 © Интернет-магазин
