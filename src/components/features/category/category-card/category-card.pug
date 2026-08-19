@@ -10,7 +10,7 @@ mixin category-card(props = {})
 	article.category-card(aria-label=props.name)&attributes(attributes)
 		a.category-card__preview(href='/pages/catalog.html', aria-label='Перейти к категории товаров')
 			span.category-card__quantity(aria-label='Количество товаров')= props.quantity
-			+picture(props.image, { format: 'png', alt: props.name })
+			+picture(props.image, { format: 'png', alt: props.name, loading: 'eager' })
 		.category-card__content
 			h3.category-card__name= props.name
 			ul.category-card__list

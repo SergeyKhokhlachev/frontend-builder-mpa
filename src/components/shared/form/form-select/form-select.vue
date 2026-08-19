@@ -1,5 +1,6 @@
 <template>
 	<form-element
+		:id="`${id}-label`"
 		:for-id="`${id}-trigger`"
 		:error-id="`${id}-error`"
 		:label="label"
@@ -16,10 +17,12 @@
 				:id="`${id}-trigger`"
 				ref="triggerRef"
 				type="button"
+				role="combobox"
 				:disabled="disabled"
 				aria-haspopup="listbox"
+				:aria-label="label ? undefined : 'Выберите значение из списка'"
 				:aria-expanded="viewSelect.expanded"
-				:aria-labelledby="`${id}-trigger`"
+				:aria-labelledby="`${id}-label`"
 				:aria-controls="`${id}-dropdown`"
 				:aria-describedby="`${id}-error`"
 				:aria-required="required"
@@ -64,7 +67,7 @@
 <script setup lang="ts">
 import { ref, computed, nextTick, onMounted, onBeforeUnmount } from 'vue';
 import FormElement from '@/components/shared/form/form-element/form-element.vue';
-import { getValidateSelect } from '@/components/shared/form/composition/helpers';
+import { getValidateSelect } from '@/components/shared/form/common/validate';
 import type { ResultValidate, ViewSelectOptions, SelectionOption } from '@/components/shared/form/form.types';
 
 const props = withDefaults(

@@ -9,4 +9,4 @@ mixin category-preview(props = {})
 	a.category-preview(href='/pages/catalog.html', aria-label='Перейти к категории товаров')&attributes(attributes)
 		span.category-preview__quantity= props.quantity
 		h3.category-preview__name= props.name
-		+picture(props.image, { format: 'png' })
+		+picture(props.image, { format: 'png', alt: props.name })

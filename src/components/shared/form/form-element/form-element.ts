@@ -21,11 +21,14 @@ export default class FormElement {
 		}
 	}
 
-	public accessibility(elementId: string, errorId: string) {
-		if (this.$label) this.$label.setAttribute('for', elementId);
+	public accessibility(elementId: string, errorId: string, id: string | null = null) {
+		if (this.$label) {
+			this.$label.setAttribute('for', elementId);
+			if (id) this.$label.setAttribute('id', id);
+		}
 		if (this.$message) {
 			this.$message.setAttribute('id', errorId);
-			this.$message.setAttribute('aria-live', 'off');
+			this.$message.setAttribute('aria-live', 'polite');
 			this.$message.setAttribute('aria-atomic', 'true');
 		}
 	}
@@ -35,7 +38,6 @@ export default class FormElement {
 		this.$container?.classList.toggle('error', result.error);
 		if (this.$message) {
 			this.$message.innerText = result.message || '';
-			this.$message.setAttribute('aria-live', result.error ? 'assertive' : 'off');
 		}
 	}
 

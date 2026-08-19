@@ -1,6 +1,7 @@
 mixin product-short(props = {})
 	-
 		props = {
+			id: props.id || '',
 			image: props.images[0] || '',
 			name: props.name || '',
 			href: props.href || '#',
@@ -11,22 +12,16 @@ mixin product-short(props = {})
 		};
 
 	article.product-short&attributes(attributes)
-		button.favorite(
-			type='button',
-			role='checkbox',
-			aria-pressed=props.favorite,
-			aria-label='Добавить в избранное',
-			class={ active: props.favorite }
-		)
+		button.favorite(type='button', aria-pressed=`${props.favorite}`, aria-label='Добавить в избранное', class={ active: props.favorite })
 			.favorite__icons
 				+icon('favorite')
 				+icon('favorite-fill')
 		span.marker(style='color: ' + props.marker.color + '; background: ' + props.marker.background)= props.marker.value
-		a.product-short__body(href=props.href, aria-label='Перейти на страницу товара')
+		a.product-short__body(href=props.href, aria-labelledby='product-short-' + props.id)
 			.product-short__preview
-				+picture(props.image)
+				+picture(props.image, { alt: props.name })
 			.product-short__content
-				h3.product-short__name= props.name
+				h3.product-short__name(id='product-short-' + props.id)= props.name
 				.product-short__coast
 					span.product-short__price-new= props.priceNew + ' ₽'
 					span.product-short__price-old= props.priceOld + ' ₽'

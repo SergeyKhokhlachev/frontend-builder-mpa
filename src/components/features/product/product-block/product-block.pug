@@ -46,8 +46,7 @@ mixin product-block(props = {})
 						span.product-block__price-old= props.priceOld + ' ₽'
 					button.favorite(
 						type='button',
-						role='checkbox',
-						aria-pressed=props.favorite,
+						aria-pressed=`${props.favorite}`,
 						aria-label='Добавить в избранное',
 						class={ active: props.favorite }
 					)

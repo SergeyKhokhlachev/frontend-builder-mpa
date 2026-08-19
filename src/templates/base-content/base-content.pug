@@ -17,8 +17,8 @@ block data
 
 block main
 	.page(data-barba='container', data-barba-namespace='base-content')
-		section.section.section--padding
-			.base-content.container
+		.section.section--padding
+			main.base-content.container
 				h1 Большие чемоданы
 				h2 Ознакомьтесь с правилами провоза багажа.
 				+picture('promo--tablet', { alt: 'Картинка' })
@@ -71,8 +71,3 @@ block main
 					избежать возможных проблем, мы рекомендуем приобретать один большой чемодан,
 					в который поместятся все необходимые вещи. Сделали для вас подборку самых популярных
 					и особо вместительных моделей. Выбирайте!
-
-		section.section.section--padding.section--color
-			.container
-				h2.page-title Ранее вы смотрели
-				+product-viewed(productsViewed)

@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import FormElement from '@/components/shared/form/form-element/form-element.vue';
-import { getValidateComplete } from '@/components/shared/form/composition/helpers';
+import { getValidateComplete } from '@/components/shared/form/common/validate';
 import type { ResultValidate, ViewSelectOptions, SelectionOption } from '@/components/shared/form/form.types';
 
 const props = withDefaults(

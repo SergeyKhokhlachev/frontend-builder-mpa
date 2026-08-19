@@ -1,8 +1,8 @@
 mixin swiper-carusel(props = {})
 	-
 		props = {
-			id: props.id || '',
-			class: props.class || '',
+			id: props.id || null,
+			class: props.class || null,
 		}
 
 	.swiper-carusel&attributes(attributes)
@@ -13,7 +13,7 @@ mixin swiper-carusel(props = {})
 				+icon('chevron-right')
 
 		.swiper(id=props.id, class=props.class)
-			.swiper-wrapper
+			.swiper-wrapper(role='list')
 				block
 
-		.swiper-scrollbar.js-swiper-scrollbar(role='scrollbar', aria-orientation='horizontal')
+		.swiper-scrollbar.js-swiper-scrollbar

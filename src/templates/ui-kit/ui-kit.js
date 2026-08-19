@@ -4,8 +4,6 @@ import Collapse from '@/components/shared/collapse/collapse';
 import Dropdown from '@/components/shared/dropdown/dropdown';
 import Tabs from '@/components/shared/tabs/tabs';
 
-import { createApp } from 'vue';
-import uikitFormVue from '@/components/features/uikit/uikit-form-vue/uikit-form-vue.vue';
 import uikitFormNative from '@/components/features/uikit/uikit-form-native/uikit-form-native';
 
 export const uikitPage = {
@@ -15,7 +13,7 @@ export const uikitPage = {
 	formVue: null,
 	formNative: null,
 
-	init(container) {
+	async init(container) {
 		container.querySelectorAll('.js-collapse').forEach((element) => {
 			this.collapses.push(new Collapse(element));
 		});
@@ -30,13 +28,24 @@ export const uikitPage = {
 			$button.addEventListener('click', this.appendNotify);
 		});
 
-		const $formVue = document.querySelector('.js-uikit-form-vue');
-		if ($formVue) this.formVue = createApp(uikitFormVue).mount($formVue);
-
 		const $formNative = document.querySelector('.js-uikit-form-native');
 		if ($formNative) {
 			this.formNative = uikitFormNative($formNative);
 			this.formNative.init();
+		}
+
+		const $formVue = document.querySelector('.js-uikit-form-vue');
+		if ($formVue) {
+			try {
+				const [{ createApp }, { default: uikitFormVue }] = await Promise.all([
+					import('vue'),
+					import('@/components/features/uikit/uikit-form-vue/uikit-form-vue.vue'),
+				]);
+
+				this.formVue = createApp(uikitFormVue).mount($formVue);
+			} catch (error) {
+				console.error(error);
+			}
 		}
 	},
 

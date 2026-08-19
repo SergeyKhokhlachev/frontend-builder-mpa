@@ -1,26 +1,32 @@
 import { hasDestroy } from '@/common/helpers';
 
-import { createApp } from 'vue';
-import { createYmaps } from 'vue-yandex-maps';
-
-import Shops from '@/components/features/shops/shops.vue';
 import SwiperCarusel from '@/components/shared/swiper/swiper-carusel/swiper-carusel';
 
 export const shopsPage = {
 	shops: null,
 	swiperViewed: null,
 
-	init(container) {
+	async init(container) {
 		const $shops = container.querySelector('.js-shops-vue');
 		if ($shops) {
-			this.shops = createApp(Shops)
-				.use(
-					createYmaps({
-						apikey: import.meta.env.VITE_YMAP_API_KEY,
-						lang: 'ru_RU',
-					}),
-				)
-				.mount($shops);
+			try {
+				const [{ createApp }, { createYmaps }, { default: Shops }] = await Promise.all([
+					import('vue'),
+					import('vue-yandex-maps'),
+					import('@/components/features/shops/shops.vue'),
+				]);
+
+				this.shops = createApp(Shops)
+					.use(
+						createYmaps({
+							apikey: import.meta.env.VITE_YMAP_API_KEY,
+							lang: 'ru_RU',
+						}),
+					)
+					.mount($shops);
+			} catch (error) {
+				console.error(error);
+			}
 		}
 
 		const $swiperViewed = container.querySelector('.js-swiper-viewed');

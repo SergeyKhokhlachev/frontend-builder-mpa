@@ -1,12 +1,12 @@
 mixin header-controll(data = {}, options = {})
 	.header-controll&attributes(attributes)
 		.header-control__item
-			button.header-control__button.js-modal-open(type='button', data-modal='#modal-login')
+			button.header-control__button.js-modal-open(type='button', aria-label='Авторизация', data-modal='#modal-login')
 				span.header-controll__icon
 					+icon('profile')
 				span.header-controll__name Войти
 		.header-control__item
-			a.header-control__button(href='#')
+			a.header-control__button(href='#', aria-label='Сравнение товаров')
 				span.header-controll__icon
 					+icon('compare')
 				span.header-controll__name Сравнение

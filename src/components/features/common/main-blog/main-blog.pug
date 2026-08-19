@@ -36,11 +36,12 @@ mixin main-blog(props = [])
 		];
 
 	.main-blog(role='region', aria-label='Последние статьи')&attributes(attributes)
-		.main-blog__col-md
-			+blog-card(props[0]).blog-card--big(role='listitem')
-		.main-blog__col-sm
-			+blog-card(props[1])(role='listitem')
-		.main-blog__col-sm
-			+blog-card(props[2]).blog-card--transparent(role='listitem')
+		.main-blog__row(role='list')
+			.main-blog__col-md
+				+blog-card(props[0]).blog-card--big(role='listitem')
+			.main-blog__col-sm
+				+blog-card(props[1])(role='listitem')
+			.main-blog__col-sm
+				+blog-card(props[2]).blog-card--transparent(role='listitem')
 
 		a.main-blog__more.button.button--outline(href='#') Смотреть все записи

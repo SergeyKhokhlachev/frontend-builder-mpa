@@ -1,8 +1,8 @@
 import { classInstance } from '@/common/helpers';
 import FormElement from '@/components/shared/form/form-element/form-element';
-import { getValidateInput } from '@/components/shared/form/composition/helpers';
-import { getFormatPhone } from '@/components/shared/form/composition/formatting';
-import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
+import { getValidateInput } from '@/components/shared/form/common/validate';
+import { getFormatPhone } from '@/components/shared/form/common/formatting';
+import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/common/events';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
  *  UI Компонент FormInput
@@ -36,7 +36,7 @@ export default class FormInput extends FormElement {
 	/**
 	 *  Инициализировать компонент
 	 */
-	public init() {
+	public async init() {
 		classInstance.set(this.$element, { formElement: this });
 		this.$element.addEventListener('input', this.inputHandler);
 		this.$element.addEventListener('focus', this.focusHandler);

@@ -1,6 +1,6 @@
 import { classInstance } from '@/common/helpers';
-import { getValidateBox } from '@/components/shared/form/composition/helpers';
-import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
+import { getValidateBox } from '@/components/shared/form/common/validate';
+import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/common/events';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
  *  UI Компонент FormRadio

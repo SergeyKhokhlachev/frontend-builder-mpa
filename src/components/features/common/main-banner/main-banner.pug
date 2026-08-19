@@ -39,7 +39,7 @@ mixin main-banner(props = {})
 			each slide in props.slides
 				.swiper-slide
 					.main-banner__slide
-						+picture(slide.image, { alt: slide.name }).main-banner__picture
+						+picture(slide.image, { alt: slide.name, loading: 'eager', responsive: [{ media: 'desktopS' }, { media: 'tablet' }] }).main-banner__picture
 						.main-banner__box
 							.main-banner__content
 								span.main-banner__category= slide.category

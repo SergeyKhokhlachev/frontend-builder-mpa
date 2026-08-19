@@ -178,7 +178,11 @@ mixin product-filter(props = {})
 							button(type='button', aria-label='Удалить параметр фильтра')
 								+icon('close')
 				.product-filter__block.collapse__element.active.js-collapse__element
-					.product-filter__head.collapse__button.js-collapse__button(aria-expanded='true', aria-controls='filter-categories')
+					button.product-filter__head.collapse__button.js-collapse__button(
+						type='button',
+						aria-expanded='true',
+						aria-controls='filter-categories'
+					)
 						span.product-filter__name Категории
 						+icon('chevron-down').collapse__icon
 					ul#filter-categories.product-filter__list.collapse__content

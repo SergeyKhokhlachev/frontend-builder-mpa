@@ -1,12 +1,20 @@
-import { createApp } from 'vue';
-import Checkout from '@/components/features/checkout/checkout.vue';
-
 export const checkoutPage = {
 	checkout: null,
 
-	init(container) {
+	async init(container) {
 		const $checkout = container.querySelector('.js-checkout-vue');
-		if ($checkout) this.formVue = createApp(Checkout).mount($checkout);
+		if ($checkout) {
+			try {
+				const [{ createApp }, { default: Checkout }] = await Promise.all([
+					import('vue'),
+					import('@/components/features/checkout/checkout.vue'),
+				]);
+
+				this.formVue = createApp(Checkout).mount($checkout);
+			} catch (error) {
+				console.error(error);
+			}
+		}
 	},
 
 	destroy() {

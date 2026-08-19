@@ -12,7 +12,7 @@ block data
 	include /api/data/reviews
 
 block main
-	.page(data-barba='container', data-barba-namespace='main')
+	main.page(data-barba='container', data-barba-namespace='main')
 		h1.visually-hidden Интернет-магазин мебели и электроники
 		section.section
 			h2.visually-hidden Главные предложения и акции
@@ -21,7 +21,7 @@ block main
 			.container
 				.section__head
 					h2.page-title Популярные категории
-					a.section__link(href='/pages/category.html')
+					a.section__link(href='/pages/category.html', aria-label='Перейти к списку категорий товаров')
 						span Все категории
 						+icon('chevron-right')
 				+main-category

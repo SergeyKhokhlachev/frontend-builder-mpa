@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { getValidateBox } from '@/components/shared/form/composition/helpers';
+import { getValidateBox } from '@/components/shared/form/common/validate';
 import type { ResultValidate, SelectionOption } from '@/components/shared/form/form.types';
 
 const props = withDefaults(

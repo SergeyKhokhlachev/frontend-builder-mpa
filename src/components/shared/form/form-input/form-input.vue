@@ -45,8 +45,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import FormElement from '@/components/shared/form/form-element/form-element.vue';
-import { getValidateInput } from '@/components/shared/form/composition/helpers';
-import { getFormatPhone } from '@/components/shared/form/composition/formatting';
+import { getValidateInput } from '@/components/shared/form/common/validate';
+import { getFormatPhone } from '@/components/shared/form/common/formatting';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 
 const props = withDefaults(

@@ -107,15 +107,20 @@ export default defineConfig({
 				return acc;
 			}, {}),
 			output: {
-				entryFileNames: '[name]-[hash:8].js',
-				chunkFileNames: '[name]-[hash:8].js',
+				entryFileNames: 'script/entry-[name]-[hash:8].js',
+				chunkFileNames: 'script/chunk-[name]-[hash:8].js',
+				manualChunks(id) {
+					if (id.includes('node_modules')) {
+						return 'vendor';
+					}
+				},
 				assetFileNames: (assetInfo) => {
 					let extType = assetInfo.name.split('.').at(1);
 					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType)) {
 						return 'images/[name].[ext]';
 					}
 					if (/css|scss|styl|less/i.test(extType)) {
-						return '[name]-[hash:8].[ext]';
+						return 'style/[name]-[hash:8].[ext]';
 					}
 				},
 			},

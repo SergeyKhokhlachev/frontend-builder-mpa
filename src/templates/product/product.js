@@ -8,7 +8,7 @@ export const productPage = {
 	swiperThumbs: null,
 	swiperViewed: null,
 
-	init(container) {
+	async init(container) {
 		const $productTabs = container.querySelector('.js-product-block-tabs');
 		if ($productTabs) this.productTabs = new Tabs($productTabs);
 

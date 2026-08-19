@@ -56,6 +56,11 @@
 	border-bottom: 1px solid var(--color-line-primary);
 }
 
+.heckout__tablist {
+	display: flex;
+	gap: 24px;
+}
+
 .checkout__body {
 	position: relative;
 }

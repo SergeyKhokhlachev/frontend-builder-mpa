@@ -6,20 +6,12 @@ import Notify from '@/components/shared/notify/notify';
 import Picture from '@/components/shared/picture/picture';
 
 import initLayout from '@/layout/layout';
-import { uikitPage } from '@/templates/ui-kit/ui-kit';
-import { mainPage } from '@/templates/main/main';
-import { shopsPage } from '@/templates/shops/shops';
-import { categoryPage } from '@/templates/category/category';
-import { catalogPage } from '@/templates/catalog/catalog';
-import { productPage } from '@/templates/product/product';
-import { checkoutPage } from '@/templates/checkout/checkout';
 
 window.app = {};
 window.app.classInstance = classInstance;
 
 Modal.getInstance();
 Notify.getInstance();
-
 initLayout();
 
 barba.init({
@@ -35,64 +27,78 @@ barba.init({
 	views: [
 		{
 			namespace: 'ui-kit',
-			afterEnter(data) {
+			async afterEnter(data) {
+				const { uikitPage } = await import('@/templates/ui-kit/ui-kit');
 				uikitPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { uikitPage } = await import('@/templates/ui-kit/ui-kit');
 				uikitPage.destroy();
 			},
 		},
 		{
 			namespace: 'main',
-			afterEnter(data) {
+			async afterEnter(data) {
+				const { mainPage } = await import('@/templates/main/main');
 				mainPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { mainPage } = await import('@/templates/main/main');
 				mainPage.destroy();
 			},
 		},
 		{
 			namespace: 'shops',
-			afterEnter(data) {
-				shopsPage.init(data.next.container);
+			async afterEnter(data) {
+				const { shopsPage } = await import('@/templates/shops/shops');
+				await shopsPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { shopsPage } = await import('@/templates/shops/shops');
 				shopsPage.destroy();
 			},
 		},
 		{
 			namespace: 'category',
-			afterEnter(data) {
+			async afterEnter(data) {
+				const { categoryPage } = await import('@/templates/category/category');
 				categoryPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { categoryPage } = await import('@/templates/category/category');
 				categoryPage.destroy();
 			},
 		},
 		{
 			namespace: 'catalog',
-			afterEnter(data) {
+			async afterEnter(data) {
+				const { catalogPage } = await import('@/templates/catalog/catalog');
 				catalogPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { catalogPage } = await import('@/templates/catalog/catalog');
 				catalogPage.destroy();
 			},
 		},
 		{
 			namespace: 'product',
-			afterEnter(data) {
+			async afterEnter(data) {
+				const { productPage } = await import('@/templates/product/product');
 				productPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { productPage } = await import('@/templates/product/product');
 				productPage.destroy();
 			},
 		},
 		{
 			namespace: 'checkout',
-			afterEnter(data) {
+			async afterEnter(data) {
+				const { checkoutPage } = await import('@/templates/checkout/checkout');
 				checkoutPage.init(data.next.container);
 			},
-			beforeLeave() {
+			async beforeLeave() {
+				const { checkoutPage } = await import('@/templates/checkout/checkout');
 				checkoutPage.destroy();
 			},
 		},
@@ -100,7 +106,6 @@ barba.init({
 });
 
 const loader = document.querySelector('.js-page-loader');
-
 let pictures = [];
 
 barba.hooks.afterEnter((data) => {

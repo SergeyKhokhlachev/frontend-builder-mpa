@@ -1,7 +1,7 @@
 import { classInstance } from '@/common/helpers';
 import FormElement from '@/components/shared/form/form-element/form-element';
-import { getValidateCode } from '@/components/shared/form/composition/helpers';
-import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
+import { getValidateCode } from '@/components/shared/form/common/validate';
+import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/common/events';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
  *  UI Компонент FormCode
@@ -101,11 +101,12 @@ export default class FormCode extends FormElement {
 			$digit.id = `${elementId}-digit-${index + 1}`;
 			$digit.setAttribute('aria-describedby', errorId);
 			$digit.setAttribute('aria-required', `${this.$element.required}`);
-			$digit.setAttribute('aria-posinset', `${index + 1}`);
-			$digit.setAttribute('aria-setsize', `${this.$digits.length}`);
+			$digit.setAttribute('aria-label', `Цифра кода ${index + 1}`);
 		});
 
-		super.accessibility(`${elementId}-digit-1`, errorId);
+		if (this.$group) this.$group.setAttribute('aria-labelledby', `${elementId}-label`);
+
+		super.accessibility(`${elementId}-digit-1`, errorId, `${elementId}-label`);
 	}
 
 	private updateCodeValue(newValue: string) {

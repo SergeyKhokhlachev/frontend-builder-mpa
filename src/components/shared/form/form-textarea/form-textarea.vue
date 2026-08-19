@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import FormElement from '@/components/shared/form/form-element/form-element.vue';
-import { getValidateInput } from '@/components/shared/form/composition/helpers';
+import { getValidateInput } from '@/components/shared/form/common/validate';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 
 const props = withDefaults(

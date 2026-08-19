@@ -1,5 +1,6 @@
 <template>
 	<form-element
+		:id="`${id}-label`"
 		:for-id="`${id}-digit-1`"
 		:error-id="`${id}-error`"
 		:label="label"
@@ -12,7 +13,7 @@
 	>
 		<div class="form-code">
 			<input :id="id" type="hidden" :name="name" :value="modelValue" :required="required" tabindex="-1" />
-			<div class="form-code__vue" role="group">
+			<div class="form-code__vue" role="group" :aria-labelledby="`${id}-label`">
 				<template v-for="n in length" :key="n">
 					<input
 						:id="`${id}-digit-${n}`"
@@ -28,8 +29,7 @@
 						:aria-describedby="`${id}-error`"
 						:aria-invalid="!viewResult.valid"
 						:aria-required="required"
-						:aria-posinset="n"
-						:aria-setsize="length"
+						:aria-label="`Цифра кода ${n}`"
 						@input="inputCode($event, n - 1)"
 						@keydown="keydownCode($event, n - 1)"
 						@paste="pasteHandler"
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, nextTick, watch } from 'vue';
 import FormElement from '@/components/shared/form/form-element/form-element.vue';
-import { getValidateCode } from '@/components/shared/form/composition/helpers';
+import { getValidateCode } from '@/components/shared/form/common/validate';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 
 const props = withDefaults(

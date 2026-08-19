@@ -5,7 +5,7 @@ import SwiperCarusel from '@/components/shared/swiper/swiper-carusel/swiper-caru
 export const categoryPage = {
 	swiperViewed: null,
 
-	init(container) {
+	async init(container) {
 		const $swiperViewed = container.querySelector('.js-swiper-viewed');
 		if ($swiperViewed) this.swiperViewed = new SwiperCarusel($swiperViewed);
 	},

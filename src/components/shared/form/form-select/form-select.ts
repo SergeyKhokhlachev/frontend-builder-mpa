@@ -1,7 +1,7 @@
 import { classInstance } from '@/common/helpers';
 import FormElement from '@/components/shared/form/form-element/form-element';
-import { getValidateSelect } from '@/components/shared/form/composition/helpers';
-import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
+import { getValidateSelect } from '@/components/shared/form/common/validate';
+import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/common/events';
 import type { ResultValidate, ViewSelectOptions } from '@/components/shared/form/form.types';
 /**
  *  UI Компонент FormSelect
@@ -124,7 +124,7 @@ export default class FormSelect extends FormElement {
 			this.$control.id = `${elementId}-trigger`;
 			this.$control.setAttribute('aria-haspopup', 'listbox');
 			this.$control.setAttribute('aria-expanded', `${this.select.expanded}`);
-			this.$control.setAttribute('aria-labelledby', `${elementId}-trigger`);
+			this.$control.setAttribute('aria-labelledby', `${elementId}-label`);
 			this.$control.setAttribute('aria-controls', `${elementId}-dropdown`);
 			this.$control.setAttribute('aria-describedby', `${elementId}-error`);
 			this.$control.setAttribute('aria-required', `${this.$element.required}`);
@@ -141,7 +141,7 @@ export default class FormSelect extends FormElement {
 			$option.setAttribute('aria-selected', `${$option.dataset.value === this.$element.value}`);
 		});
 
-		super.accessibility(`${elementId}-trigger`, `${elementId}-error`);
+		super.accessibility(`${elementId}-trigger`, `${elementId}-error`, `${elementId}-label`);
 	}
 
 	public toggleDropdown(show?: boolean) {

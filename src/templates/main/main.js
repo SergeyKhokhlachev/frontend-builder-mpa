@@ -4,9 +4,6 @@ import { breakpoint } from '@/common/breakpoint';
 import SwiperBanner from '@/components/shared/swiper/swiper-banner/swiper-banner';
 import SwiperCarusel from '@/components/shared/swiper/swiper-carusel/swiper-carusel';
 
-import { createApp } from 'vue';
-import MainFaq from '@/components/features/common/main-faq/main-faq.vue';
-
 export const mainPage = {
 	swiperBanner: null,
 	swiperCategory: null,
@@ -14,27 +11,40 @@ export const mainPage = {
 	mainFaq: null,
 	mediaQuery: null,
 
-	init(container) {
+	async init(container) {
 		const $swiperBanner = container.querySelector('.js-swiper-banner');
 		if ($swiperBanner) this.swiperBanner = new SwiperBanner($swiperBanner);
-
-		const $swiperCategory = container.querySelector('.js-swiper-category');
-		if ($swiperCategory) this.swiperCategory = new SwiperCarusel($swiperCategory);
 
 		const $swiperReviews = container.querySelector('.js-swiper-reviews');
 		if ($swiperReviews) this.swiperReviews = new SwiperCarusel($swiperReviews);
 
+		const $swiperCategory = container.querySelector('.js-swiper-category');
+		if ($swiperCategory) {
+			this.swiperCategory = new SwiperCarusel($swiperCategory);
+
+			this.mediaQuery = window.matchMedia(`(width >= ${breakpoint.desktopS}px)`);
+
+			this.mediaHandler = this.mediaHandler.bind(this);
+			this.mediaQuery.addEventListener('change', this.mediaHandler);
+
+			if (this.mediaQuery.matches) {
+				this.swiperCategory.swiper.slideTo(0, 0);
+				this.swiperCategory.swiper.disable();
+			}
+		}
+
 		const $mainFaq = container.querySelector('.js-faq-vue');
-		if ($mainFaq) this.formVue = createApp(MainFaq).mount($mainFaq);
+		if ($mainFaq) {
+			try {
+				const [{ createApp }, { default: MainFaq }] = await Promise.all([
+					import('vue'),
+					import('@/components/features/common/main-faq/main-faq.vue'),
+				]);
 
-		this.mediaQuery = window.matchMedia(`(width >= ${breakpoint.desktopS}px)`);
-
-		this.mediaHandler = this.mediaHandler.bind(this);
-		this.mediaQuery.addEventListener('change', this.mediaHandler);
-
-		if (this.mediaQuery.matches) {
-			this.swiperCategory.swiper.slideTo(0, 0);
-			this.swiperCategory.swiper.disable();
+				this.formVue = createApp(MainFaq).mount($mainFaq);
+			} catch (error) {
+				console.error(error);
+			}
 		}
 	},
 

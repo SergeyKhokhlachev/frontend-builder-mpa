@@ -1,7 +1,7 @@
 import { classInstance } from '@/common/helpers';
 import FormElement from '@/components/shared/form/form-element/form-element';
-import { getValidateFiles, getUpdateFiles, getViewFiles } from '@/components/shared/form/composition/helpers';
-import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
+import { getValidateFiles, getUpdateFiles, getViewFiles } from '@/components/shared/form/common/validate';
+import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/common/events';
 import type { ResultValidate, ViewFileOptions } from '@/components/shared/form/form.types';
 /**
  *  UI Компонент FormFile

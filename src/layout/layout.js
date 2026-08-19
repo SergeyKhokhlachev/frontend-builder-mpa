@@ -5,17 +5,8 @@ import Tabs from '@/components/shared/tabs/tabs';
 
 import Header from '@/layout/header/header';
 import Footer from '@/layout/footer/footer';
-import Search from '@/components/features/search/search';
-import Location from '@/components/features/location/location';
-import Subscribe from '@/components/features/subscribe/subscribe';
-import Callback from '@/components/features/callback/callback-form/callback-form';
 
-import { createApp } from 'vue';
-import Login from '@/components/features/login/login.vue';
-import LocationSearch from '@/components/features/location/location-search/location-search.vue';
-import CheckoutPreview from '@/components/features/checkout/checkout-preview/checkout-preview.vue';
-
-export default function initLayout() {
+export default async function initLayout() {
 	const $header = document.querySelector('.js-header');
 	if ($header) {
 		$header.querySelectorAll('.js-dropdown').forEach((element) => {
@@ -23,12 +14,6 @@ export default function initLayout() {
 		});
 		$header.querySelectorAll('.js-tabs').forEach((element) => {
 			new Tabs(element);
-		});
-		$header.querySelectorAll('.js-search').forEach((element) => {
-			new Search(element);
-		});
-		$header.querySelectorAll('.js-location').forEach((element) => {
-			new Location(element);
 		});
 		$header.querySelectorAll('.picture.js-picture').forEach((element) => {
 			new Picture(element);
@@ -49,20 +34,60 @@ export default function initLayout() {
 		new Footer($footer);
 	}
 
+	const { default: Search } = await import('@/components/features/search/search');
+	document.querySelectorAll('.js-search').forEach((element) => {
+		new Search(element);
+	});
+
+	const { default: Location } = await import('@/components/features/location/location');
+	document.querySelectorAll('.js-location').forEach((element) => {
+		new Location(element);
+	});
+
 	const $callback = document.querySelector('.js-callback');
-	if ($callback) new Callback($callback);
+	if ($callback) {
+		const { default: Callback } = await import('@/components/features/callback/callback-form/callback-form');
+		new Callback($callback);
+	}
 
 	const $subscribe = document.querySelector('.js-subscribe');
-	if ($subscribe) new Subscribe($subscribe);
+	if ($subscribe) {
+		const { default: Subscribe } = await import('@/components/features/subscribe/subscribe');
+		new Subscribe($subscribe);
+	}
 
 	const $login = document.querySelector('.js-login-vue');
-	if ($login) createApp(Login).mount($login);
-
 	const $locationSearch = document.querySelector('.js-location-search-vue');
-	if ($locationSearch) createApp(LocationSearch).mount($locationSearch);
-
 	const $checkoutPreview = document.querySelector('.js-checkout-preview-vue');
-	if ($checkoutPreview) createApp(CheckoutPreview).mount($checkoutPreview);
+
+	if ($login || $locationSearch || $checkoutPreview) {
+		const { createApp } = await import('vue');
+
+		if ($login) {
+			try {
+				const { default: Login } = await import('@/components/features/login/login.vue');
+				createApp(Login).mount($login);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		if ($locationSearch) {
+			try {
+				const { default: LocationSearch } = await import('@/components/features/location/location-search/location-search.vue');
+				createApp(LocationSearch).mount($locationSearch);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+		if ($checkoutPreview) {
+			try {
+				const { default: CheckoutPreview } = await import('@/components/features/checkout/checkout-preview/checkout-preview.vue');
+				createApp(CheckoutPreview).mount($checkoutPreview);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+	}
 
 	const modalLogin = document.querySelector('#modal-login');
 

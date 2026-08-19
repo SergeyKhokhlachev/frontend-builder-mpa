@@ -1,6 +1,6 @@
 @import '@/components/features/blog/blog-card/blog-card';
 
-.main-blog {
+.main-blog__row {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
@@ -40,6 +40,11 @@
 }
 
 .main-blog__more {
+	display: flex;
 	width: 264px;
-	margin: 0 auto;
+	margin: 16px auto 0;
+
+	@mixin media $tablet {
+		margin: 32px auto 0;
+	}
 }

@@ -1,7 +1,7 @@
 import { classInstance } from '@/common/helpers';
 import FormElement from '@/components/shared/form/form-element/form-element';
-import { getValidateInput } from '@/components/shared/form/composition/helpers';
-import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/composition/events';
+import { getValidateInput } from '@/components/shared/form/common/validate';
+import { dispatchElementValidate, dispatchElementChange } from '@/components/shared/form/common/events';
 import type { ResultValidate } from '@/components/shared/form/form.types';
 /**
  *  UI Компонент FormTextarea

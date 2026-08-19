@@ -7,7 +7,7 @@ import FormInput from '@/components/shared/form/form-input/form-input';
 import FormRadio from '@/components/shared/form/form-radio/form-radio';
 import FormSelect from '@/components/shared/form/form-select/form-select';
 import FormTextarea from '@/components/shared/form/form-textarea/form-textarea';
-import { dispatchFormChange } from '@/components/shared/form/composition/events';
+import { dispatchFormChange } from '@/components/shared/form/common/events';
 import type { FormComponent, ElementValidateEvent } from '@/components/shared/form/form.types';
 
 /**

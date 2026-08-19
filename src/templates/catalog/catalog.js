@@ -6,7 +6,7 @@ import Sticky from '@/components/shared/sticky/sticky';
 import SwiperOver from '@/components/shared/swiper/swiper-over/swiper-over';
 import SwiperCarusel from '@/components/shared/swiper/swiper-carusel/swiper-carusel';
 import ProductFilter from '@/components/features/product/product-filter/product-filter';
-import FormSelect from '@/components/shared/form/form-select/form-select';
+import Form from '@/components/shared/form/form';
 
 export const catalogPage = {
 	collapses: [],
@@ -16,7 +16,7 @@ export const catalogPage = {
 	productFilter: null,
 	productSort: null,
 
-	init(container) {
+	async init(container) {
 		container.querySelectorAll('.js-collapse').forEach((element) => {
 			this.collapses.push(new Collapse(element));
 		});
@@ -34,8 +34,8 @@ export const catalogPage = {
 		const $productFilter = container.querySelector('.js-filter');
 		if ($productFilter) this.productFilter = new ProductFilter($productFilter);
 
-		const $productSort = container.querySelector('.js-product-sort .js-form-select');
-		if ($productSort) this.productSort = new FormSelect($productSort);
+		const $productSort = container.querySelector('.js-product-sort');
+		if ($productSort) this.productSort = new Form($productSort);
 	},
 
 	destroy() {

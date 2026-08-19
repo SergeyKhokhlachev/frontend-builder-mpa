@@ -42,7 +42,7 @@ block main
 				main.catalog__main
 					h2.visually-hidden Список товаров в категории "Одежда"
 					.catalog__head
-						.catalog__sort.js-product-sort
+						form.catalog__sort.js-product-sort(novalidate)
 							+form-select(select)
 						button.catalog__control.js-filter-open(type='button', aria-label='Открыть фильтр')
 							+icon('filter')

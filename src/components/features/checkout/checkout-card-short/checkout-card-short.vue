@@ -17,11 +17,23 @@
 		</div>
 		<div class="checkout-card-short__footer">
 			<div class="checkout-card-short__counter">
-				<button type="button" :disabled="added <= 1" @click="emit('change', id, added - 1)">
+				<button type="button" aria-label="Уменьшить количество" :disabled="added <= 1" @click="emit('change', id, added - 1)">
 					<i class="icon icon-op-minus"></i>
 				</button>
-				<input class="checkout-card-short__value" type="text" name="counter" :value="added" readonly />
-				<button type="button" :disabled="added >= quantity" @click="emit('change', id, added + 1)">
+				<input
+					class="checkout-card-short__value"
+					type="text"
+					name="counter"
+					:value="added"
+					readonly
+					aria-label="Количество товара в корзине"
+				/>
+				<button
+					type="button"
+					aria-label="Увеличить количество"
+					:disabled="added >= quantity"
+					@click="emit('change', id, added + 1)"
+				>
 					<i class="icon icon-op-plus"></i>
 				</button>
 			</div>
@@ -29,7 +41,6 @@
 				<button
 					:class="['favorite', { active: favorite }]"
 					type="button"
-					role="checkbox"
 					:aria-pressed="favorite"
 					aria-label="Добавить в избранное"
 					@click="emit('favorite', !favorite)"

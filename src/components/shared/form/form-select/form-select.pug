@@ -30,6 +30,8 @@ mixin form-select(props = {})
 			)
 			button.form-select__control.placeholder.js-form-select__control(
 				type="button",
+				role="combobox",
+				aria-label= props.label ? false : "Выберите значение из списка",
 				disabled=props.disabled,
 			)
 				span.form-select__placeholder= props.placeholder

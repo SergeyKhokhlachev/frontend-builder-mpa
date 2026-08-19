@@ -38,12 +38,12 @@ async function imageOptimizer(input = 'src/assets/images/', output = 'dist/image
 						const sizeBefore = statBefore.size;
 
 						const imageStream = sharp(fileInputPath);
-						const operations = [imageStream.clone().webp({ lossless: false, quality: 80 }).toFile(fileOutputWebp)];
+						const operations = [imageStream.clone().webp({ lossless: false, quality: 70 }).toFile(fileOutputWebp)];
 
 						if (ext === '.png') {
 							operations.push(imageStream.clone().png({ compressionLevel: 9 }).toFile(fileOutputPath));
 						} else {
-							operations.push(imageStream.clone().jpeg({ quality: 80 }).toFile(fileOutputPath));
+							operations.push(imageStream.clone().jpeg({ quality: 70 }).toFile(fileOutputPath));
 						}
 
 						await Promise.all(operations);

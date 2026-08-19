@@ -3,37 +3,39 @@
 	<div class="checkout">
 		<template v-if="products.length || productsRemoved.length">
 			<div class="checkout__main">
-				<div class="checkout__header" role="tablist" @keydown="keydownHandler">
-					<button
-						id="btn-product-available"
-						ref="tabAvailableRef"
-						:class="['checkout__button', { active: tabActive === 'available' && productsAvailable.length }]"
-						type="button"
-						role="tab"
-						:aria-selected="tabActive === 'available'"
-						aria-controls="panel-product-available"
-						:tabindex="tabActive === 'available' ? 0 : -1"
-						:disabled="!productsAvailable.length"
-						@click="clickHandler('available')"
-					>
-						<span>Готовые к заказу</span>
-						<span v-if="productsAvailable.length">({{ productsAvailable.length }})</span>
-					</button>
-					<button
-						id="btn-product-unavailable"
-						ref="tabUnavailableRef"
-						:class="['checkout__button', { active: tabActive === 'unavailable' && productsUnavailable.length }]"
-						type="button"
-						role="tab"
-						:aria-selected="tabActive === 'unavailable'"
-						aria-controls="panel-product-unavailable"
-						:tabindex="tabActive === 'unavailable' ? 0 : -1"
-						:disabled="!productsUnavailable.length"
-						@click="clickHandler('unavailable')"
-					>
-						<span>Недоступные</span>
-						<span v-if="productsUnavailable.length">({{ productsUnavailable.length }})</span>
-					</button>
+				<div class="checkout__header">
+					<div class="heckout__tablist" role="tablist" @keydown="keydownHandler">
+						<button
+							id="btn-product-available"
+							ref="tabAvailableRef"
+							:class="['checkout__button', { active: tabActive === 'available' && productsAvailable.length }]"
+							type="button"
+							role="tab"
+							:aria-selected="tabActive === 'available'"
+							aria-controls="panel-product-available"
+							:tabindex="tabActive === 'available' ? 0 : -1"
+							:disabled="!productsAvailable.length"
+							@click="clickHandler('available')"
+						>
+							<span>Готовые к заказу</span>
+							<span v-if="productsAvailable.length">({{ productsAvailable.length }})</span>
+						</button>
+						<button
+							id="btn-product-unavailable"
+							ref="tabUnavailableRef"
+							:class="['checkout__button', { active: tabActive === 'unavailable' && productsUnavailable.length }]"
+							type="button"
+							role="tab"
+							:aria-selected="tabActive === 'unavailable'"
+							aria-controls="panel-product-unavailable"
+							:tabindex="tabActive === 'unavailable' ? 0 : -1"
+							:disabled="!productsUnavailable.length"
+							@click="clickHandler('unavailable')"
+						>
+							<span>Недоступные</span>
+							<span v-if="productsUnavailable.length">({{ productsUnavailable.length }})</span>
+						</button>
+					</div>
 					<button
 						class="checkout__clear"
 						type="button"

@@ -10,7 +10,7 @@
 		"added": 1,
 		"favorite": false,
 		"available": true,
-		"image": "/images/product-1.jpg",
+		"image": "/images/product-short-1.jpg",
 		"color": "Черный",
 		"size": "48"
 	},
@@ -25,7 +25,7 @@
 		"added": 3,
 		"favorite": true,
 		"available": true,
-		"image": "/images/product-1.jpg",
+		"image": "/images/product-short-1.jpg",
 		"color": "Синий",
 		"size": "52"
 	},
@@ -41,7 +41,7 @@
 		"favorite": false,
 		"compare": false,
 		"available": false,
-		"image": "/images/product-1.jpg",
+		"image": "/images/product-short-1.jpg",
 		"color": "Серый",
 		"size": "48"
 	},
@@ -56,7 +56,7 @@
 		"added": 1,
 		"favorite": false,
 		"available": true,
-		"image": "/images/product-1.jpg",
+		"image": "/images/product-short-1.jpg",
 		"color": "Черный",
 		"size": "50"
 	},
@@ -71,7 +71,7 @@
 		"added": 1,
 		"favorite": true,
 		"available": false,
-		"image": "/images/product-1.jpg",
+		"image": "/images/product-short-1.jpg",
 		"color": "Черный",
 		"size": "M"
 	}

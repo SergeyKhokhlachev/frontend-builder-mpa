@@ -11,7 +11,9 @@ mixin reviews-card(props = {})
 
 	article.reviews-card&attributes(attributes)
 		header.reviews-card__header
-			.reviews-card__avatar(style={ background: props.background }, aria-label='Аватар пользователя')= props.avatar
+			.reviews-card__avatar(style={ background: props.background })
+				span.visually-hidden Аватар пользователя
+				span(aria-hidden='true')= props.avatar
 			.reviews-card__info
 				time.reviews-card__date(datetime=props.date.value)= props.date.label
 				span.reviews-card__name= props.name

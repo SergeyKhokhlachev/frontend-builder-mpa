@@ -206,14 +206,32 @@
 }
 
 .product-block__size {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 30px;
+	height: 30px;
+	padding: 4px;
 	font-size: 14px;
+	line-height: 1;
 	color: var(--color-text-alternate);
+	border: 1px solid var(--color-line-primary);
+	border-radius: var(--radius-small);
+	transition: border-color var(--transition);
 
 	&.active {
 		color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	@mixin hover {
+		color: var(--color-text-alternate);
+		border-color: var(--color-line-secondary);
 	}
 
 	@mixin media $tablet {
+		min-width: 38px;
+		height: 38px;
 		font-size: 16px;
 	}
 }
@@ -235,9 +253,14 @@
 	padding: 4px;
 	border: 1px solid var(--color-line-primary);
 	border-radius: var(--radius-small);
+	transition: border-color var(--transition);
 
 	&.active {
 		border-color: var(--color-primary);
+	}
+
+	@mixin hover {
+		border-color: var(--color-line-secondary);
 	}
 
 	@mixin media $tablet {

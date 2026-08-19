@@ -6,4 +6,4 @@ mixin main-partners(props = [])
 		each partner in props
 			li.main-partners__item
 				a(href='#')
-					+picture(partner.image, { format: 'svg', alt: partner.name })
+					+picture(partner.image, { format: 'svg', webp: false, alt: partner.name })

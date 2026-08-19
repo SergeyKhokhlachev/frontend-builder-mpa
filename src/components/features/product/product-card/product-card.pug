@@ -15,13 +15,7 @@ mixin product-card(props = {})
 		};
 
 	article.product-card&attributes(attributes)
-		button.favorite(
-			type='button',
-			role='checkbox',
-			aria-pressed=props.favorite,
-			aria-label='Добавить в избранное',
-			class={ active: props.favorite }
-		)
+		button.favorite(type='button', aria-pressed=`${props.favorite}`, aria-label='Добавить в избранное', class={ active: props.favorite })
 			.favorite__icons
 				+icon('favorite')
 				+icon('favorite-fill')
