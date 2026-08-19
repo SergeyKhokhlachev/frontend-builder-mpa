@@ -11,7 +11,7 @@ mixin product-card(props = {})
 			priceOld: props.priceOld || '',
 			markers: props.markers || [],
 			favorite: props.favorite || false,
-			available: props.available || true,
+			available: props.available ?? true,
 		};
 
 	article.product-card&attributes(attributes)

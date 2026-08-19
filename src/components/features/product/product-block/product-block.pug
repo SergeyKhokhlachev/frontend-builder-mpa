@@ -10,7 +10,7 @@ mixin product-block(props = {})
 			sizes: props.sizes || [],
 			colors: props.colors || [],
 			favorite: props.favorite || false,
-			available: props.available || true,
+			available: props.available ?? true,
 		};
 
 	.product-block&attributes(attributes)
