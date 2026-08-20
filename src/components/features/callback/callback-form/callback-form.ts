@@ -41,7 +41,6 @@ export default class Callback {
 
 		CALLBACK(formData)
 			.then((response) => {
-				this.$button?.classList.remove('loading');
 				window.app.notify?.append({
 					type: response.status,
 					delay: 10000,
@@ -56,6 +55,9 @@ export default class Callback {
 					title: 'Ошибка',
 					text: error instanceof Error ? error.message : String(error),
 				});
+			})
+			.finally(() => {
+				this.$button?.classList.remove('loading');
 			});
 	}
 

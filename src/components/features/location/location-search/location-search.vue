@@ -107,12 +107,19 @@ const geoHandler = () => {
 	isLoading.value = true;
 	GET_CITIES_BY_GEO(API_KEY)
 		.then((response) => {
-			setResultedList(response || []);
-			searchValue.value = '';
-			isActive.value = true;
+			if (response?.length) {
+				setResultedList(response);
+				searchValue.value = '';
+				isActive.value = true;
+			}
 		})
 		.catch((errors) => {
-			console.warn(errors);
+			window.app.notify?.append({
+				type: 'error',
+				delay: 10000,
+				title: 'Ошибка',
+				text: errors instanceof Error ? errors.message : String(errors),
+			});
 		})
 		.finally(() => {
 			isLoading.value = false;
@@ -130,8 +137,13 @@ const debouncedFetch = debounce(200, (query: string) => {
 
 			setResultedList(filtredResponse);
 		})
-		.catch((error) => {
-			console.warn(error);
+		.catch((errors) => {
+			window.app.notify?.append({
+				type: 'error',
+				delay: 10000,
+				title: 'Ошибка',
+				text: errors instanceof Error ? errors.message : String(errors),
+			});
 		});
 });
 

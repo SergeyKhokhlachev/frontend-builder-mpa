@@ -102,7 +102,6 @@ const submitHandler = async (repeat: boolean = false) => {
 
 	RECOVERY(formData.value, repeat)
 		.then((response) => {
-			loading.value = false;
 			const status = response.status;
 
 			if (status === 'success') {
@@ -126,13 +125,15 @@ const submitHandler = async (repeat: boolean = false) => {
 			}
 		})
 		.catch((error) => {
-			loading.value = false;
 			window.app.notify?.append({
 				type: 'error',
 				delay: 10000,
 				title: 'Ошибка',
 				text: error instanceof Error ? error.message : String(error),
 			});
+		})
+		.finally(() => {
+			loading.value = false;
 		});
 };
 
