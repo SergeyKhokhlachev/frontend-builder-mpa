@@ -1,5 +1,5 @@
 <template>
-	<div class="checkout-preview">
+	<div ref="checkoutPreviewRef" class="checkout-preview">
 		<div :class="['checkout-preview__loader', { loading: isLoading }]"></div>
 		<div v-if="productsAvailable.length" class="checkout-preview__header">
 			<p class="checkout-preview__title">Ваша корзина</p>
@@ -20,8 +20,12 @@
 			/>
 		</div>
 		<div class="checkout-preview__footer">
-			<a v-if="productsAvailable.length" class="button button--primary" href="/pages/checkout.html">Перейти в корзину</a>
-			<a v-if="!productsAvailable.length" class="button button--primary" href="/pages/catalog.html">Перейти в каталог</a>
+			<a v-if="productsAvailable.length" class="button button--primary" href="/pages/checkout.html" @click="closeHandler"
+				>Перейти в корзину</a
+			>
+			<a v-if="!productsAvailable.length" class="button button--primary" href="/pages/catalog.html" @click="closeHandler"
+				>Перейти в каталог</a
+			>
 		</div>
 	</div>
 </template>
@@ -38,6 +42,9 @@ const isLoading = ref(false);
 const products = ref<Product[]>([]);
 const productsAvailable = computed(() => products.value.filter((product) => product.available));
 
+const checkoutPreviewRef = ref<HTMLButtonElement | null>(null);
+const dropdown = ref<HTMLButtonElement | null>(null);
+
 const clearHandler = () => {
 	products.value = [];
 };
@@ -51,6 +58,11 @@ const removeHandler = (id: string) => {
 	const targetIndex = products.value.findIndex((p) => p.id === id);
 	if (targetIndex === -1) return;
 	products.value.splice(targetIndex, 1);
+};
+
+const closeHandler = () => {
+	const dropdownInst = window.app.classInstance.get(dropdown.value);
+	if (dropdownInst) dropdownInst.dropdown.close();
 };
 
 // Loading Cart products
@@ -71,5 +83,7 @@ onMounted(() => {
 		.finally(() => {
 			isLoading.value = false;
 		});
+
+	if (checkoutPreviewRef.value) dropdown.value = checkoutPreviewRef.value.closest('.js-dropdown');
 });
 </script>

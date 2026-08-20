@@ -24,6 +24,7 @@
 
 	@mixin media $tablet {
 		flex-shrink: 0;
+		width: 90px;
 		height: 482px;
 		margin-top: 0;
 
