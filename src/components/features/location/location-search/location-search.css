@@ -29,7 +29,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
-	height: 214px;
+	height: 180px;
 	overflow: auto;
 	scrollbar-gutter: stable;
 	overscroll-behavior: contain;
@@ -58,7 +58,6 @@
 		background-color: var(--color-background-alternate);
 		border-radius: 50%;
 		transform: translateY(-50%);
-		transition: background-color var(--transition);
 	}
 
 	&.location-search__name--disabled {
@@ -70,6 +69,14 @@
 		}
 	}
 
+	&.checked {
+		color: var(--color-text-primary);
+
+		&::before {
+			background-color: var(--color-primary);
+		}
+	}
+
 	@mixin hover {
 		color: var(--color-text-primary);
 	}
@@ -77,12 +84,9 @@
 
 .location-search__item {
 	position: relative;
+}
 
-	input:checked ~ .location-search__name {
-		color: var(--color-text-primary);
-
-		&::before {
-			background-color: var(--color-primary);
-		}
-	}
+.location-search__button {
+	display: flex;
+	margin: 20px auto 0;
 }

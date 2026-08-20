@@ -21,6 +21,7 @@
 						:value="codeArray[n - 1] || ''"
 						class="form-input"
 						type="tel"
+						:name="`${name}-digit-${n}`"
 						inputmode="numeric"
 						maxlength="1"
 						autocomplete="one-time-code"

@@ -1,18 +1,6 @@
 mixin location(props = {})
-	-
-		props = {
-			dropdown: props.dropdown || false
-		}
-
 	.location.js-location&attributes(attributes)
 		button.location__button.js-modal-open(type='button', data-modal='#modal-location')
 			span.location__label Ваш город
 			+icon('location')
 			span.location__value.js-location-value Москва
-
-		if props.dropdown
-			.location__dropdown.js-location-dropdown(aria-label='Подтверждение города')
-				.location__title Ваш город <span class='js-location-define'></span>?
-				.location__action
-					button.button.button--outline.js-location-modal(type='button') Выбрать другой
-					button.button.button--primary.js-location-approve(type='button') Да, всё верно

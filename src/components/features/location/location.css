@@ -26,6 +26,13 @@
 	}
 }
 
+.location__value {
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .location__dropdown {
 	position: absolute;
 	top: calc(100% + 10px);

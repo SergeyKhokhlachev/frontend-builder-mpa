@@ -34,6 +34,7 @@ mixin form-code(props = {})
 				while n < props.length
 					input.form-input.js-form-code__element(
 						type='tel',
+						name=`${props.name}-digit-${n + 1}`,
 						inputmode="numeric",
 						maxlength='1',
 						autocomplete="one-time-code",

@@ -46,45 +46,6 @@ const priceFormatter = new Intl.NumberFormat('ru-RU', {
 	maximumFractionDigits: 0,
 });
 
-interface YandexGeoComponent {
-	kind: string;
-	name: string;
-}
-
-function getCurrentPosition(): Promise<GeolocationPosition> {
-	return new Promise((resolve, reject) => {
-		if (!navigator.geolocation) {
-			return reject(new Error('Geolocation API is not available'));
-		}
-		navigator.geolocation.getCurrentPosition(resolve, reject);
-	});
-}
-
-async function getCityByCoords(apiKey: string): Promise<string | null> {
-	try {
-		const location = await getCurrentPosition();
-		const { longitude: lng, latitude: lat } = location.coords;
-		const url = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${apiKey}&geocode=${lng},${lat}&results=1&kind=locality`;
-
-		const res = await fetch(url);
-
-		if (!res.ok) throw new Error(`Ошибка HTTP: ${res.status}`);
-
-		const data = await res.json();
-		const features = data.response?.GeoObjectCollection?.featureMember ?? [];
-
-		if (features.length === 0) return null;
-
-		const components: YandexGeoComponent[] = features[0].GeoObject?.metaDataProperty?.GeocoderMetaData?.Address?.Components ?? [];
-		const locality = components.find((c) => c.kind === 'locality');
-
-		return locality?.name ?? null;
-	} catch (error) {
-		console.warn('Ошибка при определении города:', error);
-		return null;
-	}
-}
-
 function disableScroll() {
 	const pagePosition = window.scrollY;
 	document.body.classList.add('disable-scroll');
@@ -109,4 +70,4 @@ function hasDestroy(component: { destroy?(): void }) {
 	if (component && typeof component.destroy === 'function') return true;
 }
 
-export { classInstance, priceFormatter, getCityByCoords, disableScroll, enableScroll, clickOutside, hasDestroy };
+export { classInstance, priceFormatter, disableScroll, enableScroll, clickOutside, hasDestroy };
