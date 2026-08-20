@@ -7,5 +7,5 @@ mixin main-reviews(props = [])
 	.main-reviews&attributes(attributes)
 		+swiper-carusel.js-swiper-reviews(role='region', aria-label='Карусель отзывов')
 			each review in props
-				.swiper-slide
-					+reviews-card(review)(role='listitem')
+				.swiper-slide(role='listitem')
+					+reviews-card(review)

@@ -13,13 +13,10 @@ mixin footer(data = {}, options = {})
 					nav.footer-nav.collapse.js-collapse(aria-label='Основные разделы сайта')
 						each element in data.menu
 							.footer-nav__box.collapse__element.js-collapse__element
-								h3.footer-nav__title.collapse__button.js-collapse__button(
-									role='button',
-									aria-expanded='false',
-									aria-controls=element.id
-								)
-									| #{ element.category }
-									+icon('chevron-down').footer-nav__icon.collapse__icon
+								h3.footer-nav__title
+									button.collapse__button.js-collapse__button(role='button', aria-expanded='false', aria-controls=element.id)
+										| #{ element.category }
+										+icon('chevron-down').footer-nav__icon.collapse__icon
 								ul.footer-nav__list.collapse__content(id=element.id)
 									each item in element.items
 										li

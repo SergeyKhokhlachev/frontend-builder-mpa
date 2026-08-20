@@ -6,7 +6,7 @@ mixin category-preview(props = {})
 			quantity: props.quantity || '',
 		};
 
-	a.category-preview(href='/pages/catalog.html', aria-label='Перейти к категории товаров')&attributes(attributes)
-		span.category-preview__quantity= props.quantity
-		h3.category-preview__name= props.name
+	a.category-preview(href='/pages/catalog.html', aria-label=`Категория: ${props.name}, ${props.quantity}`)&attributes(attributes)
+		span.category-preview__quantity(aria-hidden='true')= props.quantity
+		h3.category-preview__name(aria-hidden='true')= props.name
 		+picture(props.image, { format: 'png', alt: props.name })

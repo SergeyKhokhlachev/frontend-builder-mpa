@@ -169,8 +169,12 @@
 
 .footer-nav__title {
 	padding: 16px;
-	font-size: inherit;
-	text-transform: uppercase;
+
+	.collapse__button {
+		font-size: inherit;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
 
 	@mixin media $tablet {
 		padding: 0;

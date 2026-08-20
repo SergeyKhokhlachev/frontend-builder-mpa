@@ -210,24 +210,24 @@ mixin product-filter(props = {})
 						span.product-filter__vuew
 
 				each group in FORM_SCHEMA
-					fieldset
-						.product-filter__block.collapse__element.js-collapse__element
-							legend.product-filter__head.collapse__button.js-collapse__button(
-								role='button',
+					.product-filter__block.collapse__element.js-collapse__element
+						.product-filter__head
+							button.product-filter__button.collapse__button.js-collapse__button(
+								type='button',
 								aria-expanded='false',
 								aria-controls=group.id
 							)
 								span.product-filter__name= group.name
 								+icon('chevron-down').collapse__icon
-							.product-filter__group.collapse__content(id=group.id)
-								.product-filter__scroll
-									each item in group.items
-										+form-checkbox(item)
-											if item.color
-												span.product-filter__color(style='background: ' + item.color)
-											span= item.label
-											if item.quantity
-												span.product-filter__quantity (#{ item.quantity })
+						.product-filter__group.collapse__content(id=group.id)
+							fieldset.product-filter__scroll
+								each item in group.items
+									+form-checkbox(item)
+										if item.color
+											span.product-filter__color(style='background: ' + item.color)
+										span= item.label
+										if item.quantity
+											span.product-filter__quantity(aria-label=`Доступно товаров: ${item.quantity}`) (#{ item.quantity })
 
 			footer.product-filter__footer
 				.product-filter__result Найдено 130 товаров

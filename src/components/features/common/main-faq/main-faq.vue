@@ -1,15 +1,17 @@
 <template>
 	<div class="main-faq collapse">
 		<div v-for="item in collapseData" :key="item.id" :class="['main-faq__element collapse__element', { active: item.expanded }]">
-			<h3
-				class="main-faq__button collapse__button"
-				role="button"
-				:aria-expanded="item.expanded"
-				:aria-controls="item.id"
-				@click="item.expanded = !item.expanded"
-			>
-				<span>{{ item.name }}</span>
-				<i class="collapse__icon icon icon-chevron-down"></i>
+			<h3>
+				<button
+					class="main-faq__button collapse__button"
+					role="button"
+					:aria-expanded="item.expanded"
+					:aria-controls="item.id"
+					@click="item.expanded = !item.expanded"
+				>
+					<span>{{ item.name }}</span>
+					<i class="collapse__icon icon icon-chevron-down"></i>
+				</button>
 			</h3>
 			<div :id="item.id" class="collapse__content">
 				<div class="main-faq__content">{{ item.text }}</div>

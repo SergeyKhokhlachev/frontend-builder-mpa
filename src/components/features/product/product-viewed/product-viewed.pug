@@ -7,5 +7,5 @@ mixin product-viewed(props = [])
 	.product-viewed&attributes(attributes)
 		+swiper-carusel.js-swiper-viewed(role='region', aria-label='Карусель просмотренных товаров')
 			each product in props
-				.swiper-slide
-					+product-short(product)(role='listitem')
+				.swiper-slide(role='listitem')
+					+product-short(product)

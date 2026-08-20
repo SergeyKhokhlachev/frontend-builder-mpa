@@ -20,7 +20,7 @@ mixin form-checkbox(props = {})
 				required=props.required,
 				disabled=props.disabled
 			)
-			.form-checkbox__vue
+			.form-checkbox__vue(aria-hidden='true')
 				+icon('check')
 		label.form-checkbox__label(for=props.id)
 			block

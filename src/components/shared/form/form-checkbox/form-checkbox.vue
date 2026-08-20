@@ -13,7 +13,7 @@
 				class="form-checkbox__input"
 				@change="changeHandler"
 			/>
-			<div class="form-checkbox__vue">
+			<div class="form-checkbox__vue" aria-hidden="true">
 				<i class="icon icon-check" aria-hidden="true"></i>
 			</div>
 		</div>

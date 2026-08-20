@@ -38,5 +38,5 @@ mixin main-category(props = [])
 	.main-category&attributes(attributes)
 		+swiper-carusel.js-swiper-category(role='region', aria-label='Карусель категорий')
 			each category, index in props
-				.swiper-slide(class={ 'swiper-slide--large': index === 0 || index === 5 })
-					+category-preview(category)(role='listitem')
+				.swiper-slide(class={ 'swiper-slide--large': index === 0 || index === 5 }, role='listitem')
+					+category-preview(category)
