@@ -103,8 +103,8 @@ export default defineConfig({
 		rollupOptions: {
 			input: ['./src/templates/**/*.pug'],
 			output: {
-				entryFileNames: 'script/entry-[name]-[hash:8].js',
-				chunkFileNames: 'script/chunk-[name]-[hash:8].js',
+				entryFileNames: 'script/[name]-[hash:8].js',
+				chunkFileNames: 'script/[name]-[hash:8].js',
 				manualChunks(id) {
 					if (id.includes('node_modules')) {
 						return 'vendor';
