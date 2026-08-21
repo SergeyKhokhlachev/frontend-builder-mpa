@@ -3,7 +3,6 @@
 @import '@/common/fonts';
 @import '@/common/normalize';
 @import '@/common/common';
-@import '@/common/base-content';
 
 /* NOTE: import UI style */
 @import '@/components/shared/loader/loader';
@@ -28,8 +27,8 @@
 @import '@/components/shared/form/form';
 
 /* NOTE: import Layout style */
-@import '@/layout/header/header';
-@import '@/layout/footer/footer';
+@import '@/components/layouts/header/header';
+@import '@/components/layouts/footer/footer';
 @import '@/components/features/search/search';
 @import '@/components/features/subscribe/subscribe';
 @import '@/components/features/location/location';

@@ -1,10 +1,13 @@
-extends /layout/layout
+extends /components/layouts/layout
 
 include /components/features/uikit/uikit-form-native/uikit-form-native
 
 block data
 	include /api/data/ui-kit/color-array
 	include /api/data/ui-kit/icon-array
+
+	-
+		title = 'Page UI Kit';
 
 block main
 	.page(data-barba='container', data-barba-namespace='ui-kit')

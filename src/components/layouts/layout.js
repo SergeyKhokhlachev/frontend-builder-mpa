@@ -3,8 +3,8 @@ import Collapse from '@/components/shared/collapse/collapse';
 import Dropdown from '@/components/shared/dropdown/dropdown';
 import Tabs from '@/components/shared/tabs/tabs';
 
-import Header from '@/layout/header/header';
-import Footer from '@/layout/footer/footer';
+import Header from '@/components/layouts/header/header';
+import Footer from '@/components/layouts/footer/footer';
 
 export default async function initLayout() {
 	const $header = document.querySelector('.js-header');

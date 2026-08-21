@@ -1,5 +1,4 @@
-import glob from 'fast-glob';
-import { resolve, basename } from 'path';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 import { breakpoint } from './src/common/breakpoint';
@@ -13,7 +12,9 @@ import stylelintPlugin from 'vite-plugin-stylelint';
 import vuePlugin from '@vitejs/plugin-vue';
 
 // markup plugins
-import pugPlugin from 'vite-plugin-pug';
+import vituum from 'vituum';
+import pug from '@vituum/vite-plugin-pug';
+// import pugPlugin from 'vite-plugin-pug';
 
 // style plugins
 import postcssMixins from 'postcss-mixins';
@@ -28,10 +29,6 @@ import imageOptimizerPlugin from './plugins/vite-image-optimizer';
 
 export default defineConfig({
 	appType: 'mpa',
-	base: '/',
-	root: resolve(__dirname, 'src'),
-	publicDir: resolve(__dirname, './public'),
-	envDir: '../',
 	server: {
 		type: 'mpa',
 		port: 3000,
@@ -43,19 +40,24 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-		pugPlugin(
-			{
-				pretty: true,
-				venbose: true,
-				basedir: resolve(__dirname, 'src'),
+		vituum({
+			pages: {
+				root: resolve(__dirname, 'src'),
+				dir: resolve(__dirname, 'src/templates'),
 			},
-			{
+		}),
+		pug({
+			root: resolve(__dirname, 'src'),
+			globals: {
 				process: process.env.NODE_ENV,
 				breakpoint: breakpoint,
 			},
-		),
+			options: {
+				pretty: true,
+			},
+		}),
 		vuePlugin(),
-		spritemapPlugin('./assets/icons/*.svg', {
+		spritemapPlugin('src/assets/icons/*.svg', {
 			prefix: 'icon-',
 		}),
 		imageOptimizerPlugin(),
@@ -99,10 +101,7 @@ export default defineConfig({
 		manifest: true,
 		modulePreload: false,
 		rollupOptions: {
-			input: glob.sync('src/**/*.html').reduce((acc, file) => {
-				acc[basename(file, '.html')] = file;
-				return acc;
-			}, {}),
+			input: ['./src/templates/**/*.pug'],
 			output: {
 				entryFileNames: 'script/entry-[name]-[hash:8].js',
 				chunkFileNames: 'script/chunk-[name]-[hash:8].js',

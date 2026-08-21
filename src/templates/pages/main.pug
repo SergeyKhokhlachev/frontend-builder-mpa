@@ -1,4 +1,4 @@
-extends /layout/layout
+extends /components/layouts/layout
 
 include /components/features/common/main-banner/main-banner
 include /components/features/common/main-category/main-category
@@ -10,6 +10,9 @@ include /components/features/common/main-partners/main-partners
 block data
 	include /api/data/partners
 	include /api/data/reviews
+
+	-
+		title = 'Page Main';
 
 block main
 	main.page(data-barba='container', data-barba-namespace='main')

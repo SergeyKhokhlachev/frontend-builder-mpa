@@ -1,8 +1,10 @@
-extends /layout/layout
+extends /components/layouts/layout
 
 include /components/features/checkout/checkout-result/checkout-result
 
 block data
+	-
+		title = 'Page Checkout Result';
 
 block main
 	.page(data-barba='container', data-barba-namespace='checkout-result')

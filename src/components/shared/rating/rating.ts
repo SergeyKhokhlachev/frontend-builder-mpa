@@ -52,7 +52,7 @@ export default class Rating {
 
 	private draw(value: string) {
 		if (this.$draw) {
-			this.$draw.style.width = `${(100 / this.$items.length) * Number(value)}%`;
+			this.$draw.style.width = `${(Number(value) / this.$items.length) * 100}%`;
 		}
 	}
 

@@ -15,8 +15,8 @@ include /components/shared/form/form-radio/form-radio
 include /components/shared/form/form-select/form-select
 include /components/shared/form/form-textarea/form-textarea
 
-include /layout/header/header
-include /layout/footer/footer
+include /components/layouts/header/header
+include /components/layouts/footer/footer
 include /components/features/search/search
 include /components/features/subscribe/subscribe
 include /components/features/location/location
@@ -25,29 +25,38 @@ include /components/features/callback/callback-form/callback-form
 
 -
 	let auth = false;
+	let title = 'Page list'
 
 include /api/data/footer
 include /api/data/header
 
 block data
 
-body.wrapper(data-barba='wrapper')
-	.page-loader.active.js-page-loader
-	+header(headerData, { auth: auth }).js-sticky-indent
+doctype html
+html(lang='ru')
+	head
+		include /common/head.pug
+		title= title
+		link(rel='stylesheet', crossorigin, href='/src/templates/bundle.css')
+		script(type='module', src='/src/templates/bundle.js')
 
-	block main
+	body.wrapper(data-barba='wrapper')
+		.page-loader.active.js-page-loader
+		+header(headerData, { auth: auth }).js-sticky-indent
 
-	+subscribe
-	+footer(footerData)
+		block main
 
-	.notify-layer.js-notify-layer
-	.modal-layer.js-modal-layer.js-modal-close
+		+subscribe
+		+footer(footerData)
 
-	+modal-window({ id: 'modal-callback', title: 'Заказать звонок', text: 'Если вы не желаете дожидаться ответа по нашей Горячей Линии, то просто оставьте свой номер телефона и мы сами вам перезвоним' }).modal-window--small
-		+callback-form
+		.notify-layer.js-notify-layer
+		.modal-layer.js-modal-layer.js-modal-close
 
-	+modal-window({ id: 'modal-login' }).modal-window--small
-		.js-login-vue
+		+modal-window({ id: 'modal-callback', title: 'Заказать звонок', text: 'Если вы не желаете дожидаться ответа по нашей Горячей Линии, то просто оставьте свой номер телефона и мы сами вам перезвоним' }).modal-window--small
+			+callback-form
 
-	+modal-window({ id: 'modal-location', title: 'Выбор города' }).modal-window--small
-		.js-location-search-vue
+		+modal-window({ id: 'modal-login' }).modal-window--small
+			.js-login-vue
+
+		+modal-window({ id: 'modal-location', title: 'Выбор города' }).modal-window--small
+			.js-location-search-vue

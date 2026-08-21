@@ -12,7 +12,7 @@ mixin rating(props = {})
 			.rating__label(id=`${props.id}-label`)= props.label
 
 		.rating__track
-			.rating__draw.js-rating__draw(style=`width: ${100 / 5 * props.value}%`)
+			.rating__draw.js-rating__draw(style=`width: ${(props.value / 5) * 100}%`)
 			if props.active
 				.rating__items(role='radiogroup', aria-labelledby=`${props.id}-label`)
 					- var n = 1;

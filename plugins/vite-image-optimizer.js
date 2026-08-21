@@ -1,7 +1,7 @@
-import sharp from 'sharp';
 import fs from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
+import sharp from 'sharp';
 import colors from 'picocolors';
 
 // Настройки лимитов

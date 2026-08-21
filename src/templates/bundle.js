@@ -5,7 +5,7 @@ import Modal from '@/components/shared/modal/modal';
 import Notify from '@/components/shared/notify/notify';
 import Picture from '@/components/shared/picture/picture';
 
-import initLayout from '@/layout/layout';
+import initLayout from '@/components/layouts/layout';
 
 window.app = {};
 window.app.classInstance = classInstance;
@@ -28,77 +28,77 @@ barba.init({
 		{
 			namespace: 'ui-kit',
 			async afterEnter(data) {
-				const { uikitPage } = await import('@/templates/ui-kit/ui-kit');
+				const { uikitPage } = await import('@/templates/pages/ui-kit');
 				uikitPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { uikitPage } = await import('@/templates/ui-kit/ui-kit');
+				const { uikitPage } = await import('@/templates/pages/ui-kit');
 				uikitPage.destroy();
 			},
 		},
 		{
 			namespace: 'main',
 			async afterEnter(data) {
-				const { mainPage } = await import('@/templates/main/main');
+				const { mainPage } = await import('@/templates/pages/main');
 				mainPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { mainPage } = await import('@/templates/main/main');
+				const { mainPage } = await import('@/templates/pages/main');
 				mainPage.destroy();
 			},
 		},
 		{
 			namespace: 'shops',
 			async afterEnter(data) {
-				const { shopsPage } = await import('@/templates/shops/shops');
+				const { shopsPage } = await import('@/templates/pages/shops');
 				await shopsPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { shopsPage } = await import('@/templates/shops/shops');
+				const { shopsPage } = await import('@/templates/pages/shops');
 				shopsPage.destroy();
 			},
 		},
 		{
 			namespace: 'category',
 			async afterEnter(data) {
-				const { categoryPage } = await import('@/templates/category/category');
+				const { categoryPage } = await import('@/templates/pages/category');
 				categoryPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { categoryPage } = await import('@/templates/category/category');
+				const { categoryPage } = await import('@/templates/pages/category');
 				categoryPage.destroy();
 			},
 		},
 		{
 			namespace: 'catalog',
 			async afterEnter(data) {
-				const { catalogPage } = await import('@/templates/catalog/catalog');
+				const { catalogPage } = await import('@/templates/pages/catalog');
 				catalogPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { catalogPage } = await import('@/templates/catalog/catalog');
+				const { catalogPage } = await import('@/templates/pages/catalog');
 				catalogPage.destroy();
 			},
 		},
 		{
 			namespace: 'product',
 			async afterEnter(data) {
-				const { productPage } = await import('@/templates/product/product');
+				const { productPage } = await import('@/templates/pages/product');
 				productPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { productPage } = await import('@/templates/product/product');
+				const { productPage } = await import('@/templates/pages/product');
 				productPage.destroy();
 			},
 		},
 		{
 			namespace: 'checkout',
 			async afterEnter(data) {
-				const { checkoutPage } = await import('@/templates/checkout/checkout');
+				const { checkoutPage } = await import('@/templates/pages/checkout');
 				checkoutPage.init(data.next.container);
 			},
 			async beforeLeave() {
-				const { checkoutPage } = await import('@/templates/checkout/checkout');
+				const { checkoutPage } = await import('@/templates/pages/checkout');
 				checkoutPage.destroy();
 			},
 		},

@@ -1,4 +1,4 @@
-extends /layout/layout
+extends /components/layouts/layout
 
 include /components/features/category/category-card/category-card
 include /components/features/product/product-viewed/product-viewed
@@ -8,6 +8,8 @@ block data
 	include /api/data/products
 
 	-
+		title = 'Base Content';
+
 		const breadcrumbs = {
 			'Главная': '/pages/main.html',
 			'Каталог': '',
