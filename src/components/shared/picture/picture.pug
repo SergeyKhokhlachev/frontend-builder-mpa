@@ -22,15 +22,15 @@ mixin picture(name = '', props = {})
 
 			if process == 'production'
 				if props.webp
-					source(srcset=`../images/${res.name}.webp`, media=`(min-width: ${res.media}px)`, type='image/webp')
-				source(srcset=`../images/${res.name}.${res.format}`, media=`(min-width: ${res.media}px)`)
+					source(srcset=`/images/${res.name}.webp`, media=`(min-width: ${res.media}px)`, type='image/webp')
+				source(srcset=`/images/${res.name}.${res.format}`, media=`(min-width: ${res.media}px)`)
 			else
 				source(srcset=`/assets/images/${res.name}.${res.format}`, media=`(min-width: ${res.media}px)`)
 
 		if process == 'production'
 			if props.webp
-				source(srcset=`../images/${name}.webp`, type='image/webp')
-			img(src=`../images/${name}.${props.format}`, alt=props.alt, loading=props.loading, width=props.width, height=props.height)
+				source(srcset=`/images/${name}.webp`, type='image/webp')
+			img(src=`/images/${name}.${props.format}`, alt=props.alt, loading=props.loading, width=props.width, height=props.height)
 		else
 			img(
 				src=`/assets/images/${name}.${props.format}`,
