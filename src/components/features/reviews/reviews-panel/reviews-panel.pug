@@ -1,0 +1,33 @@
+mixin reviews-panel(props = {})
+	.reviews-panel&attributes(attributes)
+		.reviews-panel__box
+			+rating({ value: 4.2, label: true }).rating--large
+			.reviews-panel__quantity 283 отзыва
+		.reviews-panel__list
+			.reviews-panel__item
+				.reviews-panel__label 5 звёзд
+				.reviews-panel__track
+					.reviews-panel__draw(style='width: 40%')
+				.reviews-panel__label 142
+			.reviews-panel__item
+				.reviews-panel__label 4 звёзды
+				.reviews-panel__track
+					.reviews-panel__draw(style='width: 30%')
+				.reviews-panel__label 78
+			.reviews-panel__item
+				.reviews-panel__label 3 звёзды
+				.reviews-panel__track
+					.reviews-panel__draw(style='width: 10%')
+				.reviews-panel__label 12
+			.reviews-panel__item
+				.reviews-panel__label 2 звёзды
+				.reviews-panel__track
+					.reviews-panel__draw(style='width: 20%')
+				.reviews-panel__label 51
+			.reviews-panel__item
+				.reviews-panel__label 1 звёзда
+				.reviews-panel__track
+					.reviews-panel__draw(style='width: 0')
+				.reviews-panel__label 0
+		button.reviews-panel__button.button.button--primary.js-modal-open(type='button', data-modal='#modal-reviews')
+			span Оставить отзыв

@@ -11,22 +11,24 @@
 		:error="viewResult.error"
 		:focus="focus"
 	>
-		<textarea
-			:id="id"
-			:name="name"
-			:value="modelValue"
-			:placeholder="placeholder"
-			:autocomplete="autocomplete"
-			:required="required"
-			:disabled="disabled"
-			:aria-describedby="`${id}-error`"
-			:aria-invalid="!viewResult.valid"
-			:aria-required="required"
-			class="form-textarea"
-			@input="inputHandler"
-			@focus="focus = !viewResult.error ? true : false"
-			@blur="focus = false"
-		></textarea>
+		<div class="form-element__field">
+			<textarea
+				:id="id"
+				:name="name"
+				:value="modelValue"
+				:placeholder="placeholder"
+				:autocomplete="autocomplete"
+				:required="required"
+				:disabled="disabled"
+				:aria-describedby="`${id}-error`"
+				:aria-invalid="!viewResult.valid"
+				:aria-required="required"
+				class="form-textarea"
+				@input="inputHandler"
+				@focus="focus = !viewResult.error ? true : false"
+				@blur="focus = false"
+			></textarea>
+		</div>
 	</form-element>
 </template>
 

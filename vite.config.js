@@ -57,9 +57,6 @@ export default defineConfig({
 		vuePlugin(),
 		spritemapPlugin('./assets/icons/*.svg', {
 			prefix: 'icon-',
-			output: {
-				filename: '../sprite/spritemap.svg',
-			},
 		}),
 		imageOptimizerPlugin(),
 		eslintPlugin({
@@ -115,13 +112,19 @@ export default defineConfig({
 					}
 				},
 				assetFileNames: (assetInfo) => {
-					let extType = assetInfo.name.split('.').at(1);
-					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType)) {
+					if (!assetInfo.name) return '[name].[ext]';
+
+					const extType = assetInfo.name.split('.').pop();
+
+					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType) && !assetInfo.name.includes('spritemap')) {
 						return 'images/[name].[ext]';
 					}
+
 					if (/css|scss|styl|less/i.test(extType)) {
 						return 'style/[name]-[hash:8].[ext]';
 					}
+
+					return 'assets/[name]-[hash:8].[ext]';
 				},
 			},
 		},

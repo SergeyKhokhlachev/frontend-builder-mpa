@@ -1,3 +1,4 @@
 /* NOTE: import COMPONENTS style */
 @import '@/components/features/product/product-block/product-block';
 @import '@/components/features/product/product-viewed/product-viewed';
+@import '@/components/features/reviews/reviews-form/reviews-form';

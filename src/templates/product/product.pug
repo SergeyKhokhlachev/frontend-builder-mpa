@@ -2,6 +2,7 @@ extends /layout/layout
 
 include /components/features/product/product-block/product-block
 include /components/features/product/product-viewed/product-viewed
+include /components/features/reviews/reviews-form/reviews-form
 
 block data
 	include /api/data/products
@@ -24,3 +25,6 @@ block main
 			.container
 				h2.page-title Ранее вы смотрели
 				+product-viewed(productsViewed)
+
+		+modal-window({ id: 'modal-reviews', title: 'Отзыв о товаре' }).modal-window--small
+			+reviews-form

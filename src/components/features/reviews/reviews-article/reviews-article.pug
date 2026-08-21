@@ -1,4 +1,4 @@
-mixin reviews-card(props = {})
+mixin reviews-article(props = {})
 	-
 		props = {
 			avatar: props.avatar || '',
@@ -10,7 +10,7 @@ mixin reviews-card(props = {})
 			rating: props.rating || 0,
 		};
 
-	article.reviews-card&attributes(attributes)
+	article.reviews-article&attributes(attributes)
 		header.reviews-card__header
 			.reviews-card__avatar(style={ background: props.background })
 				span.visually-hidden Аватар пользователя

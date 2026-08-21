@@ -20,6 +20,7 @@
 @import '@/components/shared/modal/modal';
 @import '@/components/shared/notify/notify';
 @import '@/components/shared/breadcrumbs/breadcrumbs';
+@import '@/components/shared/rating/rating';
 @import '@/components/shared/swiper/swiper-banner/swiper-banner';
 @import '@/components/shared/swiper/swiper-carusel/swiper-carusel';
 @import '@/components/shared/swiper/swiper-thumbs/swiper-thumbs';

@@ -2,11 +2,13 @@ import { hasDestroy } from '@/common/helpers';
 import Tabs from '@/components/shared/tabs/tabs';
 import SwiperThumbs from '@/components/shared/swiper/swiper-thumbs/swiper-thumbs';
 import SwiperCarusel from '@/components/shared/swiper/swiper-carusel/swiper-carusel';
+import Reviews from '@/components/features/reviews/reviews-form/reviews-form';
 
 export const productPage = {
 	productTabs: null,
 	swiperThumbs: null,
 	swiperViewed: null,
+	reviews: null,
 
 	async init(container) {
 		const $productTabs = container.querySelector('.js-product-block-tabs');
@@ -17,6 +19,9 @@ export const productPage = {
 
 		const $swiperViewed = container.querySelector('.js-swiper-viewed');
 		if ($swiperViewed) this.swiperViewed = new SwiperCarusel($swiperViewed);
+
+		const $reviews = container.querySelector('.js-reviews');
+		if ($reviews) this.reviews = new Reviews($reviews);
 	},
 
 	destroy() {
@@ -28,5 +33,8 @@ export const productPage = {
 
 		if (hasDestroy(this.swiperViewed)) this.swiperViewed.destroy();
 		this.swiperViewed = null;
+
+		if (hasDestroy(this.reviews)) this.reviews.destroy();
+		this.reviews = null;
 	},
 };

@@ -1,0 +1,22 @@
+.reviews-form {
+	margin-top: 24px;
+
+	.rating {
+		margin-bottom: 24px;
+	}
+
+	.form-element {
+		margin-bottom: 32px;
+	}
+}
+
+.reviews-form__buttons {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	margin-top: 48px;
+
+	.button {
+		width: 100%;
+	}
+}

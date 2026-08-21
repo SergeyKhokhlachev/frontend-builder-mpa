@@ -4,7 +4,7 @@
 	padding: 10px 16px;
 	font-size: 16px;
 	border: 1px solid var(--color-line-primary);
-	border-radius: 5px;
+	border-radius: var(--radius-small);
 	transition: border-color var(--transition);
 
 	&::placeholder {

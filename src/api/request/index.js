@@ -1,6 +1,7 @@
 // common
 export { default as SUBSCRIBE } from '@/api/request/subscribe/subscribe';
 export { default as CALLBACK } from '@/api/request/callback/callback';
+export { default as REVIEWS } from '@/api/request/reviews/reviews';
 export { default as SEARCH } from '@/api/request/search/search';
 export { default as FAQ } from '@/api/request/faq/faq';
 export { default as SHOPS } from '@/api/request/shops/shops';

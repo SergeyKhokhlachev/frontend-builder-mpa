@@ -1,0 +1,28 @@
+mixin reviews-form(props = {})
+	-
+		const FORM_SCHEMA = {
+			comment: {
+				id: 'reviews-comment',
+				name: 'comment',
+				value: '',
+				placeholder: 'Введите текст',
+				required: true,
+			},
+			file: {
+				id: 'reviews-file',
+				name: 'file',
+				value: '',
+				multiple: true,
+				required: false,
+			},
+		}
+
+	form.reviews-form.js-reviews(novalidate)&attributes(attributes)
+		+rating({ value: 3, label: 'Ваша оценка:', active: true }).rating--large
+		+form-textarea(FORM_SCHEMA.comment)
+		+form-file(FORM_SCHEMA.file)
+		.reviews-form__buttons
+			button.button.button--outline.js-modal-close(type='button')
+				span Отмена
+			button.button.button--primary.js-reviews__button(type='submit')
+				span Отправить

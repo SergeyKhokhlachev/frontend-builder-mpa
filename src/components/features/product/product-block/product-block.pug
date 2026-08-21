@@ -1,3 +1,5 @@
+include /components/features/reviews/reviews-panel/reviews-panel
+
 mixin product-block(props = {})
 	-
 		props = {
@@ -6,6 +8,7 @@ mixin product-block(props = {})
 			quantity: props.quantity || '',
 			priceNew: props.priceNew || '',
 			priceOld: props.priceOld || '',
+			rating: props.rating || 0,
 			markers: props.markers || [],
 			sizes: props.sizes || [],
 			colors: props.colors || [],
@@ -32,13 +35,15 @@ mixin product-block(props = {})
 						span.marker(style='color: ' + marker.color + '; background: ' + marker.background)= marker.value
 
 				h1.product-block__name= props.name
-				.product-block__available
-					if props.available
-						.product-card__status.available
-							| В наличии #{ props.quantity }
-					else
-						.product-card__status
-							| Нет в наличии
+				.product-block__inline-box
+					+rating({ value: props.rating, label: true })
+					.product-block__available
+						if props.available
+							.product-card__status.available
+								| В наличии #{ props.quantity }
+						else
+							.product-card__status
+								| Нет в наличии
 
 				.product-block__box
 					.product-block__coast
@@ -82,11 +87,18 @@ mixin product-block(props = {})
 
 		.product-block__content.tabs.js-product-block-tabs
 			.tabs__control(role='tablist', aria-label='UI Kit tabs click')
-				button#tab-btn-describe.tabs__button.js-tabs__button.active(
+				button#tab-btn-reviews.tabs__button.active.js-tabs__button(
+					type='button',
+					role='tab',
+					aria-selected='false',
+					aria-controls='tab-panel-reviews'
+				) Отзывы (283)
+				button#tab-btn-describe.tabs__button.js-tabs__button(
 					type='button',
 					role='tab',
 					aria-selected='true',
-					aria-controls='tab-panel-describe'
+					aria-controls='tab-panel-describe',
+					tabindex='-1'
 				) Описание
 				button#tab-btn-property.tabs__button.js-tabs__button(
 					type='button',
@@ -95,13 +107,6 @@ mixin product-block(props = {})
 					aria-controls='tab-panel-property',
 					tabindex='-1'
 				) Характеристики
-				button#tab-btn-reviews.tabs__button.js-tabs__button(
-					type='button',
-					role='tab',
-					aria-selected='false',
-					aria-controls='tab-panel-reviews',
-					tabindex='-1'
-				) Отзывы (21)
 				button#tab-btn-guarantee.tabs__button.js-tabs__button(
 					type='button',
 					role='tab',
@@ -116,7 +121,18 @@ mixin product-block(props = {})
 					aria-controls='tab-panel-payment',
 					tabindex='-1'
 				) Способы оплаты
-			#tab-panel-describe.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-describe')
+			#tab-panel-reviews.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-reviews')
+				.product-block__describe
+					.product-block__aside
+						h2.product-block__head Отзывы
+						+reviews-panel
+					.product-block__main
+						p.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit.
+							Provident quisquam ratione qui dignissimos reprehenderit voluptatibus incidunt impedit illum at
+							repellendus ullam optio possimus, commodi nemo autem delectus. Doloremque, ipsa quia!
+
+			#tab-panel-describe.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-describe', hidden)
 				.product-block__describe
 					.product-block__aside
 						h2.product-block__head Описание
@@ -137,15 +153,7 @@ mixin product-block(props = {})
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 							Provident quisquam ratione qui dignissimos reprehenderit voluptatibus incidunt impedit illum at
 							repellendus ullam optio possimus, commodi nemo autem delectus. Doloremque, ipsa quia!
-			#tab-panel-reviews.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-reviews', hidden)
-				.product-block__describe
-					.product-block__aside
-						h2.product-block__head Отзывы
-					.product-block__main
-						p.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Provident quisquam ratione qui dignissimos reprehenderit voluptatibus incidunt impedit illum at
-							repellendus ullam optio possimus, commodi nemo autem delectus. Doloremque, ipsa quia!
+
 			#tab-panel-guarantee.tabs__element.js-tabs__element(role='tabpanel', aria-labelledby='tab-btn-guarantee', hidden)
 				.product-block__describe
 					.product-block__aside

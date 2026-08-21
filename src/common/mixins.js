@@ -58,7 +58,7 @@ export const mixins = {
 	},
 	icons: function (mixin) {
 		const rules = [];
-		const path = process.env.NODE_ENV === 'development' ? '/__spritemap.svg' : '../sprite/spritemap.svg';
+		const path = '/__spritemap';
 		fs.readdirSync('./src/assets/icons').forEach(function (file) {
 			const icon = file.replace(/\.svg$/, '');
 			const rule = postcss.rule({ selector: `.icon.icon-${icon}::before` });

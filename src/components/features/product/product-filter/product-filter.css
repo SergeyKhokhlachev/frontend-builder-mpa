@@ -167,6 +167,14 @@
 	}
 }
 
+.product-filter__button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	min-height: 48px;
+}
+
 .product-filter__group {
 	.form-checkbox {
 		margin-bottom: 14px;

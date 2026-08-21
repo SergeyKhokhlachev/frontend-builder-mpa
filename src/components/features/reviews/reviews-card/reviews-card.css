@@ -8,6 +8,10 @@
 	border-radius: var(--radius-small);
 	transition: box-shadow var(--transition);
 
+	.rating {
+		margin-bottom: 10px;
+	}
+
 	@mixin media $tablet {
 		padding: 30px 30px 34px;
 	}
@@ -19,7 +23,7 @@
 
 .reviews-card__header {
 	display: flex;
-	margin-bottom: 28px;
+	margin-bottom: 24px;
 }
 
 .reviews-card__avatar {

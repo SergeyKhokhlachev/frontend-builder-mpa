@@ -1,3 +1,5 @@
+@import '@/components/features/reviews/reviews-panel/reviews-panel';
+
 .product-block {
 	padding-bottom: 40px;
 
@@ -117,14 +119,6 @@
 	}
 }
 
-.product-block__available {
-	margin-bottom: 12px;
-
-	@mixin media $tablet {
-		margin-bottom: 16px;
-	}
-}
-
 .product-card__status {
 	font-size: 12px;
 	font-weight: 400;
@@ -142,6 +136,17 @@
 .product-block__box {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 18px;
+
+	@mixin media $tablet {
+		margin-bottom: 24px;
+	}
+}
+
+.product-block__inline-box {
+	display: flex;
+	gap: 20px;
+	align-items: flex-end;
 	margin-bottom: 18px;
 
 	@mixin media $tablet {
@@ -298,15 +303,19 @@
 
 	@mixin media $desktopS {
 		display: flex;
-		gap: 30px;
+		gap: 40px;
 		padding-top: 32px;
+	}
+
+	@mixin media $desktopM {
+		gap: 70px;
 	}
 }
 
 .product-block__aside {
 	@mixin media $desktopS {
 		flex-shrink: 0;
-		width: 280px;
+		width: 300px;
 	}
 }
 

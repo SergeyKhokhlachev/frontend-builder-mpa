@@ -1,0 +1,31 @@
+mixin rating(props = {})
+	-
+		props = {
+			id: props.id || `rating-${Math.random().toString(36).substring(2, 11)}`,
+			value: props.value || 0,
+			label: props.label || '',
+			active: props.active || false,
+		}
+
+	.rating.js-rating(data-interactive=`${props.active}`)&attributes(attributes)
+		if props.active
+			.rating__label(id=`${props.id}-label`)= props.label
+
+		.rating__track
+			.rating__draw.js-rating__draw(style=`width: ${100 / 5 * props.value}%`)
+			if props.active
+				.rating__items(role='radiogroup', aria-labelledby=`${props.id}-label`)
+					- var n = 1;
+					while n < 6
+						input.rating__item.js-rating__item(
+							id=`${props.id}-${n}`,
+							type='radio',
+							name='rating',
+							value=n,
+							checked=props.value == n,
+							aria-label=`${n} звезда из 5`
+						)
+						- n++;
+
+		if !props.active
+			.rating__result= props.value
