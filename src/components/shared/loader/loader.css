@@ -14,8 +14,8 @@
 	background-color: var(--color-background-primary);
 	opacity: 0;
 	transition:
-		opacity var(--transition),
-		visibility var(--transition);
+		opacity 0.5s var(--transition),
+		visibility 0.5s var(--transition);
 
 	&::after {
 		width: 80px;

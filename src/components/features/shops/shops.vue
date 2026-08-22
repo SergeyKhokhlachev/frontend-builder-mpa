@@ -141,7 +141,7 @@ const activeHandler = (id: string, coords: LngLat = [0, 0]) => {
 		if (element) {
 			element.scrollIntoView({
 				behavior: 'smooth',
-				block: 'start',
+				block: 'nearest',
 			});
 		}
 	});
