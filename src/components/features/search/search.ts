@@ -41,6 +41,7 @@ export default class Search {
 		this.$layer?.addEventListener('click', this.closeHandler);
 		this.$close?.addEventListener('click', this.closeHandler);
 		this.$clear?.addEventListener('click', this.clearHandler);
+		this.$result?.addEventListener('click', this.applyHandler);
 		window.addEventListener('keydown', this.escHandler);
 		this.$element.classList.add('initialized');
 		this.$field?.setAttribute('aria-expanded', 'false');
@@ -54,6 +55,7 @@ export default class Search {
 		this.$layer?.removeEventListener('click', this.closeHandler);
 		this.$close?.removeEventListener('click', this.closeHandler);
 		this.$clear?.removeEventListener('click', this.clearHandler);
+		this.$result?.removeEventListener('click', this.applyHandler);
 		window.removeEventListener('keydown', this.escHandler);
 		this.$liveStatus?.remove();
 		this.debouncedSearch.cancel();
@@ -305,6 +307,11 @@ export default class Search {
 
 	private clearHandler = () => {
 		this.clear();
+	};
+
+	private applyHandler = (event: Event) => {
+		const target = event.currentTarget as HTMLElement;
+		if (target.hasAttribute('role')) this.toggleActive(false);
 	};
 
 	private submitHandler = (event: SubmitEvent) => {

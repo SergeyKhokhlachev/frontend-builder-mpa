@@ -29,6 +29,10 @@ import imageOptimizerPlugin from './plugins/vite-image-optimizer';
 
 export default defineConfig({
 	appType: 'mpa',
+	base: '/',
+	root: resolve(__dirname, 'src'),
+	publicDir: resolve(__dirname, './public'),
+	envDir: '../',
 	server: {
 		type: 'mpa',
 		port: 3000,
@@ -57,7 +61,7 @@ export default defineConfig({
 			},
 		}),
 		vuePlugin(),
-		spritemapPlugin('src/assets/icons/*.svg', {
+		spritemapPlugin('assets/icons/*.svg', {
 			prefix: 'icon-',
 		}),
 		imageOptimizerPlugin(),
@@ -101,7 +105,7 @@ export default defineConfig({
 		manifest: true,
 		modulePreload: false,
 		rollupOptions: {
-			input: ['./src/templates/**/*.pug'],
+			input: ['templates/**/*.pug'],
 			output: {
 				entryFileNames: 'script/[name]-[hash:8].js',
 				chunkFileNames: 'script/[name]-[hash:8].js',
@@ -115,7 +119,7 @@ export default defineConfig({
 
 					const extType = assetInfo.name.split('.').pop();
 
-					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType) && !assetInfo.name.includes('spritemap')) {
+					if (/jpe?g|png|gif|tiff|webp|svg|avif/i.test(extType)) {
 						return 'images/[name].[ext]';
 					}
 
