@@ -1,22 +1,44 @@
 /* NOTE: import COMPONENTS style */
 @import '@/components/features/checkout/checkout';
 
-.checkout-sceleton-header {
-	height: 37px;
+.checkout-sceleton {
+	padding-bottom: 40px;
 
 	@mixin media $tablet {
-		padding-top: 40px;
-		padding-bottom: 35px;
+		padding-bottom: 60px;
+	}
 
-		.container {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: baseline;
-		}
+	@mixin media $laptop {
+		display: flex;
+		gap: 32px;
+	}
+
+	@mixin media $desktopS {
+		padding-bottom: 70px;
 	}
 }
 
-.checkout-sceleton-card {
+.checkout-sceleton__main {
+	padding-bottom: 40px;
+
+	@mixin media $laptop {
+		width: 100%;
+		padding-bottom: 0;
+	}
+}
+
+.checkout-sceleton__aside {
+	@mixin media $laptop {
+		flex-shrink: 0;
+		width: 300px;
+	}
+}
+
+.checkout-sceleton__header {
+	height: 37px;
+}
+
+.checkout-sceleton__card {
 	height: 193px;
 
 	@mixin media $tablet {
@@ -29,5 +51,17 @@
 
 	@mixin media $desktopS {
 		height: 205px;
+	}
+}
+
+.checkout-sceleton__panel {
+	min-height: 312px;
+
+	@mixin media $tablet {
+		min-height: 324px;
+	}
+
+	@mixin media $laptop {
+		min-height: 396px;
 	}
 }

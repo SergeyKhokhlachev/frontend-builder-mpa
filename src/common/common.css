@@ -15,7 +15,7 @@ body {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	min-width: 320px;
+	min-width: 360px;
 	height: fit-content;
 	min-height: 100%;
 	font-family: Montserrat, Arial, sans-serif;

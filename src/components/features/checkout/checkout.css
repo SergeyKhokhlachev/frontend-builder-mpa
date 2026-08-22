@@ -52,13 +52,23 @@
 
 .checkout__header {
 	display: flex;
-	gap: 24px;
+	gap: 16px;
 	border-bottom: 1px solid var(--color-line-primary);
+
+	@mixin media $mobile {
+		flex-shrink: 0;
+		gap: 24px;
+	}
 }
 
 .heckout__tablist {
 	display: flex;
-	gap: 24px;
+	gap: 16px;
+
+	@mixin media $mobile {
+		flex-shrink: 0;
+		gap: 24px;
+	}
 }
 
 .checkout__body {
@@ -102,7 +112,7 @@
 .checkout__clear {
 	width: 24px;
 	height: 24px;
-	margin-right: 18px;
+	margin-right: 16px;
 	margin-left: auto;
 
 	span {
@@ -156,9 +166,10 @@
 	height: 38px;
 	padding-bottom: 8px;
 	margin-bottom: -2px;
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 500;
 	color: var(--color-text-alternate);
+	white-space: nowrap;
 	border-bottom: 3px solid transparent;
 	transition:
 		color var(--transition),
@@ -172,6 +183,10 @@
 	&:disabled {
 		color: var(--color-text-disabled);
 		pointer-events: none;
+	}
+
+	@mixin media $mobile {
+		font-size: 14px;
 	}
 
 	@mixin media $laptop {
