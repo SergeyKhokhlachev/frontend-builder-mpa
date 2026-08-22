@@ -70,7 +70,10 @@
 	top: 0;
 	left: 0;
 	z-index: 10;
+	display: flex;
 	visibility: hidden;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: 100%;
 	background-color: var(--color-background-primary);
@@ -78,6 +81,17 @@
 	transition:
 		opacity var(--transition),
 		visibility var(--transition);
+
+	&::after {
+		width: 80px;
+		height: 80px;
+		content: '';
+		background-color: var(--color-primary);
+		mask-image: url('/images/loading.svg');
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: 80px;
+	}
 
 	&.active {
 		visibility: visible;

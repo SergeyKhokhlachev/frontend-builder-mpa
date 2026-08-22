@@ -201,14 +201,14 @@
 	margin-bottom: 8px;
 	font-size: 11px;
 	line-height: 1.5;
-	color: var(--color-text-alternate);
+	color: var(--color-text-secondary);
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 
 	@mixin media $tablet {
-		margin-bottom: 12px;
+		margin-bottom: 16px;
 		font-size: 12px;
 	}
 }
@@ -219,9 +219,9 @@
 	align-items: center;
 	margin-bottom: 3px;
 	font-size: 11px;
+	font-weight: 500;
 	line-height: 1;
-	color: var(--color-text-disabled);
-	text-transform: uppercase;
+	color: var(--color-text-primary);
 
 	.icon {
 		width: 11px;
@@ -230,11 +230,11 @@
 
 	@mixin media $tablet {
 		margin-bottom: 6px;
-		font-size: 13px;
+		font-size: 12px;
 
 		.icon {
-			width: 13px;
-			height: 13px;
+			width: 12px;
+			height: 12px;
 		}
 	}
 }

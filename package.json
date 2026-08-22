@@ -2,7 +2,7 @@
 	"name": "builder-mpa",
 	"description": "builder MPA: Vite - ES module - TypeScript - Pug - PostCSS - Vue 3",
 	"private": true,
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
