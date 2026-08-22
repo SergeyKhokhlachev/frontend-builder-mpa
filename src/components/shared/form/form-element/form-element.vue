@@ -1,8 +1,10 @@
 <template>
 	<div :class="['form-element', { valid: complete }, { error: error }, { disabled: disabled }, { focus: focus ? true : false }]">
 		<label :id="id" :for="forId">
-			<span v-if="label" class="form-element__label">{{ label }}</span>
-			<span v-if="required" class="form-element__required" aria-hidden="true">*</span>
+			<span v-if="label" class="form-element__label">
+				{{ label }}
+				<span v-if="required" class="form-element__required" aria-hidden="true">*</span>
+			</span>
 			<slot></slot>
 		</label>
 		<div v-if="describe" class="form-element__describe">

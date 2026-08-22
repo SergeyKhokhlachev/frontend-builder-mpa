@@ -12,7 +12,7 @@
 }
 
 .login__describe {
-	padding: 20px 0 48px;
+	padding: 20px 0 44px;
 	text-align: center;
 
 	&.login__describe--code {
@@ -63,12 +63,19 @@
 	margin: 24px auto 0;
 }
 
-.login__authorization {
-	min-height: 404px;
+.login__authorization,
+.login__recovery {
+	min-height: 406px;
+}
+
+.login__recovery {
+	.login__describe {
+		padding: 20px 0 64px;
+	}
 }
 
 .login {
-	max-width: 404px;
+	max-width: 406px;
 	margin: 0 auto;
 
 	.form-element {
