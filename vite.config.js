@@ -14,7 +14,6 @@ import vuePlugin from '@vitejs/plugin-vue';
 // markup plugins
 import vituum from 'vituum';
 import pug from '@vituum/vite-plugin-pug';
-// import pugPlugin from 'vite-plugin-pug';
 
 // style plugins
 import postcssMixins from 'postcss-mixins';
